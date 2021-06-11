@@ -1474,12 +1474,12 @@ header.header {
 }
 .mobile-logo:before {
     content: "";
-    height: 9px;
-    width: 9px;
-    background-color: #925dfa;
+    height: 7px;
+    width: 7px;
+    background-color: #ffffff;
     position: absolute;
-    top: 20px;
-    left: 149px;
+    top: 21px;
+    left: 224px;
     border-radius: 50%;
     -webkit-animation: pulse2 linear 1000ms infinite;
     animation: pulse2 linear 1000ms infinite;

@@ -2955,6 +2955,18 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     .fixed-sidebar .sidebar-toggle {
         height: 50px;
     }
+    .sidebar-logo:before {
+        content: "";
+        height: 7px;
+        width: 7px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 22px;
+        left: 93px;
+        border-radius: 50%;
+        -webkit-animation: pulse2 linear 1000ms infinite;
+        animation: pulse2 linear 1000ms infinite;
+    }
 }
 
 .fixed-sidebar .sidebar-toggle .toggle-btn {

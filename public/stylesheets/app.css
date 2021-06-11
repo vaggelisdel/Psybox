@@ -1472,18 +1472,6 @@ header.header {
     -webkit-animation: pulse2 linear 1000ms infinite;
     animation: pulse2 linear 1000ms infinite;
 }
-.mobile-logo:before {
-    content: "";
-    height: 7px;
-    width: 7px;
-    background-color: #ffffff;
-    position: absolute;
-    top: 21px;
-    left: 224px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
-}
 
 @media only screen and (max-width: 991px) {
     .temp-logo {
@@ -1733,7 +1721,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     z-index: 100;
     left: 0;
     right: 0;
-    background-color: #925dfa;
+    background-color: #615dfa;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
     -webkit-animation: upsdown 1000ms;
     animation: upsdown 1000ms;
@@ -3737,7 +3725,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     top: 0;
     left: -280px;
     bottom: 0;
-    background-color: #925dfa;
+    background-color: #ffffff;
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
     padding: 80px 10px 30px;
     -webkit-transition: all 0.3s ease-in-out;
@@ -3758,7 +3746,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .mobile-menu-wrapper nav.template-main-menu > ul > li > a {
     text-align: center;
     padding: 20px !important;
-    color: #ffffff;
+    color: #000000;
 }
 
 .mobile-menu-wrapper nav.template-main-menu > ul > li > a:hover {
@@ -4290,7 +4278,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .hero-banner .hero-content .button-slide {
     border-color: #ffffff;
     color: #ffffff;
-    background-color: #925dfa;
+    background-color: #925dfa00;
 }
 
 .hero-banner .map-line {
@@ -4505,7 +4493,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .banner-newsletter .newsletter-box .input-group .input-group-append .button-slide:hover {
-    background-color: #5bc6e0;
+    background-color: #925dfa;
 }
 
 @media only screen and (max-width: 479px) {

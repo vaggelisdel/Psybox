@@ -1460,6 +1460,31 @@ header.header {
     position: relative;
 }
 
+.temp-logo:before {
+    content: "";
+    height: 7px;
+    width: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 20px;
+    left: 68px;
+    border-radius: 50%;
+    -webkit-animation: pulse2 linear 1000ms infinite;
+    animation: pulse2 linear 1000ms infinite;
+}
+.mobile-logo:before {
+    content: "";
+    height: 9px;
+    width: 9px;
+    background-color: #925dfa;
+    position: absolute;
+    top: 20px;
+    left: 149px;
+    border-radius: 50%;
+    -webkit-animation: pulse2 linear 1000ms infinite;
+    animation: pulse2 linear 1000ms infinite;
+}
+
 @media only screen and (max-width: 991px) {
     .temp-logo {
         display: none;
@@ -1984,6 +2009,18 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     position: absolute;
     top: 19px;
     left: 67px;
+    border-radius: 50%;
+    -webkit-animation: pulse2 linear 1000ms infinite;
+    animation: pulse2 linear 1000ms infinite;
+}
+.sidebar-logo:before {
+    content: "";
+    height: 7px;
+    width: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 39px;
+    left: 93px;
     border-radius: 50%;
     -webkit-animation: pulse2 linear 1000ms infinite;
     animation: pulse2 linear 1000ms infinite;
@@ -2899,6 +2936,18 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 @media only screen and (max-width: 991px) {
     .fixed-sidebar .sidebar-toggle {
         height: 60px;
+    }
+    .sidebar-logo:before {
+        content: "";
+        height: 7px;
+        width: 7px;
+        background-color: #ffffff;
+        position: absolute;
+        top: 26px;
+        left: 93px;
+        border-radius: 50%;
+        -webkit-animation: pulse2 linear 1000ms infinite;
+        animation: pulse2 linear 1000ms infinite;
     }
 }
 
@@ -6029,11 +6078,11 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .login-page-wrap .item-logo a:before {
     content: "";
-    height: 10px;
-    width: 10px;
-    background-color: #925dfa;
+    height: 7px;
+    width: 7px;
+    background-color: #ffffff;
     position: absolute;
-    top: 7px;
+    top: 20px;
     left: 68px;
     border-radius: 50%;
     -webkit-animation: pulse2 linear 1000ms infinite;

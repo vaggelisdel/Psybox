@@ -3,6 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
+
+mongoose.connect(`mongodb+srv://vaggelisdel:EDdqkNYj3gCULHqA@cluster0-x12oj.mongodb.net/Psybox?retryWrites=true&w=majority`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 var indexRouter = require('./routes/index');
 

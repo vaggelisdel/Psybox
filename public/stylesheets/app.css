@@ -6338,11 +6338,15 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     padding: 13px 10px;
 }
 
-.login-page-wrap .tab-content .login-tab .google-signin {
+.login-page-wrap .tab-content .login-tab .google-signin, .login-page-wrap .tab-content .login-tab .facebook-signin {
     text-align: center;
     position: relative;
     padding-bottom: 35px;
     margin-bottom: 5px;
+}
+.login-page-wrap .tab-content .login-tab .facebook-signin {
+    margin-bottom: 0;
+    padding-bottom: 15px;
 }
 
 .login-page-wrap .tab-content .login-tab .google-signin:before {
@@ -6355,7 +6359,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     bottom: 0;
 }
 
-.login-page-wrap .tab-content .login-tab .google-signin a {
+.login-page-wrap .tab-content .login-tab .google-signin a, .login-page-wrap .tab-content .login-tab .facebook-signin a {
     border: 1px solid #e1e1e1;
     border-radius: 4px;
     padding: 12px;

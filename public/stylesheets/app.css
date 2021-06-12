@@ -3,10 +3,10 @@ Template Name: Cirkle Social Media Community HTML Template
 Template URL: http://www.radiustheme.com/demo/html/cirkle/
 Description: Social Media and Community HTML Template
 Author: RadiusTheme
-Author URL: http://www.radiustheme.com 
+Author URL: http://www.radiustheme.com
 Version: 1.0.0
 
-===================   
+===================
 CSS INDEX
 ===================
 1. Typography
@@ -46,10 +46,10 @@ CSS INDEX
 	6.5 Product
 	6.6 Search
 	6.7 User Activity
-	6.8 Widget 
+	6.8 Widget
 --------------------------------------------*/
 /*=======================================================================
-1. Typography 
+1. Typography
 =========================================================================*/
 body {
     font-family: "Nunito", sans-serif;
@@ -2275,7 +2275,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     right: -6px;
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.3);
 }
-
 @media only screen and (max-width: 479px) {
     .fixed-header .header-control .dropdown .dropdown-toggle .notify-count {
         height: 16px;
@@ -7736,6 +7735,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-body .post-meta-wrap .post-reaction img {
     cursor: pointer;
+    width:35px;
+    height:35px;
     border: 2px solid #ffffff;
     border-radius: 50%;
     margin-right: -10px;
@@ -8016,6 +8017,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .post-view .post-footer > ul > li {
     display: inline-block;
     margin-right: 55px;
+    margin: 15px 55px 15px 0;
 }
 
 @media only screen and (max-width: 575px) {
@@ -8035,10 +8037,10 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-view .post-footer > ul > li > a {
-    display: -webkit-box;
-    display: -webkit-flex;
+    /* display: -webkit-box; */
+    /* display: -webkit-flex; */
     display: -ms-flexbox;
-    display: flex;
+    /* display: flex; */
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
@@ -8046,7 +8048,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     font-size: 14px;
     color: #b1b6bc;
     font-weight: 600;
-    padding: 15px 0;
 }
 
 .post-view .post-footer > ul > li > a i {
@@ -8075,6 +8076,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .post-view .post-footer .post-react .react-list {
     position: absolute;
     top: -40px;
+    z-index: 9;
     left: 0;
     background-color: #ffffff;
     border-radius: 30px;
@@ -8094,7 +8096,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-footer .post-react .react-list li {
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 0px;
     opacity: 0;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
@@ -8117,7 +8119,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     border-radius: 50%;
     border: 4px solid #ffffff;
     -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 @media only screen and (max-width: 575px) {
@@ -8128,6 +8130,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-footer .post-react .react-list li a:hover img {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+    transform: rotate(40deg);
 }
 
 .post-view .post-footer .post-react:hover .react-list {
@@ -8366,6 +8369,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     cursor: pointer;
     border: 2px solid #ffffff;
     border-radius: 50%;
+    width: 35px;
+    height: 35px;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.18);
     margin-right: -10px;
 }
@@ -10433,6 +10438,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     border: 2px solid #ffffff;
     border-radius: 50%;
     margin-right: -10px;
+    width: 35px;
+    height: 35px;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.18);
 }
 
@@ -10752,10 +10759,11 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .user-single-blog .blog-footer .reaction-icon img {
     border-radius: 50%;
+    width: 50px;
+    height: 50px;
     border: 2px solid #ffffff;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.18);
 }
-
 .user-single-blog .blog-comment-form .item-title {
     font-size: 30px;
     margin-bottom: 30px;
@@ -11828,3 +11836,11 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
         display:none;
     }
 }
+.react-list img{
+    width: 50px;
+    height: 50px;
+}
+.reactionbtn{
+    width: 25px; height: 25px; border-radius: 50%;
+}
+.reacted{background: #f7573c;box-shadow: 1px 1px 4px 0px #0000004d;color: white !important;padding: 5px 10px;border-radius: 15px;}

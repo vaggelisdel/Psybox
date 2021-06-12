@@ -11723,7 +11723,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     transform: scale(1.1);
 }
 .imageinput-edit{
-    margin: 1em;
+    margin: 1.5em;
 }
 .imageinput-upload {
     position: relative;
@@ -11761,7 +11761,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     background-color: #ffffff;
     border-radius: 50%;
     padding: 15px;
-    margin: 10px;
     width: 50px;
     height: 50px;
     font-size: 18px;
@@ -11823,4 +11822,9 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     background-color: #925dfa;
     color: #ffffff;
     font-family: 'Nunito';
+}
+@media(max-width:1250px){
+    .tooltip{
+        display:none;
+    }
 }

@@ -24,6 +24,12 @@
     <link rel="stylesheet" href="/stylesheets/app.css">
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+
+    <!-- Jquery Js -->
+    <script src="/dependencies/jquery/js/jquery.min.js"></script>
+    <script src="/dependencies/popper.js/js/popper.min.js"></script>
+    <script src="/dependencies/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 
 <body class="bg-link-water">
@@ -68,10 +74,6 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="item-heading">
                                     <h6 class="heading-title">Notifications</h6>
-                                    <div class="heading-btn">
-                                        <a href="#">Settings</a>
-                                        <a href="#">Mark all as Read</a>
-                                    </div>
                                 </div>
                                 <div class="item-body">
                                     <a href="#" class="media">
@@ -125,6 +127,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="admin-options">
+                                    <li><a href="/timeline">Timeline</a></li>
                                     <li><a href="/settings">Profile Settings</a></li>
                                     <li><a href="/login">Log Out</a></li>
                                 </ul>
@@ -186,6 +189,7 @@
             </div>
         </div>
     </div>
+    <div class="page-content">
 
 
 {{{body}}}
@@ -258,10 +262,8 @@
 
 </div>
 </div>
-<!-- Jquery Js -->
-<script src="/dependencies/jquery/js/jquery.min.js"></script>
-<script src="/dependencies/popper.js/js/popper.min.js"></script>
-<script src="/dependencies/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
 <script src="/dependencies/imagesloaded/js/imagesloaded.pkgd.min.js"></script>
 <script src="/dependencies/isotope-layout/js/isotope.pkgd.min.js"></script>
 <script src="/dependencies/slick-carousel/js/slick.min.js"></script>
@@ -275,6 +277,4 @@
 
 <!-- Site Scripts -->
 <script src="/javascripts/app.js"></script>
-</body>
-
 </html>

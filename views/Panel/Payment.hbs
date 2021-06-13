@@ -1,0 +1,86 @@
+<style>
+    .checkout-boxes {
+
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h4>Payment</h4>
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="cardholder">Cardholder's name:</label>
+                            <input type="text" class="form-control" id="cardholder"
+                                   placeholder="Enter your cardholder's name:" value="Evangelos Dellios">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardnumber">Card Number:</label>
+                            <input type="text" class="form-control" id="cardnumber"
+                                   placeholder="Enter your card's number:" value="0125 6780 4567 9909">
+                        </div>
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label for="expire">Expiry date:</label>
+                                <input type="text" class="form-control" id="expire"
+                                       placeholder="Enter the expire date" value="YY/MM">
+                            </div>
+                            <div class="col form-group">
+                                <label for="cvv">CVV:</label>
+                                <input type="number" class="form-control" id="cvv"
+                                       placeholder="Enter the cvv" value="123">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h4>Order Summary</h4>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="list-group list-group-sm">
+                        <li class="list-group-item has-icon">
+                            <div>
+                                <h6 class="mb-0">Standard Plan - 1 month</h6>
+                                    <a data-toggle="collapse" href="#collapseExample" role="button"
+                                       aria-expanded="false" aria-controls="collapseExample">
+                                        <small style="font-weight:bold;">View more plan details</small>
+                                    </a>
+                                <div class="collapse" id="collapseExample">
+                                    <ul>
+                                        <li><small class="text-muted">Your current session seen United States</small>
+                                        </li>
+                                        <li><small class="text-muted">Your current in United States</small></li>
+                                        <li><small class="text-muted">Your current session seen in States</small></li>
+                                        <li><small class="text-muted">Your current session session seen in United
+                                            States</small></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="row mt-3">
+                        <div class="col text-left">Subtotal</div>
+                        <div class="col text-right">$ 46.98</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left">Delivery</div>
+                        <div class="col text-right">Free</div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left"><b>Total to pay</b></div>
+                        <div class="col text-right"><b>$ 46.98</b></div>
+                    </div>
+                    <button class="btn btn-primary mt-4 w-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                            <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                        </svg>&nbsp;
+                        Place a membership</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

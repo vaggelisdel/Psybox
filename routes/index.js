@@ -30,6 +30,10 @@ router.get('/settings', function(req, res, next) {
   res.render('Panel/EditProfile.hbs', { layout: "Layouts/PanelLayout.hbs", title: 'Edit Profile', Settings: true });
 });
 
+router.get('/payment', function(req, res, next) {
+  res.render('Panel/Payment.hbs', { layout: "Layouts/PanelLayout.hbs", title: 'Payment'});
+});
+
 router.get('/post', function(req, res, next) {
   res.render('Panel/Post.hbs', { layout: "Layouts/PanelLayout.hbs", title: 'Post', Post: true });
 });

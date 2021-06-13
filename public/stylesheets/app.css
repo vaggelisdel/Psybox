@@ -8005,10 +8005,10 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 @media only screen and (max-width: 479px) {
     .post-view .post-footer > ul {
-        display: -webkit-box;
-        display: -webkit-flex;
+        /* display: -webkit-box; */
+        /* display: -webkit-flex; */
         display: -ms-flexbox;
-        display: flex;
+        /* display: flex; */
         -webkit-box-pack: justify;
         -webkit-justify-content: space-between;
         -ms-flex-pack: justify;
@@ -8030,7 +8030,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 @media only screen and (max-width: 479px) {
     .post-view .post-footer > ul > li {
-        margin-right: 10px;
+        margin-right: 20px;
     }
 }
 
@@ -11852,7 +11852,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .reactionbtn{
     width: 25px; height: 25px; border-radius: 50%;
 }
-.reacted{background: #f7573c;box-shadow: 1px 1px 4px 0px #0000004d;color: white !important;padding: 5px 10px;border-radius: 15px;}
+.reacted{box-shadow: 1px 1px 4px 0px #0000004d;color: white !important;padding: 5px 10px;border-radius: 15px;}
 .card {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
 }
@@ -11931,4 +11931,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .openModalPost{
     cursor:pointer;
+}
+.paypal-btn{
+    width:120px;
 }

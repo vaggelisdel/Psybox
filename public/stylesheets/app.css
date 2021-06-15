@@ -859,6 +859,7 @@ h6 {
 
 .footer-box .footer-logo {
     margin-bottom: 20px;
+    max-width: 150px;
 }
 
 .footer-box .footer-title {
@@ -1181,7 +1182,7 @@ hr {
     padding: 5px 10px;
     background: #4948fb;
     color: #ffffff;
-    box-shadow: 0 4px 16px 0 rgb(107 60 201 / 49%);
+    box-shadow: 0 4px 16px 0 rgb(60 90 201 / 49%);
     z-index: 5;
 }
 
@@ -1352,7 +1353,7 @@ hr {
 
 @-webkit-keyframes pulse {
     0% {
-        box-shadow: 0 0 0 0 #d70ccc;
+        box-shadow: 0 0 0 0 #4948fb;
     }
 
     70% {
@@ -1366,7 +1367,7 @@ hr {
 
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 0 0 #d70ccc;
+        box-shadow: 0 0 0 0 #4948fb;
     }
 
     70% {
@@ -1458,19 +1459,7 @@ header.header {
 
 .temp-logo {
     position: relative;
-}
-
-.temp-logo:before {
-    content: "";
-    height: 7px;
-    width: 7px;
-    background-color: #ffffff;
-    position: absolute;
-    top: 20px;
-    left: 68px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
+    max-width: 150px;
 }
 
 @media only screen and (max-width: 991px) {
@@ -1530,7 +1519,9 @@ nav.template-main-menu > ul > li > a {
 .panel-header nav.template-main-menu > ul > li > a:hover {
     color: #596069;
 }
-
+.mobile-logo{
+    max-width:150px;
+}
 @media only screen and (max-width: 1199px) {
     nav.template-main-menu > ul > li > a {
         padding: 40px 10px;
@@ -1973,65 +1964,19 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .fixed-header .header-menu .header-logo {
     position: relative;
-    margin-bottom: 8px;
-    margin-left: -10px;
+    max-width: 150px;
 }
 
 @media only screen and (max-width: 991px) {
     .fixed-header .header-menu .header-logo {
         margin-bottom: 0;
+        margin-left: 10px;
     }
 }
 
 @media only screen and (max-width: 991px) {
     .fixed-header .header-menu .header-logo img {
         height: 30px;
-    }
-}
-
-.fixed-header .header-menu .header-logo:before {
-    content: "";
-    height: 9px;
-    width: 9px;
-    background-color: #4948fb;
-    position: absolute;
-    top: 19px;
-    left: 67px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
-}
-.sidebar-logo:before {
-    content: "";
-    height: 7px;
-    width: 7px;
-    background-color: #ffffff;
-    position: absolute;
-    top: 39px;
-    left: 93px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
-}
-.footer-logo:before {
-    content: "";
-    height: 9px;
-    width: 9px;
-    background-color: #4948fb;
-    position: absolute;
-    top: 19px;
-    left: 81px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
-}
-
-@media only screen and (max-width: 991px) {
-    .fixed-header .header-menu .header-logo:before {
-        height: 6px;
-        width: 6px;
-        top: 1px;
-        left: 31px;
     }
 }
 
@@ -2055,6 +2000,9 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     .fixed-header .navbar {
         padding: 19px 15px;
     }
+}
+.sidebar-logo{
+    max-width:150px;
 }
 
 @media only screen and (max-width: 991px) {
@@ -2919,43 +2867,24 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-
+@media(max-width:1200px){
+    .fixed-sidebar .sidebar-toggle{
+        height:85px;
+    }
+}
 @media only screen and (max-width: 991px) {
     .fixed-sidebar .sidebar-toggle {
         height: 60px;
     }
-    .sidebar-logo:before {
-        content: "";
-        height: 7px;
-        width: 7px;
-        background-color: #ffffff;
-        position: absolute;
-        top: 26px;
-        left: 93px;
-        border-radius: 50%;
-        -webkit-animation: pulse2 linear 1000ms infinite;
-        animation: pulse2 linear 1000ms infinite;
+    .sidebar-logo{
+        max-width: 120px;
     }
 }
-
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
     .fixed-sidebar .sidebar-toggle {
         height: 50px;
     }
-    .sidebar-logo:before {
-        content: "";
-        height: 7px;
-        width: 7px;
-        background-color: #ffffff;
-        position: absolute;
-        top: 22px;
-        left: 93px;
-        border-radius: 50%;
-        -webkit-animation: pulse2 linear 1000ms infinite;
-        animation: pulse2 linear 1000ms infinite;
-    }
 }
-
 .fixed-sidebar .sidebar-toggle .toggle-btn {
     width: 33px;
     border: none;
@@ -2998,7 +2927,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     content: "";
     width: 8px;
     height: 3px;
-    background-color: #4948fb;
+    background-color: #3332a9;
     border-radius: 2px;
     position: absolute;
     top: 0;
@@ -3835,7 +3764,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 /*------------------- 4.8 Preloader -------------------*/
 #preloader {
-    background: #ffffff url("../media/logo1.png") no-repeat scroll center center;
+    background: #ffffff url("../media/preloader.png") no-repeat scroll center center;
     height: 100%;
     left: 0;
     overflow: visible;
@@ -6069,25 +5998,13 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .login-page-wrap .item-logo {
     margin-bottom: 50px;
     text-align: center;
+    margin: 0 auto 50px auto;
+    max-width: 200px;
 }
 
 .login-page-wrap .item-logo a {
     position: relative;
 }
-
-.login-page-wrap .item-logo a:before {
-    content: "";
-    height: 7px;
-    width: 7px;
-    background-color: #ffffff;
-    position: absolute;
-    top: 20px;
-    left: 68px;
-    border-radius: 50%;
-    -webkit-animation: pulse2 linear 1000ms infinite;
-    animation: pulse2 linear 1000ms infinite;
-}
-
 .login-page-wrap .login-form-wrap {
     padding-bottom: 50px;
     position: relative;

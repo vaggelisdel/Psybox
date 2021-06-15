@@ -7190,7 +7190,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    position: relative;
 }
 
 @media only screen and (max-width: 767px) {
@@ -11952,7 +11951,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .post-view .post-footer,
 .darkmode .footer-bottom,
 .darkmode .user-top-header .menu-list,
-.darkmode .user-top-header .menu-list li,
+.darkmode .user-top-header .menu-list li
 {
     border-color: #3a3a3a
 }

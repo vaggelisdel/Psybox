@@ -11845,6 +11845,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .breadcrumb-item a, .nav-item a {
     color: #4948fb;
+    margin-right: 5px;
 }
 
 .gutters-sm {
@@ -11931,13 +11932,15 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .widget-memebers,
 .darkmode .widget-user-about,
 .darkmode .breadcrumb,
-.darkmode .card
+.darkmode .card,
+.darkmode .load-more-post .item-btn
 {
     background-color: #272727;
 }
 
 .darkmode .imageuploadbox .icon,
-.darkmode .card .list-group-item{
+.darkmode .card .list-group-item,
+.darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
     background-color: #3a3a3a;
 }
 
@@ -11949,11 +11952,15 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .post-view .post-footer,
 .darkmode .footer-bottom,
 .darkmode .user-top-header .menu-list,
-.darkmode .user-top-header .menu-list li
+.darkmode .user-top-header .menu-list li,
 {
     border-color: #3a3a3a
 }
-
+.darkmode .border-bottom,
+.darkmode .nav-tabs .nav-link
+{
+    border-color: #3a3a3a !important;
+}
 .darkmode .fixed-header .header-menu {
     background-color: #272727;
     border-bottom: 1px solid #2f2f2f;
@@ -11996,11 +12003,13 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .card label,
 .darkmode .text-muted,
 .darkmode .text-left,
-.darkmode .text-right
+.darkmode .text-right,
+.darkmode .load-more-post .item-btn,
+darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active
 {
     color: #e8e8e8;
 }
-.darkmode .card p,
+.darkmode p,
 .darkmode .text-muted
 {
     color: #e8e8e8 !important;

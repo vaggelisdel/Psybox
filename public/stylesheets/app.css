@@ -11967,7 +11967,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     display: none;
 }
 
-.darkmode p,
 .darkmode .footer-box .footer-link ul li a,
 .darkmode .footer-box .footer-title,
 .darkmode .panel-header nav.template-main-menu > ul > li > a,
@@ -11999,9 +11998,13 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .text-left,
 .darkmode .text-right
 {
+    color: #e8e8e8;
+}
+.darkmode .card p,
+.darkmode .text-muted
+{
     color: #e8e8e8 !important;
 }
-
 @media only screen and (max-width: 991px) {
     .darkmode .main-footer {
         background-color: #272727;

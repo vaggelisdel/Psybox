@@ -11868,7 +11868,17 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     border-radius: 50%;
     box-shadow: 0px 0px 8px 0px #00000030;
 }
-
+@media(max-width:575px){
+    .close_modal {
+        width: 40px;
+        height: 40px;
+        right: -5px;
+        top: -5px;
+    }
+    .close_modal span{
+        font-size: 15px !important;
+    }
+}
 .close_modal span {
     font-size: 21px;
     font-weight: 800;

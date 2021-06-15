@@ -50,7 +50,8 @@
                 <div class="nav-item d-none d-sm-block">
                     <div class="header-logo">
 <!--                        <a href="/"><img src="/media/logo.png" alt="Psybox"></a>-->
-                        <a href="/"><img src="/media/logo_x.png" alt="Psybox"></a>
+                        <a href="/" class="default_logo"><img src="/media/logo_x.png" alt="Psybox"></a>
+                        <a href="/" class="grey_logo"><img src="/media/logo_x_grey.png" alt="Psybox"></a>
                     </div>
                 </div>
                 <div class="nav-item nav-top-menu">
@@ -154,6 +155,7 @@
                         <li><a href="/feed" class="menu-link {{#if Feed}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="FEED"><i class="icofont-newspaper"></i></a></li>
                         <li><a href="/timeline" class="menu-link {{#if Timeline}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="TIMELINE"><i class="icofont-list"></i></a></li>
                         <li><a href="/settings" class="menu-link {{#if Settings}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="PROFILE SETTINGS"><i class="icofont-settings"></i></a></li>
+                        <li><a href="javascript:void(0)" class="menu-link switch-mode" data-toggle="tooltip" data-placement="right" title="DARK MODE"><i class="icofont-moon"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -175,6 +177,7 @@
                         <li><a href="/feed" class="menu-link {{#if Feed}}active{{/if}}"><i class="icofont-newspaper"></i><span class="menu-title">Feed</span></a></li>
                         <li><a href="/timeline" class="menu-link {{#if Timeline}}active{{/if}}"><i class="icofont-list"></i><span class="menu-title">Timeline</span></a></li>
                         <li><a href="/settings" class="menu-link {{#if Settings}}active{{/if}}"><i class="icofont-settings"></i><span class="menu-title">Profile Settings</span></a></li>
+                        <li><a href="javascript:void(0)" class="menu-link switch-mode"><i class="icofont-moon"></i><span class="menu-title">Dark Mode</span></a></li>
                     </ul>
                     <ul class="top-menu-mobile">
                         <li class="menu-label">Pages</li>
@@ -277,4 +280,22 @@
 
 <!-- Site Scripts -->
 <script src="/javascripts/app.js"></script>
+<script>
+    $( document ).ready(function() {
+        var darkMode = localStorage.getItem("darkMode");
+        if(darkMode){
+            $("body").addClass("darkmode");
+        }
+    });
+    $(".switch-mode").click(function(){
+        var darkMode = localStorage.getItem("darkMode");
+        if(darkMode){
+            $("body").removeClass("darkmode");
+            localStorage.removeItem("darkMode");
+        }else{
+            $("body").addClass("darkmode");
+            localStorage.setItem("darkMode", true);
+        }
+    });
+</script>
 </html>

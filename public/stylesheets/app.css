@@ -3276,7 +3276,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     content: "";
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0 0 0 / 35%);
     position: fixed;
     top: 0;
     left: 0;
@@ -11851,4 +11851,71 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 .paypal-btn{
     width:120px;
+}
+
+.grey_logo{
+    display: none;
+}
+.default_logo{
+    display:block;
+}
+/*Dark mode*/
+.darkmode {
+    background-color: #000000;
+}
+.darkmode .fixed-sidebar .sidebar-menu-wrap,
+.darkmode .footer-dashboard,
+.darkmode .block-box,
+.darkmode .modal-body,
+.darkmode .post-input-tab .tab-pane .form-control
+{
+    background-color: #272727;
+}
+.darkmode .post-view .post-comment .main-comments,
+.darkmode .post-view .post-comment .load-more-btn,
+.darkmode .post-view .post-comment .comment-list,
+.darkmode .post-input-tab .post-footer,
+.darkmode .post-view .post-body .post-no-thumbnail,
+.darkmode .post-view .post-footer,
+.darkmode .footer-bottom
+{
+    border-color: #3a3a3a
+}
+.darkmode .fixed-header .header-menu {
+    background-color: #272727;
+    border-bottom: 1px solid #2f2f2f;
+}
+.darkmode .grey_logo{
+    display: block;
+}
+.darkmode .default_logo{
+    display:none;
+}
+.darkmode p,
+.darkmode .footer-box .footer-link ul li a,
+.darkmode .footer-box .footer-title,
+.darkmode .panel-header nav.template-main-menu > ul > li > a,
+.darkmode .fixed-sidebar .sidebar-menu-wrap .side-menu .menu-link,
+.darkmode .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-title,
+.darkmode .fixed-header .header-control .dropdown-admin .dropdown-toggle:before,
+.darkmode .fixed-sidebar .sidebar-menu-wrap .top-menu-mobile .menu-link,
+.darkmode .post-input-tab .nav-tabs .nav-link.active,
+.darkmode .post-view .post-header .media .user-title a
+{
+    color:white;
+}
+.darkmode .post-view .post-body p,
+.darkmode .post-view .post-body .post-meta-wrap .post-meta .meta-text,
+.darkmode .load-more-btn .item-btn,
+.darkmode .post-view .post-footer > ul > li > a,
+.darkmode .post-view .post-footer > ul > li > a i,
+.darkmode .post-view .post-body p,
+.darkmode .post-view .post-comment .load-more-btn .item-btn
+{
+    color: #e8e8e8;
+}
+@media only screen and (max-width: 991px) {
+    .darkmode .main-footer {
+        background-color: #272727;
+    }
 }

@@ -11753,7 +11753,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .imageuploadbox .psyboximg:hover,
 .imageuploadbox .psyboximg:hover .tooltip,
 .imageuploadbox .psyboximg:hover .tooltip::before {
-    background-color: #4948fb;
+    background-color: #4948fb !important;
     color: #ffffff;
     font-family: 'Nunito';
 }
@@ -11867,9 +11867,13 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .footer-dashboard,
 .darkmode .block-box,
 .darkmode .modal-body,
-.darkmode .post-input-tab .tab-pane .form-control
+.darkmode .post-input-tab .tab-pane .form-control,
+.darkmode .widget-memebers
 {
     background-color: #272727;
+}
+.darkmode .imageuploadbox .icon{
+    background-color: #3a3a3a;
 }
 .darkmode .post-view .post-comment .main-comments,
 .darkmode .post-view .post-comment .load-more-btn,
@@ -11900,7 +11904,10 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .fixed-header .header-control .dropdown-admin .dropdown-toggle:before,
 .darkmode .fixed-sidebar .sidebar-menu-wrap .top-menu-mobile .menu-link,
 .darkmode .post-input-tab .nav-tabs .nav-link.active,
-.darkmode .post-view .post-header .media .user-title a
+.darkmode .post-view .post-header .media .user-title a,
+.darkmode .widget-heading .widget-title,
+.darkmode .widget-memebers .media .item-title a,
+.darkmode .imageuploadbox label
 {
     color:white;
 }

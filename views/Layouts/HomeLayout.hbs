@@ -24,13 +24,15 @@
     <link rel="stylesheet" href="/stylesheets/app.css">
 
     <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap"
+          rel="stylesheet">
 
 </head>
 
 <body class="sticky-header">
 <!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience and security.</p>
 <![endif]-->
 <a href="#wrapper" data-type="section-switch" class="scrollup">
     <i class="icofont-bubble-up"></i>
@@ -91,7 +93,11 @@
                                     <a href="#"><i class="icofont-skype"></i></a>
                                 </li>
                                 <li class="login-btn">
-                                    <a href="/login" class="item-btn"><i class="fas fa-user"></i>Login</a>
+                                    {{#if session.authUser}}
+                                        <a href="/community" class="item-btn"><i class="fas fa-user"></i>{{session.firstName}}</a>
+                                    {{else}}
+                                        <a href="/login" class="item-btn"><i class="fas fa-user"></i>Login</a>
+                                    {{/if}}
                                 </li>
                             </ul>
                         </div>
@@ -108,14 +114,22 @@
     <!--=====================================-->
     <footer class="footer-wrap">
         <ul class="footer-top-image">
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="400"><img src="/media/figure/man_5.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="500"><img src="/media/figure/man_6.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="300"><img src="/media/figure/man_4.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="600"><img src="/media/figure/man_7.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="200"><img src="/media/figure/man_3.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="700"><img src="/media/figure/man_8.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="100"><img src="/media/figure/man_2.png" alt="Man"></li>
-            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="800"><img src="/media/figure/man_9.png" alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="400"><img src="/media/figure/man_5.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="500"><img src="/media/figure/man_6.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="300"><img src="/media/figure/man_4.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="600"><img src="/media/figure/man_7.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="200"><img src="/media/figure/man_3.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="700"><img src="/media/figure/man_8.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="100"><img src="/media/figure/man_2.png"
+                                                                                      alt="Man"></li>
+            <li data-sal="slide-up" data-sal-duration="500" data-sal-delay="800"><img src="/media/figure/man_9.png"
+                                                                                      alt="Man"></li>
             <li data-sal="slide-up" data-sal-duration="500"><img src="/media/figure/man_1.png" alt="Man"></li>
         </ul>
         <div class="main-footer">
@@ -126,7 +140,8 @@
                             <div class="footer-logo">
                                 <a href="/"><img src="/media/logo_x.png" alt="Logo"></a>
                             </div>
-                            <p>Dorem ipsum dolor sit amet consec adipisicing elit sed do eiusmod por incidiut labore et loreLorem ipsum kelly amieo dolorey.</p>
+                            <p>Dorem ipsum dolor sit amet consec adipisicing elit sed do eiusmod por incidiut labore et
+                                loreLorem ipsum kelly amieo dolorey.</p>
                         </div>
                     </div>
                     <div class="col d-flex justify-content-lg-center">
@@ -149,8 +164,8 @@
                             </h3>
                             <div class="footer-link">
                                 <ul>
-                                    <li><a href="/feed">Feed</a></li>
-                                    <li><a href="/timeline">Timeline</a></li>
+                                    <li><a href="/community/feed">Feed</a></li>
+                                    <li><a href="/community/timeline">Timeline</a></li>
                                 </ul>
                             </div>
                         </div>

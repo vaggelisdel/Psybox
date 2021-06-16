@@ -2656,6 +2656,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img {
     margin-right: 18px;
     position: relative;
+    max-width: 44px;
+    max-height: 44px;
 }
 
 @media only screen and (max-width: 479px) {
@@ -6565,6 +6567,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .banner-user .media .item-img img {
     border-radius: 50%;
+    width: 115px;
+    height: 115px;
 }
 
 .banner-user .media .item-title {
@@ -7233,8 +7237,10 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-input-tab .tab-pane .form-control {
-    border: none;
     padding: 16px 30px;
+    border: none;
+    resize: none;
+    border-bottom: 1px solid #eaedf1;
 }
 
 .post-input-tab .tab-pane .form-control:focus {
@@ -10808,7 +10814,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 @media only screen and (max-width: 991px) {
     .widget-break-lg {
-        margin-top: 50px;
+        margin-bottom: 30px;
     }
 }
 
@@ -11844,7 +11850,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .breadcrumb-item a, .nav-item a {
     color: #4948fb;
-    margin-right: 5px;
+    /* margin-right: 5px; */
 }
 
 .gutters-sm {
@@ -11949,7 +11955,10 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .darkmode .imageuploadbox .icon,
 .darkmode .card .list-group-item,
-.darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+.darkmode .nav-tabs .nav-item.show .nav-link,
+.darkmode .nav-tabs .nav-link.active,
+.darkmode #preloader
+{
     background-color: #3a3a3a;
 }
 
@@ -11961,7 +11970,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .post-view .post-footer,
 .darkmode .footer-bottom,
 .darkmode .user-top-header .menu-list,
-.darkmode .user-top-header .menu-list li
+.darkmode .user-top-header .menu-list li,
+.darkmode .post-input-tab .tab-pane .form-control
 {
     border-color: #3a3a3a
 }
@@ -12019,7 +12029,8 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
 {
     color: #e8e8e8;
 }
-.darkmode p,
+.darkmode .card p,
+.darkmode .footer-box p,
 .darkmode .text-muted
 {
     color: #e8e8e8 !important;

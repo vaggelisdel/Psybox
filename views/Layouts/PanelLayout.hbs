@@ -33,14 +33,11 @@
 </head>
 
 <body class="bg-link-water">
-<!--[if lte IE 9]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-<![endif]-->
 <a href="#wrapper" data-type="section-switch" class="scrollup">
     <i class="icofont-bubble-up"></i>
 </a>
 <!-- Preloader Start Here -->
-<div id="preloader"></div>
+<div id="preloader" class="d-none d-md-block"></div>
 <!-- Preloader End Here -->
 <div id="wrapper" class="wrapper">
     <!-- Top Header -->
@@ -119,18 +116,18 @@
                             <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
-                                            <img src="/media/figure/chat_5.jpg" alt="Chat">
+                                            <img src="{{session.avatar}}" alt="{{session.fullName}}">
                                         </span>
                                         <span class="media-body">
-                                            <span class="item-title">Rebeca</span>
+                                            <span class="item-title">{{session.firstName}}</span>
                                         </span>
                                     </span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <ul class="admin-options">
-                                    <li><a href="/timeline">Timeline</a></li>
-                                    <li><a href="/settings">Profile Settings</a></li>
-                                    <li><a href="/login">Log Out</a></li>
+                                    <li><a href="/community/timeline">Timeline</a></li>
+                                    <li><a href="/community/settings">Profile Settings</a></li>
+                                    <li><a href="/logout">Log Out</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -152,9 +149,9 @@
             <div class="sidebar-menu-wrap">
                 <div class="mCustomScrollbar" data-mcs-theme="dark" data-mcs-axis="y">
                     <ul class="side-menu">
-                        <li><a href="/feed" class="menu-link {{#if Feed}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="FEED"><i class="icofont-newspaper"></i></a></li>
-                        <li><a href="/timeline" class="menu-link {{#if Timeline}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="TIMELINE"><i class="icofont-list"></i></a></li>
-                        <li><a href="/settings" class="menu-link {{#if Settings}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="PROFILE SETTINGS"><i class="icofont-settings"></i></a></li>
+                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="FEED"><i class="icofont-newspaper"></i></a></li>
+                        <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="TIMELINE"><i class="icofont-list"></i></a></li>
+                        <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="PROFILE SETTINGS"><i class="icofont-settings"></i></a></li>
                         <li><a href="javascript:void(0)" class="menu-link switch-mode" data-toggle="tooltip" data-placement="right" title="DARK MODE"><i class="icofont-moon"></i></a></li>
                     </ul>
                 </div>
@@ -174,9 +171,9 @@
             <div class="sidebar-menu-wrap">
                 <div class="mCustomScrollbar" data-mcs-theme="dark" data-mcs-axis="y">
                     <ul class="side-menu">
-                        <li><a href="/feed" class="menu-link {{#if Feed}}active{{/if}}"><i class="icofont-newspaper"></i><span class="menu-title">Feed</span></a></li>
-                        <li><a href="/timeline" class="menu-link {{#if Timeline}}active{{/if}}"><i class="icofont-list"></i><span class="menu-title">Timeline</span></a></li>
-                        <li><a href="/settings" class="menu-link {{#if Settings}}active{{/if}}"><i class="icofont-settings"></i><span class="menu-title">Profile Settings</span></a></li>
+                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}"><i class="icofont-newspaper"></i><span class="menu-title">Feed</span></a></li>
+                        <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}"><i class="icofont-list"></i><span class="menu-title">Timeline</span></a></li>
+                        <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}"><i class="icofont-settings"></i><span class="menu-title">Profile Settings</span></a></li>
                         <li><a href="javascript:void(0)" class="menu-link switch-mode"><i class="icofont-moon"></i><span class="menu-title">Dark Mode</span></a></li>
                     </ul>
                     <ul class="top-menu-mobile">
@@ -232,8 +229,8 @@
                             </h3>
                             <div class="footer-link">
                                 <ul>
-                                    <li><a href="/feed">NewsFeed</a></li>
-                                    <li><a href="/timeline">Timeline</a></li>
+                                    <li><a href="/community/feed">NewsFeed</a></li>
+                                    <li><a href="/community/timeline">Timeline</a></li>
                                 </ul>
                             </div>
                         </div>

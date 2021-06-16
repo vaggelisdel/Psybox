@@ -65,11 +65,11 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
 });
 router.get('/verify', async function (req, res, next){
   var givenEmail = req.query.email;
-  var id = req.query.id;
+  var token = req.query.id;
   var hash = req.query.id;
 
   console.log(givenEmail, token);
-  var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, hash: hash, active: false});
+  var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, socialID: hash, active: false});
 
   if(user){
       var query = {_id: new ObjectId(token)};
@@ -107,7 +107,7 @@ router.post('/register', async function (req,res, next){
           email: req.body.email,
           username: req.body.email.split("@")[0],
           gender: req.body.gender,
-          hash: v4(),
+          socialID: v4(),
           method: "custom",
         });
         newUser.save(function (err) {

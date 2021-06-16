@@ -8,6 +8,8 @@ require('dotenv').config();
 var ObjectId = require('mongoose').Types.ObjectId;
 const sgMail = require('@sendgrid/mail');
 const EmailTemplate = require('./emailTemplate');
+var {v4} = require('uuid');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -63,12 +65,13 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
 });
 router.get('/verify', async function (req, res, next){
   var givenEmail = req.query.email;
-  var token = req.query.token;
+  var id = req.query.id;
+  var hash = req.query.id;
+
   console.log(givenEmail, token);
-  var user = await Users.findOne({_id: new ObjectId(token)});
+  var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, hash: hash, active: false});
 
   if(user){
-    if(user.email == givenEmail && user.active == false){
       var query = {_id: new ObjectId(token)};
       var updateInfo = {
         $set: {
@@ -80,10 +83,6 @@ router.get('/verify', async function (req, res, next){
         req.flash('successMsg', 'Ο λογαριασμός σας ενεργοποιήθηκε!');
         res.redirect("/login");
       });
-    }else{
-      req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης1');
-      res.redirect("/login");
-    }
   }else{
     req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης2!');
     res.redirect("/login");
@@ -108,6 +107,7 @@ router.post('/register', async function (req,res, next){
           email: req.body.email,
           username: req.body.email.split("@")[0],
           gender: req.body.gender,
+          hash: v4(),
           method: "custom",
         });
         newUser.save(function (err) {

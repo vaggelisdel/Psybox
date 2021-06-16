@@ -84,7 +84,7 @@ router.get('/verify', async function (req, res, next){
         res.redirect("/login");
       });
   }else{
-    req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης2!');
+    req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης!');
     res.redirect("/login");
   }
 

@@ -65,8 +65,8 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
 });
 router.get('/verify', async function (req, res, next){
   var givenEmail = req.query.email;
-  var token = req.query.id;
-  var hash = req.query.id;
+  var token = req.query.token;
+  var hash = req.query.hash;
 
   console.log(givenEmail, token);
   var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, socialID: hash, active: false});

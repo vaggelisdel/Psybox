@@ -68,7 +68,6 @@ router.get('/verify', async function (req, res, next){
   var token = req.query.token;
   var hash = req.query.hash;
 
-  console.log(givenEmail, token);
   var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, socialID: hash, active: false});
 
   if(user){
@@ -112,13 +111,12 @@ router.post('/register', async function (req,res, next){
         });
         newUser.save(function (err) {
           if (err) throw err;
-          var tokenID = newUser._id;
           sgMail.setApiKey(process.env.SENDGRID_API);
           const msg = {
             to: req.body.email,
             from: 'delvagdel@gmail.com', // Verified sender
             subject: 'Psybox | Επιβεβαίωση λογαριασμού',
-            html: EmailTemplate.activation(tokenID, req.body.email)
+            html: EmailTemplate.activation(newUser._id, req.body.email, newUser.socialID)
           }
           sgMail
               .send(msg)

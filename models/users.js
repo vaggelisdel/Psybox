@@ -8,10 +8,6 @@ const userSchema = new Schema(
             type: String,
             trim: true,
         },
-        hash:{
-            type: String,
-            trim: true,
-        },
         fullName: {
             type: String,
             trim: true,

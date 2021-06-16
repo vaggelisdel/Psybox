@@ -49,15 +49,9 @@ router.get('/post', authUser, function (req, res, next) {
     res.render('Panel/Post.hbs', {layout: "Layouts/PanelLayout.hbs", title: 'Post', Post: true});
 });
 router.get('/delete-account/:id', authUser, function (req, res, next) {
-    var query = {_id: new ObjectId(req.params.id)};
-    var updateInfo = {
-        $set: {
-            deleted:true
-        }
-    };
-    Users.updateMany(query, updateInfo, function (err, result) {
+    Users.deleteMany({_id: new ObjectId(req.params.id)}, function (err, resp){
         if (err) throw err;
-        res.redirect("/logout");
+        res.redirect("/");
     });
 });
 

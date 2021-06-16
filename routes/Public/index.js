@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const passport = require("passport");
+var Users = require("../../models/users");
+const bcrypt = require('bcrypt');
 var {skipRouter} = require('../../config/middlewares');
 
 /* GET home page. */
@@ -18,7 +20,6 @@ router.get('/login', skipRouter, function(req, res, next) {
     successMsg: req.flash('successMsg')
   });
 });
-
 router.get('/google/user', skipRouter, passport.authenticate('googleUser', {
   scope: ['profile', 'email'],
   prompt: 'consent'
@@ -38,7 +39,6 @@ router.get('/google/user/callback', passport.authenticate('googleUser', {failure
     res.redirect("/community");
   }
 });
-
 router.get('/facebook/user', skipRouter, passport.authenticate('facebookUser', {
   scope: ["email"]
 }));
@@ -57,11 +57,67 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
     res.redirect("/community");
   }
 });
-
 router.get('/logout', function (req, res, next) {
   req.logout();
   res.redirect('/login');
   req.session.destroy();
+});
+
+router.post('/register', async function (req,res, next){
+  var user = await Users.findOne({email: req.body.email});
+  if (!user) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        var newUser = new Users({
+          fullName: req.body.fname + " " + req.body.lname,
+          firstName: req.body.fname,
+          password: hash,
+          email: req.body.email,
+          username: req.body.email.split("@")[0],
+          gender: req.body.gender,
+          method: "custom",
+        });
+        newUser.save(function (err) {
+          if (err) throw err;
+          req.flash('successMsg', 'Σας έχει αποσταλεί email επιβεβαίωσης!');
+          res.redirect("/login");
+        });
+      });
+    });
+  }else{
+    req.flash('credentialsError', 'Το email αυτό υπάρχει ήδη!');
+    res.redirect("/login");
+  }
+});
+router.post('/login', async function (req,res, next){
+  var loginPassword = req.body.password;
+  const user = await Users.findOne({
+    email: req.body.email
+  });
+  if (user) {
+    if (user.active === true) {
+      bcrypt.compare(loginPassword, user.password, function (err, response) {
+        if (response === true) {
+          req.session.authUser = true;
+          req.session.fullName = user.fullName
+          req.session.firstName = user.firstName
+          req.session.avatar = user.avatar
+          req.session.email = user.email
+          req.session.userID = user._id
+          res.redirect("/community");  //Success Login
+        } else {
+          req.flash('credentialsError', 'Λάθος email ή κωδικός πρόσβασης. Προσπαθήστε ξανά!');
+          res.redirect("/login");    //Wrong Credentials
+        }
+      });
+    } else {
+      req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος');
+      res.redirect("/login");
+    }
+  } else {
+    req.flash('credentialsError', 'Ο χρήστης δεν βρέθηκε.');
+    res.redirect("/login");
+  }
 });
 
 module.exports = router;

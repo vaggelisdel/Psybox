@@ -23,6 +23,7 @@ passport.use('googleUser', new GoogleStrategy({
             var newUser = new Users({
                 socialID: profile.id,
                 fullName: profile.displayName,
+                firstName: profile.name.givenName,
                 email: profile._json.email,
                 username: profile._json.email.split("@")[0],
                 avatar: profile._json.picture,

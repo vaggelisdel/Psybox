@@ -1,0 +1,13 @@
+module.exports = {
+    activation: function (tokenID, email){
+        return "<div style='background: #615dfa;padding: 3em;width: 65%;margin: 0 auto;text-align: center;'>\n" +
+            "    <a href='https://psybox-new.herokuapp.com'><img style='max-width: 200px;' src='https://i.imgur.com/QtqPVAE.png'/></a>\n" +
+            "    <div style='background: white;padding: 2em;width: 65%;margin: 1em auto;border-radius: 20px;display: grid;'>\n" +
+            "        <img src='https://i.imgur.com/Fds2Jq4.png' style='width: 50%;margin: 0 auto;'/>\n" +
+            "        <h2 style='width: 100%;'>Ευχαριστούμε για την εγγραφή σου!</h2>\n" +
+            "        <p style='width: 100%;'>Έχετε εγγραφεί επιτυχώς αλλά χρειάζεται να επιβεβαιώσετε το λογαριασμό σας! Πατήστε στο κουμπί παρακάτω για ενεργοποίηση.</p>\n" +
+            "        <a href='https://psybox-new.herokuapp.com/verif?token=/"+ tokenID +"&email="+ email +"' style='background: #615dfa;color: white;text-decoration: none;padding: 10px;border-radius: 10px;width: 50%;box-shadow: 1px 1px 5px 0px #00000040;margin: 2em auto;'>Επιβεβαίωση λογαριασμού</a>\n" +
+            "    </div>\n" +
+            "</div>";
+    }
+}

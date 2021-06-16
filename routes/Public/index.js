@@ -4,6 +4,10 @@ const passport = require("passport");
 var Users = require("../../models/users");
 const bcrypt = require('bcrypt');
 var {skipRouter} = require('../../config/middlewares');
+require('dotenv').config();
+var ObjectId = require('mongoose').Types.ObjectId;
+const sgMail = require('@sendgrid/mail');
+const EmailTemplate = require('./emailTemplate');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -57,6 +61,35 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
     res.redirect("/community");
   }
 });
+router.get('/verify', function (req, res, next){
+  var givenEmail = req.query.email;
+  var token = req.query.token;
+
+  var user = Users.findOne({_id: new ObjectId(token)});
+
+  if(user){
+    if(user.email == givenEmail){
+      var query = {_id: new ObjectId(token)};
+      var updateInfo = {
+        $set: {
+          active: true
+        }
+      };
+      Users.updateMany(query, updateInfo, function (err, result) {
+        if (err) throw err;
+        req.flash('successMsg', 'Ο λογαριασμός σας ενεργοποιήθηκε!');
+        res.redirect("/login");
+      });
+    }else{
+      req.flash('credentialsError', 'Δεν βρέθηκε χρήστης!');
+      res.redirect("/login");
+    }
+  }else{
+    req.flash('credentialsError', 'Δεν βρέθηκε χρήστης!');
+    res.redirect("/login");
+  }
+
+});
 router.get('/logout', function (req, res, next) {
   req.logout();
   res.redirect('/login');
@@ -79,8 +112,23 @@ router.post('/register', async function (req,res, next){
         });
         newUser.save(function (err) {
           if (err) throw err;
-          req.flash('successMsg', 'Σας έχει αποσταλεί email επιβεβαίωσης!');
-          res.redirect("/login");
+          var tokenID = newUser._id;
+          sgMail.setApiKey(process.env.SENDGRID_API);
+          const msg = {
+            to: req.body.email,
+            from: 'delvagdel@gmail.com', // Verified sender
+            subject: 'Psybox | Επιβεβαίωση λογαριασμού',
+            html: EmailTemplate.activation(tokenID, req.body.email)
+          }
+          sgMail
+              .send(msg)
+              .then(() => {
+                req.flash('successMsg', 'Σας έχει αποσταλεί email επιβεβαίωσης!');
+                res.redirect("/login");
+              })
+              .catch((error) => {
+                console.error(error)
+              })
         });
       });
     });

@@ -68,7 +68,7 @@ router.get('/verify', function (req, res, next){
   var user = Users.findOne({_id: new ObjectId(token)});
 
   if(user){
-    if(user.email == givenEmail){
+    if(user.email == givenEmail && user.active == false){
       var query = {_id: new ObjectId(token)};
       var updateInfo = {
         $set: {
@@ -81,11 +81,11 @@ router.get('/verify', function (req, res, next){
         res.redirect("/login");
       });
     }else{
-      req.flash('credentialsError', 'Δεν βρέθηκε χρήστης!');
+      req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης!');
       res.redirect("/login");
     }
   }else{
-    req.flash('credentialsError', 'Δεν βρέθηκε χρήστης!');
+    req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης!');
     res.redirect("/login");
   }
 

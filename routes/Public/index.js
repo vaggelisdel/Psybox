@@ -64,7 +64,7 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
 router.get('/verify', function (req, res, next){
   var givenEmail = req.query.email;
   var token = req.query.token;
-
+  console.log(givenEmail, token);
   var user = Users.findOne({_id: new ObjectId(token)});
 
   if(user){
@@ -81,11 +81,11 @@ router.get('/verify', function (req, res, next){
         res.redirect("/login");
       });
     }else{
-      req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης!');
+      req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης1');
       res.redirect("/login");
     }
   }else{
-    req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης!');
+    req.flash('credentialsError', 'Δεν βρέθηκε ο χρήστης2!');
     res.redirect("/login");
   }
 

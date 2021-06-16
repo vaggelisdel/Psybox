@@ -102,21 +102,28 @@
                     <div class="tab-pane active" id="profile">
                         <h6>YOUR PROFILE INFORMATION</h6>
                         <hr>
-                        <form class="mt-3">
-                            <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp"
-                                       placeholder="Enter your fullname" value="Kenneth Valdez">
-                            </div>
-                            <div class="form-group">
-                                <label for="fullName">Email Address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="fullNameHelp"
-                                       placeholder="Enter your email address" value="kenneth@psybox.com">
-                            </div>
+                        <form class="mt-3" action="/community/update-personal-info" method="post">
+                            <input type="hidden" name="userId" value="{{userInfo._id}}"/>
+                            <input type="hidden" name="editable" value="{{editable}}"/>
+                            {{#if editable}}
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" class="form-control" name="fullName" id="fullName"
+                                           aria-describedby="fullNameHelp"
+                                           placeholder="Enter your fullname" value="{{userInfo.fullName}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fullName">Email Address</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           aria-describedby="fullNameHelp"
+                                           placeholder="Enter your email address" value="{{userInfo.email}}">
+                                </div>
+                            {{/if}}
                             <div class="form-group">
                                 <label for="bio">About you</label>
-                                <textarea class="form-control autosize" id="bio" placeholder="Write something about you"
-                                          style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 100px;">A front-end developer that focus more on user interface design, a web interface wizard, a connector of awesomeness.</textarea>
+                                <textarea class="form-control autosize" name="aboutYou" id="bio"
+                                          placeholder="Write something about you"
+                                          style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 100px;">{{userInfo.aboutYou}}</textarea>
                             </div>
                             <div class="form-group small text-muted">
                                 All of the fields on this page are optional and can be deleted at any time, and by
@@ -125,46 +132,51 @@
                             </div>
                             <div class="form-group">
                                 <label for="url">Web</label>
-                                <input type="text" class="form-control" id="web"
-                                       placeholder="Enter your website address" value="http://benije.ke/pozzivkij">
+                                <input type="text" class="form-control" id="web" name="website"
+                                       placeholder="Enter your website address" value="{{userInfo.website}}">
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="url">Facebook</label>
-                                    <input type="text" class="form-control" id="url"
-                                           placeholder="Enter your facebook name" value="/pozzivkij">
+                                    <input type="text" class="form-control" id="url" name="facebook"
+                                           placeholder="Enter your facebook name" value="{{userInfo.facebook}}">
                                 </div>
                                 <div class="col form-group">
                                     <label for="url">Twitter</label>
-                                    <input type="text" class="form-control" id="url"
-                                           placeholder="Enter your twitter name" value="pozzivkij">
+                                    <input type="text" class="form-control" id="url" name="twitter"
+                                           placeholder="Enter your twitter name" value="{{userInfo.twitter}}">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col form-group">
                                     <label for="url">Instagram</label>
-                                    <input type="text" class="form-control" id="url"
-                                           placeholder="Enter your instagram name" value="@pozzivkij">
+                                    <input type="text" class="form-control" id="url" name="instagram"
+                                           placeholder="Enter your instagram name" value="{{userInfo.instagram}}">
                                 </div>
                                 <div class="col form-group">
                                     <label for="url">Youtube</label>
-                                    <input type="text" class="form-control" id="url"
-                                           placeholder="Enter your youtube name" value="Ppozzivkij">
+                                    <input type="text" class="form-control" id="url" name="youtube"
+                                           placeholder="Enter your youtube name" value="{{userInfo.youtube}}">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary">Update Profile</button>
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="account">
                         <h6>ACCOUNT SETTINGS</h6>
                         <hr>
-                        <form class="mt-3">
+                        <form class="mt-3" action="/community/update-username" method="post">
+                            <input type="hidden" name="userId" value="{{userInfo._id}}"/>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp"
-                                       placeholder="Enter your username" value="@kennethvaldez">
+                                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" name="username"
+                                       placeholder="Enter your username" value="@{{userInfo.username}}">
+                                <small id="username_availability"></small>
                                 <small id="usernameHelp" class="form-text text-muted">After changing your username, your
                                     old username becomes available for anyone else to claim.</small>
+                            </div>
+                            <div class="form-group">
+                                <button disabled type="submit" id="update_username_btn" class="btn btn-primary">Update Username</button>
                             </div>
                             <hr>
                             <div class="form-group">
@@ -178,15 +190,18 @@
                     <div class="tab-pane" id="security">
                         <h6>SECURITY SETTINGS</h6>
                         <hr>
-                        <form class="mt-3">
-                            <div class="form-group">
-                                <label class="d-block">Change Password</label>
-                                <input type="password" class="form-control" placeholder="Enter your old password">
-                                <input type="password" class="form-control mt-2" placeholder="New password">
-                                <input type="password" class="form-control mt-2" placeholder="Confirm new password">
-                            </div>
-                        </form>
-                        <hr>
+                        {{#if editable}}
+
+                            <form class="mt-3">
+                                <div class="form-group">
+                                    <label class="d-block">Change Password</label>
+                                    <input type="password" class="form-control" placeholder="Enter your old password">
+                                    <input type="password" class="form-control mt-2" placeholder="New password">
+                                    <input type="password" class="form-control mt-2" placeholder="Confirm new password">
+                                </div>
+                            </form>
+                            <hr>
+                        {{/if}}
                         <form class="mt-3">
                             <div class="form-group mb-0">
                                 <label class="d-block">Sessions</label>
@@ -208,15 +223,21 @@
                         <hr>
                         <form class="mt-3">
                             <div class="form-group mb-3">
-                                <p><strong>Current plan: </strong>Standard Plan</p>
-                                <p><strong>Valid until: </strong>21/07/2021</p>
-                                <a href="/payment" class="btn btn-danger" type="button">Cancel Membership</a>
+                                {{#if userInfo.hasMembership}}
+                                    <p><strong>Current plan: </strong>Standard Plan</p>
+                                    <p><strong>Valid until: </strong>21/07/2021</p>
+                                    <a href="/community/cancel-membership" class="btn btn-danger" type="button">Cancel
+                                        Membership</a>
+                                {{else}}
+                                    <a href="/community/payment" class="btn btn-primary" type="button">Create
+                                        Membership</a>
+                                {{/if}}
                             </div>
                             <div class="form-group mb-0">
                                 <label class="d-block">Payment History</label>
-<!--                                <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have-->
-<!--                                    not made any payment.-->
-<!--                                </div>-->
+                                <!--                                <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have-->
+                                <!--                                    not made any payment.-->
+                                <!--                                </div>-->
                                 <ul class="list-group list-group-sm">
                                     <li class="list-group-item has-icon">
                                         <div>
@@ -240,3 +261,34 @@
     </div>
 
 </div>
+
+<script>
+    var typingTimer;
+    var doneTypingInterval = 1000;
+    $('#username').keyup(function () {
+        clearTimeout(typingTimer);
+        if ($('#username').val) {
+            typingTimer = setTimeout(function () {
+                //do stuff here e.g ajax call etc....
+                var username = $("#username").val();
+                $.ajax({
+                    url: '/community/check-username',
+                    method: "POST",
+                    data: {username: username},
+                    success: function (data) {
+                        if (data.exist == true) {
+                            $('#username_availability').text("Μη διαθέσιμο όνομα χρήστη");
+                            $('#username_availability').css("color", "red");
+                            $('#update_username_btn').attr("disabled", true);
+                        } else {
+                            $('#username_availability').text("Διαθέσιμο όνομα χρήστη");
+                            $('#username_availability').css("color", "green");
+                            $('#update_username_btn').attr("disabled", false);
+                        }
+                    }
+                })
+            }, doneTypingInterval);
+        }
+    });
+
+</script>

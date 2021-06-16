@@ -48,6 +48,18 @@ router.get('/payment', authUser, function (req, res, next) {
 router.get('/post', authUser, function (req, res, next) {
     res.render('Panel/Post.hbs', {layout: "Layouts/PanelLayout.hbs", title: 'Post', Post: true});
 });
+router.get('/delete-account/:id', authUser, function (req, res, next) {
+    var query = {_id: new ObjectId(req.params.id)};
+    var updateInfo = {
+        $set: {
+            deleted:true
+        }
+    };
+    Users.updateMany(query, updateInfo, function (err, result) {
+        if (err) throw err;
+        res.redirect("/logout");
+    });
+});
 
 router.post('/update-personal-info', function (req, res, next) {
     var query = {_id: new ObjectId(req.body.userId)};
@@ -89,7 +101,6 @@ router.post('/update-personal-info', function (req, res, next) {
     }
 });
 router.post('/update-username', async function (req, res, next) {
-    console.log(req.body);
     var user = await Users.findOne({username: req.body.username.split('@')[1]});
     if (!user) {
         var query = {_id: new ObjectId(req.body.userId)};

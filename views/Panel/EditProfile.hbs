@@ -169,14 +169,17 @@
                             <input type="hidden" name="userId" value="{{userInfo._id}}"/>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" name="username"
+                                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp"
+                                       name="username"
                                        placeholder="Enter your username" value="@{{userInfo.username}}">
                                 <small id="username_availability"></small>
                                 <small id="usernameHelp" class="form-text text-muted">After changing your username, your
                                     old username becomes available for anyone else to claim.</small>
                             </div>
                             <div class="form-group">
-                                <button disabled type="submit" id="update_username_btn" class="btn btn-primary">Update Username</button>
+                                <button disabled type="submit" id="update_username_btn" class="btn btn-primary">Update
+                                    Username
+                                </button>
                             </div>
                             <hr>
                             <div class="form-group">
@@ -184,14 +187,15 @@
                                 <p class="text-muted font-size-sm">Once you delete your account, there is no going back.
                                     Please be certain.</p>
                             </div>
-                            <button class="btn btn-danger" type="button">Delete Account</button>
+                            <button class="btn btn-danger deleteAccount" value="{{userInfo._id}}" type="button">Delete
+                                Account
+                            </button>
                         </form>
                     </div>
                     <div class="tab-pane" id="security">
                         <h6>SECURITY SETTINGS</h6>
                         <hr>
                         {{#if editable}}
-
                             <form class="mt-3">
                                 <div class="form-group">
                                     <label class="d-block">Change Password</label>
@@ -291,4 +295,10 @@
         }
     });
 
+    $(".deleteAccount").click(function () {
+                if (confirm("Είστε σίγουρος ότι θέλετε να διαγράψετε τον λογαριασμό σας?")) {
+                    window.location.href = "/community/delete-account/" + this.value;
+                }
+            }
+    );
 </script>

@@ -67,7 +67,6 @@ router.get('/verify', async function (req, res, next){
   var givenEmail = req.query.email;
   var token = req.query.token;
   var hash = req.query.hash;
-
   var user = await Users.findOne({_id: new ObjectId(token), email: givenEmail, socialID: hash, active: false});
 
   if(user){

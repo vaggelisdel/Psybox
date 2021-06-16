@@ -61,11 +61,11 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
     res.redirect("/community");
   }
 });
-router.get('/verify', function (req, res, next){
+router.get('/verify', async function (req, res, next){
   var givenEmail = req.query.email;
   var token = req.query.token;
   console.log(givenEmail, token);
-  var user = Users.findOne({_id: new ObjectId(token)});
+  var user = await Users.findOne({_id: new ObjectId(token)});
 
   if(user){
     if(user.email == givenEmail && user.active == false){

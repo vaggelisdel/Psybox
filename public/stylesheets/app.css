@@ -9470,8 +9470,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 10.5%;
     -ms-flex: 0 0 10.5%;
-    flex: 0 0 10.5%;
-    max-width: 10.5%;
+    flex: 0 0 20%;
+    max-width: 20%;
     width: 100%;
     text-align: center;
     border-right: 1px solid #e4e9f1;

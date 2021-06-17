@@ -23,7 +23,8 @@
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="/stylesheets/app.css">
     <!-- Google Web Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap"
+          rel="stylesheet">
 
     <!-- Jquery Js -->
     <script src="/dependencies/jquery/js/jquery.min.js"></script>
@@ -46,7 +47,7 @@
             <div class="navbar">
                 <div class="nav-item d-none d-sm-block">
                     <div class="header-logo">
-<!--                        <a href="/"><img src="/media/logo.png" alt="Psybox"></a>-->
+                        <!--                        <a href="/"><img src="/media/logo.png" alt="Psybox"></a>-->
                         <a href="/" class="default_logo"><img src="/media/logo_x.png" alt="Psybox"></a>
                         <a href="/" class="grey_logo"><img src="/media/logo_x_grey.png" alt="Psybox"></a>
                     </div>
@@ -64,56 +65,59 @@
                     </nav>
                 </div>
                 <div class="nav-item header-control">
-                    <div class="inline-item d-flex align-items-center">
-                        <div class="dropdown dropdown-notification">
-                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                <i class="icofont-notification"></i><span class="notify-count">3</span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="item-heading">
-                                    <h6 class="heading-title">Notifications</h6>
-                                </div>
-                                <div class="item-body">
-                                    <a href="#" class="media">
-                                        <div class="item-img">
-                                            <img src="/media/figure/notifiy_1.png" alt="Notify">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="item-title">Diana Jameson</h6>
-                                            <div class="item-time">15 mins ago</div>
-                                            <p>when are nknowen printer took galley of types ...</p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media">
-                                        <div class="item-img">
-                                            <img src="/media/figure/notifiy_2.png" alt="Notify">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="item-title">Quirty</h6>
-                                            <div class="item-time">15 mins ago</div>
-                                            <p>when are nknowen printer took galley of types ...</p>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="media">
-                                        <div class="item-img">
-                                            <img src="/media/figure/notifiy_3.png" alt="Notify">
-                                        </div>
-                                        <div class="media-body">
-                                            <h6 class="item-title">Zinia Jessy</h6>
-                                            <div class="item-time">15 mins ago</div>
-                                            <p>when are nknowen printer took galley of types ...</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="item-footer">
-                                    <a href="#" class="view-btn">View All Notification</a>
+                    {{#if session.authUser}}
+                        <div class="inline-item d-flex align-items-center">
+                            <div class="dropdown dropdown-notification">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <i class="icofont-notification"></i><span class="notify-count">3</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="item-heading">
+                                        <h6 class="heading-title">Notifications</h6>
+                                    </div>
+                                    <div class="item-body">
+                                        <a href="#" class="media">
+                                            <div class="item-img">
+                                                <img src="/media/figure/notifiy_1.png" alt="Notify">
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="item-title">Diana Jameson</h6>
+                                                <div class="item-time">15 mins ago</div>
+                                                <p>when are nknowen printer took galley of types ...</p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="media">
+                                            <div class="item-img">
+                                                <img src="/media/figure/notifiy_2.png" alt="Notify">
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="item-title">Quirty</h6>
+                                                <div class="item-time">15 mins ago</div>
+                                                <p>when are nknowen printer took galley of types ...</p>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="media">
+                                            <div class="item-img">
+                                                <img src="/media/figure/notifiy_3.png" alt="Notify">
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="item-title">Zinia Jessy</h6>
+                                                <div class="item-time">15 mins ago</div>
+                                                <p>when are nknowen printer took galley of types ...</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="item-footer">
+                                        <a href="#" class="view-btn">View All Notification</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="inline-item">
-                        <div class="dropdown dropdown-admin">
-                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <div class="inline-item">
+                            <div class="dropdown dropdown-admin">
+                                <button class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-expanded="false">
                                     <span class="media">
                                         <span class="item-img">
                                             <img src="{{session.avatar}}" alt="{{session.fullName}}">
@@ -122,16 +126,22 @@
                                             <span class="item-title">{{session.firstName}}</span>
                                         </span>
                                     </span>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="admin-options">
-                                    <li><a href="/community/timeline">Timeline</a></li>
-                                    <li><a href="/community/settings">Profile Settings</a></li>
-                                    <li><a href="/logout">Log Out</a></li>
-                                </ul>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="admin-options">
+                                        <li><a href="/community/timeline">Timeline</a></li>
+                                        <li><a href="/community/settings">Profile Settings</a></li>
+                                        <li><a href="/logout">Log Out</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {{else}}
+                        <div class="login-btn">
+                            <a href="/login" class="item-btn"><i class="fas fa-user"></i>Login</a>
+                            <a href="/" class="unlogin_logo"><img src="/media/logo_x.png" alt="Psybox"></a>
+                        </div>
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -149,10 +159,19 @@
             <div class="sidebar-menu-wrap">
                 <div class="mCustomScrollbar" data-mcs-theme="dark" data-mcs-axis="y">
                     <ul class="side-menu">
-                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="FEED"><i class="icofont-newspaper"></i></a></li>
-                        <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="TIMELINE"><i class="icofont-list"></i></a></li>
-                        <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}" data-toggle="tooltip" data-placement="right" title="PROFILE SETTINGS"><i class="icofont-settings"></i></a></li>
-                        <li><a href="javascript:void(0)" class="menu-link switch-mode" data-toggle="tooltip" data-placement="right" title="DARK MODE"><i class="icofont-moon"></i></a></li>
+                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}" data-toggle="tooltip"
+                               data-placement="right" title="FEED"><i class="icofont-newspaper"></i></a></li>
+                        {{#if session.authUser}}
+
+                            <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}"
+                                   data-toggle="tooltip" data-placement="right" title="TIMELINE"><i
+                                    class="icofont-list"></i></a></li>
+                            <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}"
+                                   data-toggle="tooltip" data-placement="right" title="PROFILE SETTINGS"><i
+                                    class="icofont-settings"></i></a></li>
+                        {{/if}}
+                        <li><a href="javascript:void(0)" class="menu-link switch-mode" data-toggle="tooltip"
+                               data-placement="right" title="DARK MODE"><i class="icofont-moon"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -171,10 +190,17 @@
             <div class="sidebar-menu-wrap">
                 <div class="mCustomScrollbar" data-mcs-theme="dark" data-mcs-axis="y">
                     <ul class="side-menu">
-                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}"><i class="icofont-newspaper"></i><span class="menu-title">Feed</span></a></li>
-                        <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}"><i class="icofont-list"></i><span class="menu-title">Timeline</span></a></li>
-                        <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}"><i class="icofont-settings"></i><span class="menu-title">Profile Settings</span></a></li>
-                        <li><a href="javascript:void(0)" class="menu-link switch-mode"><i class="icofont-moon"></i><span class="menu-title">Dark Mode</span></a></li>
+                        <li><a href="/community/feed" class="menu-link {{#if Feed}}active{{/if}}"><i
+                                class="icofont-newspaper"></i><span class="menu-title">Feed</span></a></li>
+                        {{#if session.authUser}}
+                            <li><a href="/community/timeline" class="menu-link {{#if Timeline}}active{{/if}}"><i
+                                    class="icofont-list"></i><span class="menu-title">Timeline</span></a></li>
+                            <li><a href="/community/settings" class="menu-link {{#if Settings}}active{{/if}}"><i
+                                    class="icofont-settings"></i><span class="menu-title">Profile Settings</span></a>
+                            </li>
+                        {{/if}}
+                        <li><a href="javascript:void(0)" class="menu-link switch-mode"><i class="icofont-moon"></i><span
+                                class="menu-title">Dark Mode</span></a></li>
                     </ul>
                     <ul class="top-menu-mobile">
                         <li class="menu-label">Pages</li>
@@ -184,6 +210,12 @@
                         <li>
                             <a href="/contact" class="menu-link">Contact Us</a>
                         </li>
+                        {{#if session.authUser}}
+                        {{else}}
+                            <li>
+                                <a href="/login" class="menu-link">Login</a>
+                            </li>
+                        {{/if}}
                     </ul>
                 </div>
             </div>
@@ -192,75 +224,75 @@
     <div class="page-content">
 
 
-{{{body}}}
+        {{{body}}}
 
-    <!--=====================================-->
-    <!--=        Footer Area Start       	=-->
-    <!--=====================================-->
-    <footer class="footer-wrap footer-dashboard">
-        <div class="main-footer">
-            <div class="container">
-                <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1">
-                    <div class="col">
-                        <div class="footer-box">
-                            <div class="footer-logo">
-                                <a href="/"><img src="/media/logo_x.png" alt="Logo"></a>
-                            </div>
-                            <p>Dorem ipsum dolor sit amet consec adipisicing elit sed do eiusmod por incidiut labore et loreLorem ipsum kelly amieo dolorey.</p>
-                        </div>
-                    </div>
-                    <div class="col d-flex justify-content-lg-center">
-                        <div class="footer-box">
-                            <h3 class="footer-title">
-                                Important Links
-                            </h3>
-                            <div class="footer-link">
-                                <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="/contact">Contact Us</a></li>
-                                </ul>
+        <!--=====================================-->
+        <!--=        Footer Area Start       	=-->
+        <!--=====================================-->
+        <footer class="footer-wrap footer-dashboard">
+            <div class="main-footer">
+                <div class="container">
+                    <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-1">
+                        <div class="col">
+                            <div class="footer-box">
+                                <div class="footer-logo">
+                                    <a href="/"><img src="/media/logo_x.png" alt="Logo"></a>
+                                </div>
+                                <p>Dorem ipsum dolor sit amet consec adipisicing elit sed do eiusmod por incidiut labore
+                                    et loreLorem ipsum kelly amieo dolorey.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col d-flex justify-content-lg-center">
-                        <div class="footer-box">
-                            <h3 class="footer-title">
-                                Community
-                            </h3>
-                            <div class="footer-link">
-                                <ul>
-                                    <li><a href="/community/feed">NewsFeed</a></li>
-                                    <li><a href="/community/timeline">Timeline</a></li>
-                                </ul>
+                        <div class="col d-flex justify-content-lg-center">
+                            <div class="footer-box">
+                                <h3 class="footer-title">
+                                    Important Links
+                                </h3>
+                                <div class="footer-link">
+                                    <ul>
+                                        <li><a href="/">Home</a></li>
+                                        <li><a href="/contact">Contact Us</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col d-flex justify-content-lg-center">
-                        <div class="footer-box">
-                            <h3 class="footer-title">
-                                Followers
-                            </h3>
-                            <div class="footer-link">
-                                <ul>
-                                    <li><a href="https://www.facebook.com/">facebook</a></li>
-                                    <li><a href="https://twitter.com/">twitter</a></li>
-                                    <li><a href="https://www.instagram.com/">instagram</a></li>
-                                    <li><a href="https://www.youtube.com/">Youtube</a></li>
-                                </ul>
+                        <div class="col d-flex justify-content-lg-center">
+                            <div class="footer-box">
+                                <h3 class="footer-title">
+                                    Community
+                                </h3>
+                                <div class="footer-link">
+                                    <ul>
+                                        <li><a href="/community/feed">NewsFeed</a></li>
+                                        <li><a href="/community/timeline">Timeline</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-lg-center">
+                            <div class="footer-box">
+                                <h3 class="footer-title">
+                                    Followers
+                                </h3>
+                                <div class="footer-link">
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/">facebook</a></li>
+                                        <li><a href="https://twitter.com/">twitter</a></li>
+                                        <li><a href="https://www.instagram.com/">instagram</a></li>
+                                        <li><a href="https://www.youtube.com/">Youtube</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-copyright">Copy© cirkle 2021. All Rights Reserved</div>
-        </div>
-    </footer>
+            <div class="footer-bottom">
+                <div class="footer-copyright">Copy© cirkle 2021. All Rights Reserved</div>
+            </div>
+        </footer>
 
 
-
-</div>
+    </div>
 </div>
 
 </body>
@@ -274,18 +306,18 @@
 <!-- Site Scripts -->
 <script src="/javascripts/app.js"></script>
 <script>
-    $( document ).ready(function() {
+    $(document).ready(function () {
         var darkMode = localStorage.getItem("darkMode");
-        if(darkMode){
+        if (darkMode) {
             $("body").addClass("darkmode");
         }
     });
-    $(".switch-mode").click(function(){
+    $(".switch-mode").click(function () {
         var darkMode = localStorage.getItem("darkMode");
-        if(darkMode){
+        if (darkMode) {
             $("body").removeClass("darkmode");
             localStorage.removeItem("darkMode");
-        }else{
+        } else {
             $("body").addClass("darkmode");
             localStorage.setItem("darkMode", true);
         }

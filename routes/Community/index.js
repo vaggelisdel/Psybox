@@ -63,6 +63,15 @@ router.get('/timeline', authUser, async function (req, res, next) {
         userInfo: userInfo
     });
 });
+router.get('/timeline/:username', async function (req, res, next) {
+    var userInfo = await Users.findOne({username: req.params.username.split("@")[1]});
+    res.render('Panel/UserProfile.hbs', {
+        layout: "Layouts/PanelLayout.hbs",
+        title: userInfo.fullName,
+        Timeline: true,
+        userInfo: userInfo
+    });
+});
 router.get('/settings', authUser, async function (req, res, next) {
     var userInfo = await Users.findOne({email: req.session.email});
     res.render('Panel/EditProfile.hbs', {

@@ -1,0 +1,664 @@
+<!-- Page Content -->
+
+<!--=====================================-->
+<!--=        Newsfeed  Area Start       =-->
+<!--=====================================-->
+<div class="container">
+    <!-- Banner Area Start -->
+    <div class="banner-user">
+        <div class="banner-content">
+            <div class="media">
+                <div class="item-img">
+                    <img src="{{userInfo.avatar}}" alt="{{userInfo.username}}">
+                </div>
+                <div class="media-body">
+                    <h3 class="item-title">{{userInfo.fullName}}</h3>
+                    <div class="item-subtitle">@{{userInfo.username}}</div>
+                    <ul class="item-social">
+                        {{#if userInfo.facebook}}
+                            <li><a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"
+                                   class="bg-fb"><i class="icofont-facebook"></i></a></li>{{/if}}
+                        {{#if userInfo.twitter}}
+                            <li><a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"
+                                   class="bg-twitter"><i class="icofont-twitter"></i></a></li>{{/if}}
+                        {{#if userInfo.instagram}}
+                            <li><a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"
+                                   class="bg-dribble"><i class="icofont-instagram"></i></a></li>{{/if}}
+                        {{#if userInfo.youtube}}
+                            <li><a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"
+                                   class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
+                    </ul>
+                    <ul class="user-meta">
+                        <li>Posts: <span>30</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="block-box user-top-header">
+        <ul class="menu-list">
+            <li class="active"><a href="javascript:void(0)">Timeline</a></li>
+            <li><a href="/community/settings">Settings</a></li>
+        </ul>
+    </div>
+    <div class="row gutters-20">
+        <div class="col-lg-8 order-2">
+            <div class="block-box post-view">
+                <div class="post-header">
+                    <div class="media">
+                        <div class="user-img">
+                            <img src="/media/figure/chat_5.jpg" alt="Aahat">
+                        </div>
+                        <div class="media-body">
+                            <div class="user-title"><a href="/community/timeline">Rebeca Powel</a></div>
+                            <ul class="entry-meta">
+                                <li class="meta-time">8 mins ago</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if session.authUser}}
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                ...
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Close</a>
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="post-body">
+                    <div class="post-no-thumbnail">
+                        <p>I have great news to share with you all! I've been officially made a game streaming verified
+                            partner by Streamy http://radiustheme.com/ What does this mean? I'll be uploading new
+                            content every day, improving the quality and I'm gonna have access to games a month before
+                            the official release.</p>
+                        <p>I have great news to share with you all! I've been officially made a game streaming verified
+                            partner by Streamy http://radiustheme.com/ What does this mean? I'll be uploading new
+                            content every day, improving the quality and I'm gonna have access to games a month before
+                            the official release.</p>
+                        <p>I have great news to share with you all! I've been officially made a game streaming verified
+                            partner by Streamy http://radiustheme.com/ What does this mean? I'll be uploading new
+                            content every day, improving the quality and I'm gonna have access to games a month before
+                            the official release.</p>
+                        <p>This is a dream come true, thanks to all for the support!!!</p>
+                    </div>
+                    <div class="post-meta-wrap">
+                        <div class="post-meta openModalPost" data-postid="1">
+                            <div class="meta-text"><span id="reactions_count_1">35</span> Reactions</div>
+                            <div class="meta-text">2 Comments</div>
+                            <div class="meta-text">05 Share</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <ul>
+                        {{#if session.authUser}}
+                            <li class="post-react">
+                                <a id="postid_1" href="javascript:void(0)"><img class="reactionbtn"
+                                                                                src="/media/reactions/Wink.svg"
+                                                                                alt="Wink">&nbsp;<span>React!</span></a>
+                                <ul class="react-list">
+                                    <li><a href="javascript:void(0)" data-reaction="Wink" data-icon-color="#3dccdd"
+                                           data-postid="1"><img src="/media/reactions/Wink.svg" alt="Wink"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Hearts" data-icon-color="#f7573c"
+                                           data-postid="1"><img src="/media/reactions/Hearts.svg" alt="Hearts"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Amazed" data-icon-color="#fbd203"
+                                           data-postid="1"><img src="/media/reactions/Amazed.svg" alt="Amazed"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Tears" data-icon-color="#be63f9"
+                                           data-postid="1"><img src="/media/reactions/Tears.svg" alt="Tears"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Frown" data-icon-color="#f7573c"
+                                           data-postid="1"><img src="/media/reactions/Frown.svg" alt="Frown"></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="openModalPost" data-postid="1"><i
+                                    class="icofont-comment"></i>Comment</a></li>
+                        {{/if}}
+                        <li class="post-share">
+                            <a href="javascript:void(0);" class="share-btn"><i class="icofont-share"></i>Share</a>
+                            <ul class="share-list">
+                                <li><a href="#" class="color-fb"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#" class="color-messenger"><i class="icofont-facebook-messenger"></i></a>
+                                </li>
+                                <li><a href="#" class="color-instagram"><i class="icofont-instagram"></i></a></li>
+                                <li><a href="#" class="color-whatsapp"><i class="icofont-brand-whatsapp"></i></a></li>
+                                <li><a href="#" class="color-twitter"><i class="icofont-twitter"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block-box post-view">
+                <div class="post-header">
+                    <div class="media">
+                        <div class="user-img">
+                            <img src="/media/figure/chat_10.jpg" alt="Aahat">
+                        </div>
+                        <div class="media-body">
+                            <div class="user-title"><a href="/community/timeline">Aahat Akter</a></div>
+                            <ul class="entry-meta">
+
+                                <li class="meta-time">2 mins ago</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if session.authUser}}
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                ...
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Close</a>
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="post-body">
+                    <p>I have great news to share with you all! I've been officially made a game streaming verified
+                        partner by Streamy http://radiustheme.com/ What does this mean? I'll be uploading new content
+                        every day, improving the quality and I'm gonna have access to games a month before the official
+                        release. <i class="icofont-wink-smile"></i></p>
+                    <div class="post-img">
+                        <img src="/media/figure/post_1.jpg" alt="Post">
+                    </div>
+                    <div class="post-meta-wrap">
+                        <div class="post-meta openModalPost" data-postid="2">
+                            <div class="meta-text"><span id="reactions_count_2">35</span> Reactions</div>
+                            <div class="meta-text">2 Comments</div>
+                            <div class="meta-text">05 Share</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <ul>
+                        {{#if session.authUser}}
+                            <li class="post-react">
+                                <a id="postid_2" href="javascript:void(0)"><img class="reactionbtn"
+                                                                                src="/media/reactions/Wink.svg"
+                                                                                alt="Wink">&nbsp;<span>React!</span></a>
+                                <ul class="react-list">
+                                    <li><a href="javascript:void(0)" data-reaction="Wink" data-icon-color="#3dccdd"
+                                           data-postid="2"><img src="/media/reactions/Wink.svg" alt="Wink"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Hearts" data-icon-color="#f7573c"
+                                           data-postid="2"><img src="/media/reactions/Hearts.svg" alt="Hearts"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Amazed" data-icon-color="#fbd203"
+                                           data-postid="2"><img src="/media/reactions/Amazed.svg" alt="Amazed"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Tears" data-icon-color="#be63f9"
+                                           data-postid="2"><img src="/media/reactions/Tears.svg" alt="Tears"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Frown" data-icon-color="#f7573c"
+                                           data-postid="2"><img src="/media/reactions/Frown.svg" alt="Frown"></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="openModalPost" data-postid="2"><i
+                                    class="icofont-comment"></i>Comment</a></li>
+                        {{/if}}
+                        <li class="post-share">
+                            <a href="javascript:void(0);" class="share-btn"><i class="icofont-share"></i>Share</a>
+                            <ul class="share-list">
+                                <li><a href="#" class="color-fb"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#" class="color-messenger"><i class="icofont-facebook-messenger"></i></a>
+                                </li>
+                                <li><a href="#" class="color-instagram"><i class="icofont-instagram"></i></a></li>
+                                <li><a href="#" class="color-whatsapp"><i class="icofont-brand-whatsapp"></i></a></li>
+                                <li><a href="#" class="color-twitter"><i class="icofont-twitter"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block-box post-view">
+                <div class="post-header">
+                    <div class="media">
+                        <div class="user-img">
+                            <img src="/media/figure/chat_5.jpg" alt="Aahat">
+                        </div>
+                        <div class="media-body">
+                            <div class="user-title"><a href="/community/timeline">Rebeca Powel</a></div>
+                            <ul class="entry-meta">
+                                <li class="meta-time">2 mins ago</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if session.authUser}}
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                ...
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Close</a>
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+                <div class="post-body">
+                    <div class="post-no-thumbnail">
+                        <p>I have great news to share with you all! I've been officially made a game streaming verified
+                            partner by Streamy http://radiustheme.com/ What does this mean? I'll be uploading new
+                            content every day, improving the quality and I'm gonna have access to games a month before
+                            the official release.</p>
+                        <p>This is a dream come true, thanks to all for the support!!!</p>
+                    </div>
+                    <div class="post-meta-wrap">
+                        <div class="post-meta openModalPost" data-postid="3">
+                            <div class="meta-text"><span id="reactions_count_3">35</span> Reactions</div>
+                            <div class="meta-text">2 Comments</div>
+                            <div class="meta-text">05 Share</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-footer">
+                    <ul>
+                        {{#if session.authUser}}
+                            <li class="post-react">
+                                <a id="postid_3" href="javascript:void(0)"><img class="reactionbtn"
+                                                                                src="/media/reactions/Wink.svg"
+                                                                                alt="Wink">&nbsp;<span>React!</span></a>
+                                <ul class="react-list">
+                                    <li><a href="javascript:void(0)" data-reaction="Wink" data-icon-color="#3dccdd"
+                                           data-postid="3"><img src="/media/reactions/Wink.svg" alt="Wink"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Hearts" data-icon-color="#f7573c"
+                                           data-postid="3"><img src="/media/reactions/Hearts.svg" alt="Hearts"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Amazed" data-icon-color="#fbd203"
+                                           data-postid="3"><img src="/media/reactions/Amazed.svg" alt="Amazed"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Tears" data-icon-color="#be63f9"
+                                           data-postid="3"><img src="/media/reactions/Tears.svg" alt="Tears"></a></li>
+                                    <li><a href="javascript:void(0)" data-reaction="Frown" data-icon-color="#f7573c"
+                                           data-postid="3"><img src="/media/reactions/Frown.svg" alt="Frown"></a></li>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void(0)" class="openModalPost" data-postid="3"><i
+                                    class="icofont-comment"></i>Comment</a></li>
+                        {{/if}}
+                        <li class="post-share">
+                            <a href="javascript:void(0);" class="share-btn"><i class="icofont-share"></i>Share</a>
+                            <ul class="share-list">
+                                <li><a href="#" class="color-fb"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#" class="color-messenger"><i class="icofont-facebook-messenger"></i></a>
+                                </li>
+                                <li><a href="#" class="color-instagram"><i class="icofont-instagram"></i></a></li>
+                                <li><a href="#" class="color-whatsapp"><i class="icofont-brand-whatsapp"></i></a></li>
+                                <li><a href="#" class="color-twitter"><i class="icofont-twitter"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="load-more-post">
+                <a href="#" class="item-btn"><i class="icofont-refresh"></i>Load More Posts</a>
+            </div>
+        </div>
+        <div class="col-lg-4 widget-block widget-break-lg order-1">
+            <div class="widget widget-user-about">
+                <div class="widget-heading">
+                    <h3 class="widget-title">About Me</h3>
+                </div>
+                <div class="user-info">
+                    {{#if userInfo.aboutYou}}
+                        <p>{{userInfo.aboutYou}}</p>
+                    {{/if}}
+                    <ul class="info-list">
+                        <li><span>Joined:</span>{{userInfo.registerDate}}</li>
+                        <li><span>E-mail:</span>{{userInfo.email}}</li>
+                        <li><span>Username:</span>@{{userInfo.username}}</li>
+                        {{#if userInfo.website}}
+                            <li><span>Web:</span><a href="#">{{userInfo.website}}</a></li>{{/if}}
+                        <li class="social-share"><span>Social:</span>
+                            <div class="social-icon">
+                                {{#if userInfo.facebook}}
+                                    <a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"><i
+                                            class="icofont-facebook"></i></a>{{/if}}
+                                {{#if userInfo.twitter}}
+                                    <a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"><i
+                                            class="icofont-twitter"></i></a>{{/if}}
+                                {{#if userInfo.instagram}}
+                                    <a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"><i
+                                            class="icofont-instagram"></i></a>{{/if}}
+                                {{#if userInfo.youtube}}
+                                    <a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"><i
+                                            class="icofont-youtube"></i></a>{{/if}}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn close_modal" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="block-box post-view">
+                                <div class="post-header">
+                                    <div class="media">
+                                        <div class="user-img">
+                                            <img src="/media/figure/chat_10.jpg" alt="Aahat">
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="user-title"><a href="/community/timeline">Aahat Akter</a></div>
+                                            <ul class="entry-meta">
+
+                                                <li class="meta-time">2 mins ago</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {{#if session.authUser}}
+                                        <div class="dropdown">
+                                            <button class="dropdown-toggle" type="button" data-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                ...
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#">Close</a>
+                                                <a class="dropdown-item" href="#">Edit</a>
+                                                <a class="dropdown-item" href="#">Delete</a>
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                                <div class="post-body">
+                                    <p>I have great news to share with you all! I've been officially made a game
+                                        streaming verified
+                                        partner by Streamy http://radiustheme.com/ What does this mean? I'll be
+                                        uploading new content
+                                        every day, improving the quality and I'm gonna have access to games a month
+                                        before the official
+                                        release. <i class="icofont-wink-smile"></i></p>
+                                    <div class="post-img">
+                                        <img src="/media/figure/post_1.jpg" alt="Post">
+                                    </div>
+                                </div>
+                                <div class="post-footer">
+                                    <ul>
+                                        <li class="post-react">
+                                            <img class="reactionbtn" src="/media/reactions/Wink.svg"
+                                                 alt="Wink"><span>22</span>
+                                            <img class="reactionbtn" src="/media/reactions/Hearts.svg"
+                                                 alt="Hearts"><span>16</span>
+                                            <img class="reactionbtn" src="/media/reactions/Amazed.svg"
+                                                 alt="Amazed"><span>4</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="post-view">
+                                <div class="post-comment">
+                                    <ul class="comment-list">
+                                        <li class="main-comments">
+                                            <div class="each-comment">
+                                                <div class="post-header">
+                                                    <div class="media">
+                                                        <div class="user-img">
+                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="user-title"><a href="/community/timeline">Aahat
+                                                                Akter</a></div>
+                                                            <ul class="entry-meta">
+                                                                <li class="meta-time">5 mins ago</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {{#if session.authUser}}
+
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                ...
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Close</a>
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="post-body">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                        accusantium der
+                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="main-comments">
+                                            <div class="each-comment">
+                                                <div class="post-header">
+                                                    <div class="media">
+                                                        <div class="user-img">
+                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="user-title"><a href="/community/timeline">Aahat
+                                                                Akter</a></div>
+                                                            <ul class="entry-meta">
+                                                                <li class="meta-time">5 mins ago</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {{#if session.authUser}}
+
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                ...
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Close</a>
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="post-body">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                        accusantium der
+                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="main-comments">
+                                            <div class="each-comment">
+                                                <div class="post-header">
+                                                    <div class="media">
+                                                        <div class="user-img">
+                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="user-title"><a href="/community/timeline">Aahat
+                                                                Akter</a></div>
+                                                            <ul class="entry-meta">
+                                                                <li class="meta-time">5 mins ago</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {{#if session.authUser}}
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                ...
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Close</a>
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="post-body">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                        accusantium der
+                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="main-comments">
+                                            <div class="each-comment">
+                                                <div class="post-header">
+                                                    <div class="media">
+                                                        <div class="user-img">
+                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="user-title"><a href="/community/timeline">Aahat
+                                                                Akter</a></div>
+                                                            <ul class="entry-meta">
+                                                                <li class="meta-time">5 mins ago</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {{#if session.authUser}}
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                ...
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Close</a>
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="post-body">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                        accusantium der
+                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="main-comments">
+                                            <div class="each-comment">
+                                                <div class="post-header">
+                                                    <div class="media">
+                                                        <div class="user-img">
+                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <div class="user-title"><a href="/community/timeline">Aahat
+                                                                Akter</a></div>
+                                                            <ul class="entry-meta">
+                                                                <li class="meta-time">5 mins ago</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {{#if session.authUser}}
+                                                        <div class="dropdown">
+                                                            <button class="dropdown-toggle" type="button"
+                                                                    data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                ...
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="#">Close</a>
+                                                                <a class="dropdown-item" href="#">Edit</a>
+                                                                <a class="dropdown-item" href="#">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    {{/if}}
+                                                </div>
+                                                <div class="post-body">
+                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                        accusantium der
+                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="load-more-btn">
+                                        <a href="#" class="item-btn">Load More Comments <span>4+</span></a>
+                                    </div>
+                                    {{#if session.authUser}}
+                                        <div class="comment-reply">
+                                            <div class="user-img">
+                                                <img src="/media/figure/chat_15.jpg" alt="Aahat">
+                                            </div>
+                                            <div class="input-box">
+                                                <input type="text" name="comment" class="form-control"
+                                                       placeholder="Your Reply....">
+                                            </div>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".openModalPost").click(function () {
+        // alert($(this).attr("data-postid"));
+        $("#postModal").modal("show");
+    });
+
+    $(".react-list li a").click(function () {
+        var post_id = parseInt($(this).attr("data-postid"));
+        var reaction = $(this).attr("data-reaction");
+        var cur_reaction = $("#postid_" + post_id).attr("data-current-reaction");
+        var iconColor = $(this).attr("data-icon-color");
+        var totalLikes = parseInt($("#reactions_count_" + post_id).text());
+
+        if (cur_reaction == $(this).attr("data-reaction")) {
+            $("#reactions_count_" + post_id).text(totalLikes - 1);
+            $("#postid_" + post_id + " span").text("React!");
+            $("#postid_" + post_id + " img").attr("src", "/media/reactions/Wink.svg");
+            $("#postid_" + post_id).removeClass("reacted");
+            $("#postid_" + post_id).attr("data-current-reaction", "");
+            $("#postid_" + post_id).css("background", "none");
+        } else {
+            if (cur_reaction == "" || typeof (cur_reaction) == "undefined") {
+                $("#reactions_count_" + post_id).text(totalLikes + 1);
+            }
+            $("#postid_" + post_id + " span").text(reaction + "!");
+            $("#postid_" + post_id + " img").attr("src", "/media/reactions/" + reaction + ".svg");
+            $("#postid_" + post_id).addClass("reacted");
+            $("#postid_" + post_id).attr("data-current-reaction", reaction);
+            $("#postid_" + post_id).css("background", iconColor);
+        }
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#previewImg').show();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
+</script>

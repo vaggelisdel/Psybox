@@ -45,27 +45,22 @@ const userSchema = new Schema(
         website: {
             type: String,
             trim: true,
-            lowercase: true
         },
         facebook: {
             type: String,
             trim: true,
-            lowercase: true
         },
         twitter: {
             type: String,
             trim: true,
-            lowercase: true
         },
         instagram: {
             type: String,
             trim: true,
-            lowercase: true
         },
         youtube: {
             type: String,
             trim: true,
-            lowercase: true
         },
         hasMembership: {
             type: Boolean,

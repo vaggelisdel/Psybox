@@ -16,13 +16,13 @@
                     <div class="item-subtitle">@{{userInfo.username}}</div>
                     <ul class="item-social">
                         {{#if userInfo.facebook}}
-                            <li><a href="#" class="bg-fb"><i class="icofont-facebook"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}" class="bg-fb"><i class="icofont-facebook"></i></a></li>{{/if}}
                         {{#if userInfo.twitter}}
-                            <li><a href="#" class="bg-twitter"><i class="icofont-twitter"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}" class="bg-twitter"><i class="icofont-twitter"></i></a></li>{{/if}}
                         {{#if userInfo.instagram}}
-                            <li><a href="#" class="bg-dribble"><i class="icofont-instagram"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}" class="bg-dribble"><i class="icofont-instagram"></i></a></li>{{/if}}
                         {{#if userInfo.youtube}}
-                            <li><a href="#" class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}" class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
                     </ul>
                     <ul class="user-meta">
                         <li>Posts: <span>30</span></li>
@@ -340,10 +340,10 @@
                             <li><span>Web:</span><a href="#">{{userInfo.website}}</a></li>{{/if}}
                         <li class="social-share"><span>Social:</span>
                             <div class="social-icon">
-                                {{#if userInfo.facebook}}<a href="#"><i class="icofont-facebook"></i></a>{{/if}}
-                                {{#if userInfo.twitter}}<a href="#"><i class="icofont-twitter"></i></a>{{/if}}
-                                {{#if userInfo.instagram}}<a href="#"><i class="icofont-instagram"></i></a>{{/if}}
-                                {{#if userInfo.youtube}}<a href="#"><i class="icofont-youtube"></i></a>{{/if}}
+                                {{#if userInfo.facebook}}<a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"><i class="icofont-facebook"></i></a>{{/if}}
+                                {{#if userInfo.twitter}}<a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"><i class="icofont-twitter"></i></a>{{/if}}
+                                {{#if userInfo.instagram}}<a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"><i class="icofont-instagram"></i></a>{{/if}}
+                                {{#if userInfo.youtube}}<a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"><i class="icofont-youtube"></i></a>{{/if}}
                             </div>
                         </li>
                     </ul>

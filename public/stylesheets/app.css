@@ -8182,7 +8182,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
         left: auto;
     }
 }
-
+.share-list-onlyitem{right: unset !important;}
 .post-view .post-footer .post-share .share-list li {
     display: inline-block;
     opacity: 0;

@@ -769,8 +769,9 @@
                 $('#previewImg').show();
                 $('#imagePreview').fadeIn(650);
             }
-            $("#imgName").text(input.files[0].name);
             reader.readAsDataURL(input.files[0]);
+        } else {
+            $('#previewImg').hide();
         }
     }
 

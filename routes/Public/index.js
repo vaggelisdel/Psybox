@@ -144,11 +144,12 @@ router.post('/login', async function (req,res, next){
       bcrypt.compare(loginPassword, user.password, function (err, response) {
         if (response === true) {
           req.session.authUser = true;
-          req.session.fullName = user.fullName
-          req.session.firstName = user.firstName
-          req.session.avatar = user.avatar
-          req.session.email = user.email
-          req.session.userID = user._id
+          req.session.fullName = user.fullName;
+          req.session.firstName = user.firstName;
+          req.session.avatar = user.avatar;
+          req.session.email = user.email;
+          req.session.editable = true;
+          req.session.userID = user._id;
           res.redirect("/community");  //Success Login
         } else {
           req.flash('credentialsError', 'Λάθος email ή κωδικός πρόσβασης. Προσπαθήστε ξανά!');

@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var Users = require("../../models/users");
+var DeletedUsers = require("../../models/deleted_users");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
+const bcrypt = require('bcrypt');
 
 /* GET home page. */
 router.get('/', authUser, function (req, res, next) {
@@ -29,17 +31,13 @@ router.get('/timeline', authUser, async function (req, res, next) {
 });
 router.get('/settings', authUser, async function (req, res, next) {
     var userInfo = await Users.findOne({email: req.session.email});
-    if (userInfo.method !== "custom") {
-        var editable = false;
-    } else {
-        var editable = true;
-    }
     res.render('Panel/EditProfile.hbs', {
         layout: "Layouts/PanelLayout.hbs",
         title: 'Settings',
         Settings: true,
         userInfo: userInfo,
-        editable: editable
+        failureError: req.flash('failureError'),
+        successMsg: req.flash('successMsg')
     });
 });
 router.get('/payment', authUser, function (req, res, next) {
@@ -48,16 +46,22 @@ router.get('/payment', authUser, function (req, res, next) {
 router.get('/post', authUser, function (req, res, next) {
     res.render('Panel/Post.hbs', {layout: "Layouts/PanelLayout.hbs", title: 'Post', Post: true});
 });
-router.get('/delete-account/:id', authUser, function (req, res, next) {
-    Users.deleteMany({_id: new ObjectId(req.params.id)}, function (err, resp){
+router.get('/delete-account/:id', authUser, async function (req, res, next) {
+    var userData = await Users.findOne({_id: new ObjectId(req.params.id)});
+    var newUser = new DeletedUsers({
+        userData: userData
+    });
+    newUser.save(function (err) {
         if (err) throw err;
-        res.redirect("/");
+        Users.deleteMany({_id: new ObjectId(req.params.id)}, function (err, resp) {
+            res.redirect("/logout");
+        });
     });
 });
 
 router.post('/update-personal-info', function (req, res, next) {
     var query = {_id: new ObjectId(req.body.userId)};
-    if (req.body.editable == "true") {
+    if (req.session.editable) {
         var updateInfo = {
             $set: {
                 fullName: req.body.fullName,
@@ -73,6 +77,9 @@ router.post('/update-personal-info', function (req, res, next) {
         };
         Users.updateMany(query, updateInfo, function (err, result) {
             if (err) throw err;
+            req.session.fullName = req.body.fullName
+            req.session.firstName = req.body.fullName.split(" ")[0]
+            req.session.email = req.body.email
             req.flash('successMsg', 'Επιτυχής ενημέρωση!');
             res.redirect("/community/settings");
         });
@@ -108,7 +115,37 @@ router.post('/update-username', async function (req, res, next) {
             req.flash('successMsg', 'Επιτυχής ενημέρωση!');
             res.redirect("/community/settings");
         });
-    }else{
+    } else {
+        res.redirect("/community/settings");
+    }
+});
+router.post('/change-password', async function (req, res, next) {
+    var oldPassword = await Users.findOne({_id: new ObjectId(req.body.userid)});
+    var query = {_id: new ObjectId(req.body.userid)};
+    if (req.body.newPassword == req.body.RepNewPassword) {
+        bcrypt.compare(req.body.oldPassword, oldPassword.password, function (err, response) {
+            if (response === true) {
+                bcrypt.genSalt(10, function (err, salt) {
+                    bcrypt.hash(req.body.newPassword, salt, function (err, hash) {
+                        var updateInfo = {
+                            $set: {
+                                password: hash
+                            }
+                        };
+                        Users.updateMany(query, updateInfo, function (err, result) {
+                            if (err) throw err;
+                            req.flash('successMsg', 'Ο κωδικός πρόσβασης άλλαξε με επιτυχία!');
+                            res.redirect("/community/settings");
+                        });
+                    });
+                });
+            } else {
+                req.flash('failureError', 'Λανθασμένος παλιός κωδικός!');
+                res.redirect("/community/settings");
+            }
+        });
+    } else {
+        req.flash('failureError', 'Οι κωδικοί δεν ταιριάζουν μεταξύ τους!');
         res.redirect("/community/settings");
     }
 });

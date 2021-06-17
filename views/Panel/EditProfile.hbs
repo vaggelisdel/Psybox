@@ -8,7 +8,22 @@
         </ol>
     </nav>
     <!-- /Breadcrumb -->
-
+    {{#if failureError}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{failureError}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+    {{#if successMsg}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{successMsg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
     <div class="row gutters-sm">
         <div class="col-md-4 d-none d-md-block">
             <div class="card">
@@ -104,8 +119,7 @@
                         <hr>
                         <form class="mt-3" action="/community/update-personal-info" method="post">
                             <input type="hidden" name="userId" value="{{userInfo._id}}"/>
-                            <input type="hidden" name="editable" value="{{editable}}"/>
-                            {{#if editable}}
+                            {{#if session.editable}}
                                 <div class="form-group">
                                     <label for="fullName">Full Name</label>
                                     <input type="text" class="form-control" name="fullName" id="fullName"
@@ -195,13 +209,19 @@
                     <div class="tab-pane" id="security">
                         <h6>SECURITY SETTINGS</h6>
                         <hr>
-                        {{#if editable}}
-                            <form class="mt-3">
+                        {{#if session.editable}}
+                            <form class="mt-3" action="/community/change-password" method="post">
                                 <div class="form-group">
                                     <label class="d-block">Change Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter your old password">
-                                    <input type="password" class="form-control mt-2" placeholder="New password">
-                                    <input type="password" class="form-control mt-2" placeholder="Confirm new password">
+                                    <input type="hidden" name="userid" value="{{userInfo._id}}">
+                                    <input type="password" name="oldPassword" class="form-control" placeholder="Enter your old password">
+                                    <input type="password" name="newPassword" class="form-control mt-2" placeholder="New password">
+                                    <input type="password" name="RepNewPassword" class="form-control mt-2" placeholder="Confirm new password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Update
+                                        Password
+                                    </button>
                                 </div>
                             </form>
                             <hr>

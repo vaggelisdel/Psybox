@@ -196,7 +196,7 @@
                                     <small>https://www.youtube.com/channel/{<strong>channelID</strong>}</small>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                            <button type="submit" class="btn psyboxBtn psyboxBtn-blue">Update Profile</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="avatar">
@@ -213,7 +213,7 @@
                                 <div id="imagePreview" style="background-image: url({{userInfo.avatar}});">
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-4">Update Avatar</button>
+                            <button type="submit" class="btn psyboxBtn psyboxBtn-blue">Update Avatar</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="account">
@@ -231,9 +231,7 @@
                                     old username becomes available for anyone else to claim.</small>
                             </div>
                             <div class="form-group">
-                                <button disabled type="submit" id="update_username_btn" class="btn btn-primary">Update
-                                    Username
-                                </button>
+                                <button disabled type="submit" id="update_username_btn" class="btn psyboxBtn psyboxBtn-blue">Update Username</button>
                             </div>
                             <hr>
                             <div class="form-group">
@@ -241,9 +239,7 @@
                                 <p class="text-muted font-size-sm">Once you delete your account, there is no going back.
                                     Please be certain.</p>
                             </div>
-                            <button class="btn btn-danger deleteAccount" value="{{userInfo._id}}" type="button">Delete
-                                Account
-                            </button>
+                            <button type="button" class="btn psyboxBtn psyboxBtn-red deleteAccount" value="{{userInfo._id}}">Delete Account</button>
                         </form>
                     </div>
                     <div class="tab-pane" id="security">
@@ -262,9 +258,7 @@
                                            placeholder="Confirm new password">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Update
-                                        Password
-                                    </button>
+                                    <button type="button" class="btn psyboxBtn psyboxBtn-blue" value="{{userInfo._id}}">Update Password</button>
                                 </div>
                             </form>
                             <hr>
@@ -293,10 +287,10 @@
                                 {{#if userInfo.hasMembership}}
                                     <p><strong>Current plan: </strong>Standard Plan</p>
                                     <p><strong>Valid until: </strong>21/07/2021</p>
-                                    <a href="/community/cancel-membership" class="btn btn-danger" type="button">Cancel
+                                    <a href="/community/cancel-membership" class="btn psyboxBtn psyboxBtn-red" type="button">Cancel
                                         Membership</a>
                                 {{else}}
-                                    <a href="/community/payment" class="btn btn-primary" type="button">Create
+                                    <a href="/community/payment" class="btn psyboxBtn psyboxBtn-blue" type="button">Create
                                         Membership</a>
                                 {{/if}}
                             </div>

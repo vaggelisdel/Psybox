@@ -5,6 +5,40 @@ var DeletedUsers = require("../../models/deleted_users");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
 const bcrypt = require('bcrypt');
+require('dotenv').config();
+var multer = require('multer');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
+var crypto = require('crypto');
+var path = require('path');
+
+/*AWS UPLOAD IMG*/
+const s3 = new AWS.S3({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region:process.env.AWS_REGION
+});
+const filters = (req, file, cb) => {
+    var ext = path.extname(file.originalname);
+    if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
+        cb('Μη επιτρεπτός τύπος αρχείου!');
+    } else {
+        cb(null, true);
+    }
+}
+var uploadS3 = multer({
+    storage: multerS3({
+        s3: s3,
+        acl: 'public-read',
+        bucket: process.env.BUCKET_NAME,
+        key: (req, file, cb) => {
+            cb(null, Date.now().toString() + '_' + crypto.createHash('md5').update(JSON.stringify(new Date().getTime())).digest("hex"))
+        }
+    }),
+    fileFilter: filters,
+    limits: {fileSize: 5242880}
+}).single('imageUpload');  //5MB
+
 
 /* GET home page. */
 router.get('/', authUser, function (req, res, next) {
@@ -156,6 +190,45 @@ router.post('/check-username', async function (req, res, next) {
     } else {
         res.send({exist: false})
     }
+});
+router.post('/change-avatar', async function (req, res, next) {
+    uploadS3(req, res, async function (err) {
+        if (err instanceof multer.MulterError) {
+            req.flash("failureError", err.message);
+            res.redirect("/community/settings");
+        } else if (err) {
+            req.flash("failureError", JSON.stringify(err));
+            res.redirect("/community/settings");
+        } else {
+            var itemImg;
+            if (req.file) {
+                if (req.body.prevImg !== process.env.DEFAULT_IMG) {
+                    var params = {Bucket: process.env.BUCKET_NAME, Key: req.body.prevImg.split('.com/')[1]};
+                    s3.deleteObject(params, function (err, data) {
+                        if (err) console.log(err, err.stack);  // error
+                    });
+                }
+                itemImg = req.file.location;
+            } else {
+                itemImg = req.body.prevImg;
+            }
+            var userInfo = await Users.findOne({_id: new ObjectId(req.body.userId)});
+            if (userInfo) {
+                var query = {_id: new ObjectId(req.body.userId)};
+                var updateInfo = {
+                    $set: {
+                        avatar: itemImg
+                    }
+                };
+                Users.updateMany(query, updateInfo, function (err, result) {
+                    if (err) throw err;
+                    req.session.avatar = itemImg;
+                    req.flash('successMsg', 'Επιτυχής ενημέρωση!');
+                    res.redirect("/community/settings");
+                });
+            }
+        }
+    });
 });
 
 // router.get('/testing', function(req, res, next) {

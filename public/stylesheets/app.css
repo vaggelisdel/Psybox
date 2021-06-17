@@ -2672,6 +2672,9 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img img {
     border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
 }
 
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img .acc-verified {
@@ -12037,4 +12040,64 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     .darkmode .main-footer {
         background-color: #272727;
     }
+}
+
+.avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 20px auto;
+    text-align: center;
+}
+.avatar-upload .avatar-edit {
+    position: absolute;
+    right: 12px;
+    z-index: 1;
+    top: 10px;
+}
+.avatar-upload .avatar-edit input {
+    display: none;
+}
+.avatar-upload .avatar-edit input + label {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0;
+    border-radius: 100%;
+    background: #FFFFFF;
+    border: 1px solid transparent;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    font-weight: normal;
+    transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+    background: #f1f1f1;
+    border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+    content: url(data:image/svg+xml;utf8;base64,IDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nMTMnIGhlaWdodD0nMTMnIGZpbGw9J2N1cnJlbnRDb2xvcicgY2xhc3M9J2JpIGJpLXBlbmNpbCcgdmlld0JveD0nMCAwIDE2IDE2Jz4gPHBhdGggZD0nTTEyLjE0Ni4xNDZhLjUuNSAwIDAgMSAuNzA4IDBsMyAzYS41LjUgMCAwIDEgMCAuNzA4bC0xMCAxMGEuNS41IDAgMCAxLS4xNjguMTFsLTUgMmEuNS41IDAgMCAxLS42NS0uNjVsMi01YS41LjUgMCAwIDEgLjExLS4xNjhsMTAtMTB6TTExLjIwNyAyLjVMMTMuNSA0Ljc5MyAxNC43OTMgMy41IDEyLjUgMS4yMDcgMTEuMjA3IDIuNXptMS41ODYgM0wxMC41IDMuMjA3IDQgOS43MDdWMTBoLjVhLjUuNSAwIDAgMSAuNS41di41aC41YS41LjUgMCAwIDEgLjUuNXYuNWguMjkzbDYuNS02LjV6bS05Ljc2MSA1LjE3NWwtLjEwNi4xMDYtMS41MjggMy44MjEgMy44MjEtMS41MjguMTA2LS4xMDZBLjUuNSAwIDAgMSA1IDEyLjVWMTJoLS41YS41LjUgMCAwIDEtLjUtLjVWMTFoLS41YS41LjUgMCAwIDEtLjQ2OC0uMzI1eicvPiA8L3N2Zz4=);
+    font-family: 'FontAwesome';
+    color: #757575;
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    right: 0;
+    text-align: center;
+    margin: auto;
+}
+.avatar-upload .avatar-preview {
+    width: 192px;
+    height: 192px;
+    position: relative;
+    border-radius: 100%;
+    border: 6px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }

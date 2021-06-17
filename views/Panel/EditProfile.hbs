@@ -38,6 +38,15 @@
                             </svg>
                             Profile Information
                         </a>
+                        {{#if session.editable}}
+                            <a href="#avatar" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                    <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                </svg>&nbsp;&nbsp;
+                                Avatar
+                            </a>
+                        {{/if}}
                         <a href="#account" data-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -82,6 +91,16 @@
                                 </svg>
                             </a>
                         </li>
+                        {{#if session.editable}}
+                            <li class="nav-item">
+                                <a href="#avatar" data-toggle="tab" class="nav-link has-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                        <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
+                                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    </svg>
+                                </a>
+                            </li>
+                        {{/if}}
                         <li class="nav-item">
                             <a href="#account" data-toggle="tab" class="nav-link has-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -176,6 +195,23 @@
                             <button type="submit" class="btn btn-primary">Update Profile</button>
                         </form>
                     </div>
+                    <div class="tab-pane" id="avatar">
+                        <h6>CHANGE YOUR AVATAR</h6>
+                        <hr>
+                        <form class="mt-3 avatar-upload" action="/community/change-avatar" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="userId" value="{{userInfo._id}}"/>
+                            <input type="hidden" name="prevImg" value="{{userInfo.avatar}}"/>
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload" name="imageUpload" accept=".png, .jpg, .jpeg" name="avatar"/>
+                                <label for="imageUpload"></label>
+                            </div>
+                            <div class="avatar-preview container2">
+                                <div id="imagePreview" style="background-image: url({{userInfo.avatar}});">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-4">Update Avatar</button>
+                        </form>
+                    </div>
                     <div class="tab-pane" id="account">
                         <h6>ACCOUNT SETTINGS</h6>
                         <hr>
@@ -214,9 +250,12 @@
                                 <div class="form-group">
                                     <label class="d-block">Change Password</label>
                                     <input type="hidden" name="userid" value="{{userInfo._id}}">
-                                    <input type="password" name="oldPassword" class="form-control" placeholder="Enter your old password">
-                                    <input type="password" name="newPassword" class="form-control mt-2" placeholder="New password">
-                                    <input type="password" name="RepNewPassword" class="form-control mt-2" placeholder="Confirm new password">
+                                    <input type="password" name="oldPassword" class="form-control"
+                                           placeholder="Enter your old password">
+                                    <input type="password" name="newPassword" class="form-control mt-2"
+                                           placeholder="New password">
+                                    <input type="password" name="RepNewPassword" class="form-control mt-2"
+                                           placeholder="Confirm new password">
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Update
@@ -321,4 +360,20 @@
                 }
             }
     );
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
+
 </script>

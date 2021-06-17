@@ -2017,7 +2017,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
         padding: 2px 10px;
     }
 }
-.fixed-header .header-menu .login-btn .item-btn{
+
+.fixed-header .header-menu .login-btn .item-btn {
     display: block;
     color: #ffffff;
     background-color: #4948fb;
@@ -7245,7 +7246,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .post-input-tab .tab-pane .form-control {
-    padding: 16px 30px;
     border: none;
     resize: none;
     border-bottom: 1px solid #eaedf1;
@@ -11701,6 +11701,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
+
 .imageinput-upload {
     position: relative;
 }
@@ -11878,17 +11879,20 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     border-radius: 50%;
     box-shadow: 0px 0px 8px 0px #00000030;
 }
-@media(max-width:575px){
+
+@media (max-width: 575px) {
     .close_modal {
         width: 40px;
         height: 40px;
         right: -5px;
         top: -5px;
     }
-    .close_modal span{
+
+    .close_modal span {
         font-size: 15px !important;
     }
 }
+
 .close_modal span {
     font-size: 21px;
     font-weight: 800;
@@ -11952,8 +11956,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .widget-user-about,
 .darkmode .breadcrumb,
 .darkmode .card,
-.darkmode .load-more-post .item-btn
-{
+.darkmode .load-more-post .item-btn {
     background-color: #272727;
 }
 
@@ -11961,8 +11964,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .card .list-group-item,
 .darkmode .nav-tabs .nav-item.show .nav-link,
 .darkmode .nav-tabs .nav-link.active,
-.darkmode #preloader
-{
+.darkmode #preloader {
     background-color: #3a3a3a;
 }
 
@@ -11975,15 +11977,15 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .footer-bottom,
 .darkmode .user-top-header .menu-list,
 .darkmode .user-top-header .menu-list li,
-.darkmode .post-input-tab .tab-pane .form-control
-{
+.darkmode .post-input-tab .tab-pane .form-control {
     border-color: #3a3a3a
 }
+
 .darkmode .border-bottom,
-.darkmode .nav-tabs .nav-link
-{
+.darkmode .nav-tabs .nav-link {
     border-color: #3a3a3a !important;
 }
+
 .darkmode .fixed-header .header-menu {
     background-color: #272727;
     border-bottom: 1px solid #2f2f2f;
@@ -12030,16 +12032,18 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 .darkmode .load-more-post .item-btn,
 darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
 .darkmode .modal-post .post-view .post-footer > ul > li span,
-.darkmode .card small
-{
+.darkmode .card small,
+.darkmode textarea,
+.darkmode textarea:focus {
     color: #e8e8e8;
 }
+
 .darkmode .card p,
 .darkmode .footer-box p,
-.darkmode .text-muted
-{
+.darkmode .text-muted {
     color: #e8e8e8 !important;
 }
+
 @media only screen and (max-width: 991px) {
     .darkmode .main-footer {
         background-color: #272727;
@@ -12052,15 +12056,18 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     margin: 20px auto;
     text-align: center;
 }
+
 .avatar-upload .avatar-edit {
     position: absolute;
     right: 12px;
     z-index: 1;
     top: 10px;
 }
+
 .avatar-upload .avatar-edit input {
     display: none;
 }
+
 .avatar-upload .avatar-edit input + label {
     display: inline-block;
     width: 34px;
@@ -12074,10 +12081,12 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     font-weight: normal;
     transition: all 0.2s ease-in-out;
 }
+
 .avatar-upload .avatar-edit input + label:hover {
     background: #f1f1f1;
     border-color: #d6d6d6;
 }
+
 .avatar-upload .avatar-edit input + label:after {
     content: url(data:image/svg+xml;utf8;base64,IDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB3aWR0aD0nMTMnIGhlaWdodD0nMTMnIGZpbGw9J2N1cnJlbnRDb2xvcicgY2xhc3M9J2JpIGJpLXBlbmNpbCcgdmlld0JveD0nMCAwIDE2IDE2Jz4gPHBhdGggZD0nTTEyLjE0Ni4xNDZhLjUuNSAwIDAgMSAuNzA4IDBsMyAzYS41LjUgMCAwIDEgMCAuNzA4bC0xMCAxMGEuNS41IDAgMCAxLS4xNjguMTFsLTUgMmEuNS41IDAgMCAxLS42NS0uNjVsMi01YS41LjUgMCAwIDEgLjExLS4xNjhsMTAtMTB6TTExLjIwNyAyLjVMMTMuNSA0Ljc5MyAxNC43OTMgMy41IDEyLjUgMS4yMDcgMTEuMjA3IDIuNXptMS41ODYgM0wxMC41IDMuMjA3IDQgOS43MDdWMTBoLjVhLjUuNSAwIDAgMSAuNS41di41aC41YS41LjUgMCAwIDEgLjUuNXYuNWguMjkzbDYuNS02LjV6bS05Ljc2MSA1LjE3NWwtLjEwNi4xMDYtMS41MjggMy44MjEgMy44MjEtMS41MjguMTA2LS4xMDZBLjUuNSAwIDAgMSA1IDEyLjVWMTJoLS41YS41LjUgMCAwIDEtLjUtLjVWMTFoLS41YS41LjUgMCAwIDEtLjQ2OC0uMzI1eicvPiA8L3N2Zz4=);
     font-family: 'FontAwesome';
@@ -12089,6 +12098,7 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     text-align: center;
     margin: auto;
 }
+
 .avatar-upload .avatar-preview {
     width: 192px;
     height: 192px;
@@ -12097,6 +12107,7 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     border: 6px solid #F8F8F8;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
 }
+
 .avatar-upload .avatar-preview > div {
     width: 100%;
     height: 100%;
@@ -12105,16 +12116,53 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     background-repeat: no-repeat;
     background-position: center;
 }
-.unlogin_logo{
-    display:none;
+
+.unlogin_logo {
+    display: none;
     max-width: 130px;
     padding: 5px;
 }
-@media(max-width:575px){
-    .unlogin_logo{
-        display:block;
+
+@media (max-width: 575px) {
+    .unlogin_logo {
+        display: block;
     }
-    .fixed-header .header-menu .login-btn .item-btn{
-        display:none;
+
+    .fixed-header .header-menu .login-btn .item-btn {
+        display: none;
     }
+}
+
+.grow-wrap {
+    /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+    display: grid !important;
+}
+
+.grow-wrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-replicated-value) " ";
+
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+}
+
+.grow-wrap > textarea {
+    /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+    resize: none;
+
+    /* Firefox shows scrollbar on growth, you can hide like this. */
+    overflow: hidden;
+}
+
+.grow-wrap > textarea,
+.grow-wrap::after {
+    /* Identical styling required!! */
+    padding: 16px 30px;
+    font: inherit;
+    word-break: break-word;
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
 }

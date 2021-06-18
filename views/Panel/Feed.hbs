@@ -118,7 +118,9 @@
                         <ul>
                             <li class="post-react">
                                 {{#if this.isReaction}}
-                                    <a id="postid_{{this._id}}" class="reacted" data-current-reaction="{{this.myReaction.0.type}}" style="background: var(--{{this.myReaction.0.type}}-color)"
+                                    <a id="postid_{{this._id}}" class="reacted"
+                                       data-current-reaction="{{this.myReaction.0.type}}"
+                                       style="background: var(--{{this.myReaction.0.type}}-color)"
                                        href="javascript:void(0)">
                                         <img class="reactionbtn"
                                              src="/media/reactions/{{this.myReaction.0.type}}.svg"

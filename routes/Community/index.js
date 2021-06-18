@@ -47,6 +47,7 @@ router.get('/', authUser, function (req, res, next) {
     res.redirect("/community/feed");
 });
 router.get('/feed', authUser, async function (req, res, next) {
+    console.log(req.session);
     var recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}}).sort({'registerDate': -1}).limit(4);
     var feed = await Posts.aggregate([
         {

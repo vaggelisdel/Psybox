@@ -184,9 +184,15 @@
                     </div>
                 </div>
             {{/each}}
-            <div class="load-more-post">
-                <a href="#" class="item-btn"><i class="icofont-refresh"></i>Load More Posts</a>
-            </div>
+            {{#if posts}}
+                <div class="block-box load-more-btn">
+                    <a href="#" class="item-btn"><i class="icofont-refresh"></i>Load More Posts</a>
+                </div>
+            {{else}}
+                <div class="text-center mt-3 mb-3">
+                    <img src="/media/emptyTimeline.svg" class="emptyTimelineImg">
+                    <p>Δεν υπάρχουν διαθέσιμες δημοσιεύσεις ακόμη!</p>
+                </div>            {{/if}}
         </div>
         <div class="col-lg-4 widget-block widget-break-lg order-1">
             <div class="widget widget-user-about">

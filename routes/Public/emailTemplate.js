@@ -12,7 +12,7 @@ module.exports = {
     },
     forgotPassword: function (link) {
         return "<div style='background: #615dfa;padding: 3em;width: 65%;margin: 0 auto;text-align: center;'>\n" +
-            "    <a href='https://psybox-new.herokuapp.com'><img style='max-width: 200px;' src='https://i.imgur.com/HTxlNWx.png'/></a>\n" +
+            "    <a href='https://psybox-new.herokuapp.com'><img style='max-width: 200px;' src='https://i.imgur.com/QtqPVAE.png'/></a>\n" +
             "    <div style='background: white;padding: 2em;width: 65%;margin: 1em auto;border-radius: 20px;display: grid;'>\n" +
             "        <img src='https://i.imgur.com/wp3L8w8.png' style='width: 50%;margin: 0 auto;'/>\n" +
             "        <h2 style='width: 100%;'>Επαναφορά κωδικού</h2>\n" +

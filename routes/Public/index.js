@@ -223,7 +223,7 @@ router.post('/changePassword', async function (req, res, next) {
     //WARNING FOR SECURITY REASONS
     var user = await Users.findOne({email: req.body.email, socialID: req.body.socialID});
     if (user) {
-        bcrypt.hash(req.body.password, 10, function (err, hashPassword) {
+        bcrypt.hash(req.body.newpassword, 10, function (err, hashPassword) {
             var query = {email: req.body.email};
             var updatePassword = {
                 $set: {

@@ -379,7 +379,7 @@ router.post('/createPost', async function (req, res, next) {
                             avatar: authorData.avatar
                         },
                         image: req.file.location,
-                        text: req.body.textPost
+                        text: req.body.textPost.split(/\n/)
                     });
                     newPost.save(function (err) {
                         if (err) throw err;

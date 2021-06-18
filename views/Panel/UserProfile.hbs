@@ -58,7 +58,7 @@
                                 </ul>
                             </div>
                         </div>
-                        {{#if session.authUser}}
+                        {{#if ../session.authUser}}
                             <div class="dropdown">
                                 <button class="dropdown-toggle" type="button" data-toggle="dropdown"
                                         aria-expanded="false">
@@ -95,7 +95,7 @@
                     </div>
                     <div class="post-footer">
                         <ul>
-                            {{#if session.authUser}}
+                            {{#if ../session.authUser}}
                             <li class="post-react">
                                 {{#if this.isReaction}}
                                     <a id="postid_{{this._id}}" class="reacted"
@@ -132,13 +132,12 @@
                                     </ul>
                                 </li>
                                 {{/if}}
-
                                 <li><a href="javascript:void(0)" class="openModalPost" data-postid="1"><i
                                         class="icofont-comment"></i>Comment</a></li>
                             {{/if}}
                             <li class="post-share">
                                 <a href="javascript:void(0);" class="share-btn"><i class="icofont-share"></i>Share</a>
-                                <ul class="share-list {{#if session.authUser}}{{else}}share-list-onlyitem{{/if}}">
+                                <ul class="share-list {{#if ../session.authUser}}{{else}}share-list-onlyitem{{/if}}">
                                     <li><a href="#" class="color-fb"><i class="icofont-facebook"></i></a></li>
                                     <li><a href="#" class="color-messenger"><i
                                             class="icofont-facebook-messenger"></i></a>

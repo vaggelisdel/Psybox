@@ -8,7 +8,7 @@ const PostsSchema = new Schema(
             type: Object
         },
         text: {
-            type: Array,
+            type: String,
         },
         image:{
             type: String,

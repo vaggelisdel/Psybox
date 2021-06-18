@@ -101,6 +101,7 @@
                     </div>
                     <div class="post-body">
                         <div class="post-no-thumbnail">
+                            <div class="postPuretext">
                                 {{#each this.postText}}
                                     {{#if this}}
                                     {{else}}
@@ -108,6 +109,7 @@
                                     {{/if}}
                                     <p class="mb-0 pb-0" style="min-height: 15px">{{this}}</p>
                                 {{/each}}
+                            </div>
                             {{#if this.postImage}}
                                 <div class="post-img">
                                     <img src="{{this.postImage}}" alt="Post">

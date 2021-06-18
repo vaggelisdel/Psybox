@@ -7632,7 +7632,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     width: 100%;
     max-height: 350px;
     object-fit: cover;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .post-view .post-body .post-meta-wrap {
@@ -7939,7 +7939,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-body .post-no-thumbnail {
     border-bottom: 1px solid #e6e9ec;
-    padding-bottom: 28px;
+    padding-bottom: 30px;
 }
 
 .post-view .post-body .post-no-thumbnail p {

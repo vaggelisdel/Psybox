@@ -102,7 +102,11 @@
                     <div class="post-body">
                         <div class="post-no-thumbnail">
                                 {{#each this.postText}}
-                                    <p class="mb-0">{{this}}</p>
+                                    {{#if this}}
+                                    {{else}}
+                                        <h1>aaa</h1>
+                                    {{/if}}
+                                    <p class="mb-0 pb-0" style="min-height: 15px">{{this}}</p>
                                 {{/each}}
                             {{#if this.postImage}}
                                 <div class="post-img">

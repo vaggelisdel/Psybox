@@ -12190,3 +12190,6 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
     color: #ffffff !important;
     background-color: #dc3545;
 }
+.alert{
+    max-width: 350px !important;
+}

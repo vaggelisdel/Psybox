@@ -111,7 +111,8 @@
                                     <a id="postid_{{this._id}}" href="javascript:void(0)"><img class="reactionbtn"
                                                                                                src="/media/reactions/Wink.svg"
                                                                                                alt="Wink">&nbsp;<span>React!</span></a>
-                                    <ul class="react-list">
+                                {{/if}}
+                                <ul class="react-list">
                                         <li><a href="javascript:void(0)" data-reaction="Wink"
                                                data-postid="{{this._id}}"><img src="/media/reactions/Wink.svg"
                                                                                alt="Wink"></a></li>
@@ -131,7 +132,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                {{/if}}
                                 <li><a href="javascript:void(0)" class="openModalPost" data-postid="1"><i
                                         class="icofont-comment"></i>Comment</a></li>
                             {{/if}}

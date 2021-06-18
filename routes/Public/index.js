@@ -41,7 +41,7 @@ router.get('/google/user/callback', passport.authenticate('googleUser', {failure
         req.session.firstName = req.user.name.givenName
         req.session.avatar = req.user._json.picture
         req.session.email = req.user._json.email
-        req.session.userID = req.user.id
+        req.session.userID = req.user.userID
         res.redirect("/community");
     }
 });
@@ -59,7 +59,7 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
         req.session.firstName = req.user.name.givenName
         req.session.avatar = req.user._json.picture.data.url
         req.session.email = req.user._json.email
-        req.session.userID = req.user.id
+        req.session.userID = req.user.userID
         res.redirect("/community");
     }
 });

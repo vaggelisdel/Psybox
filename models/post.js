@@ -1,12 +1,28 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var moment = require('moment');
 
 const PostsSchema = new Schema(
     {
-        text: {
-            type: String
+        author:{
+            type: Object
         },
-
+        text: {
+            type: String,
+        },
+        image:{
+            type: String,
+            trim: true,
+        },
+        blocked: {
+            type: Boolean,
+            default: false
+        },
+        createdDate: {
+            type: String,
+            // default: () => moment().tz("Europe/Athens").format("DD MMM YYYY h:mm a")
+            default: () => moment().locale("el").format('DD MMM YYYY HH:mm')
+        }
     }
 );
 

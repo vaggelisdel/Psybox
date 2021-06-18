@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Users = require("../../models/users");
+var Likes = require("../../models/like");
 var DeletedUsers = require("../../models/deleted_users");
+var Posts = require("../../models/post");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
 const bcrypt = require('bcrypt');
@@ -16,7 +18,7 @@ var path = require('path');
 const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region:process.env.AWS_REGION
+    region: process.env.AWS_REGION
 });
 const filters = (req, file, cb) => {
     var ext = path.extname(file.originalname);
@@ -45,35 +47,127 @@ router.get('/', authUser, function (req, res, next) {
     res.redirect("/community/feed");
 });
 router.get('/feed', authUser, async function (req, res, next) {
-    var recomend_users = await Users.find({email: {$ne: req.session.email}}).sort({'registerDate': -1}).limit(4);
-
+    var recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}}).sort({'registerDate': -1}).limit(4);
+    var feed = await Posts.aggregate([
+        {
+            $lookup: {
+                from: "likes",
+                localField: "_id",    // field in the orders collection
+                foreignField: "postid",  // field in the items collection
+                as: "likes"
+            }
+        },
+        {
+            $project: {
+                "postText": "$text",
+                "createdDate": "$createdDate",
+                "authorName": "$author.fullName",
+                "authorUsername": "$author.username",
+                "authorAvatar": "$author.avatar",
+                "countReactions": {"$size": "$likes"},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.user.userID"]},
+                "myReaction": {
+                    $filter: {
+                        input: '$likes',
+                        as: 'myReaction',
+                        cond: {$eq: ['$$myReaction.user.userID', new ObjectId(req.session.userID)]}
+                    }
+                },
+            }
+        }
+    ]);
     res.render('Panel/Feed.hbs', {
         layout: "Layouts/PanelLayout.hbs",
         title: 'Feed',
         Feed: true,
-        recommendedUsers: recomend_users
+        recommendedUsers: recomend_users,
+        posts: feed
     });
 });
 router.get('/timeline', authUser, async function (req, res, next) {
-    var userInfo = await Users.findOne({email: req.session.email});
+    var userInfo = await Users.findOne({_id: new ObjectId(req.session.userID)});
+    var feed = await Posts.aggregate([
+        {
+            $match: {'author._id': new ObjectId(userInfo._id)}
+        },
+        {
+            $lookup: {
+                from: "likes",
+                localField: "_id",    // field in the orders collection
+                foreignField: "postid",  // field in the items collection
+                as: "likes"
+            }
+        },
+        {
+            $project: {
+                "postText": "$text",
+                "createdDate": "$createdDate",
+                "authorName": "$author.fullName",
+                "authorUsername": "$author.username",
+                "authorAvatar": "$author.avatar",
+                "countReactions": {"$size": "$likes"},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.user.userID"]},
+                "myReaction": {
+                    $filter: {
+                        input: '$likes',
+                        as: 'myReaction',
+                        cond: {$eq: ['$$myReaction.user.userID', new ObjectId(req.session.userID)]}
+                    }
+                },
+            }
+        }
+    ]);
     res.render('Panel/Timeline.hbs', {
         layout: "Layouts/PanelLayout.hbs",
         title: 'Timeline',
         Timeline: true,
-        userInfo: userInfo
+        userInfo: userInfo,
+        posts: feed
     });
 });
 router.get('/timeline/:username', async function (req, res, next) {
     var userInfo = await Users.findOne({username: req.params.username.split("@")[1]});
+    var feed = await Posts.aggregate([
+        {
+            $match: {'author._id': new ObjectId(userInfo._id)}
+        },
+        {
+            $lookup: {
+                from: "likes",
+                localField: "_id",    // field in the orders collection
+                foreignField: "postid",  // field in the items collection
+                as: "likes"
+            }
+        },
+        {
+            $project: {
+                "postText": "$text",
+                "createdDate": "$createdDate",
+                "authorName": "$author.fullName",
+                "authorUsername": "$author.username",
+                "authorAvatar": "$author.avatar",
+                "countReactions": {"$size": "$likes"},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.user.userID"]},
+                "myReaction": {
+                    $filter: {
+                        input: '$likes',
+                        as: 'myReaction',
+                        cond: {$eq: ['$$myReaction.user.userID', new ObjectId(req.session.userID)]}
+                    }
+                },
+            }
+        }
+    ]);
     res.render('Panel/UserProfile.hbs', {
         layout: "Layouts/PanelLayout.hbs",
         title: userInfo.fullName,
         Timeline: true,
-        userInfo: userInfo
+        userInfo: userInfo,
+        posts: feed
     });
 });
 router.get('/settings', authUser, async function (req, res, next) {
-    var userInfo = await Users.findOne({email: req.session.email});
+    var userInfo = await Users.findOne({_id: new ObjectId(req.session.userID)});
     res.render('Panel/EditProfile.hbs', {
         layout: "Layouts/PanelLayout.hbs",
         title: 'Settings',
@@ -239,49 +333,101 @@ router.post('/change-avatar', async function (req, res, next) {
         }
     });
 });
+router.post('/createPost', async function (req, res, next) {
+    var authorData = await Users.findOne({_id: new ObjectId(req.session.userID)});
+    if (authorData) {
+        var newPost = new Posts({
+            author: {
+                _id: authorData._id,
+                fullName: authorData.fullName,
+                username: authorData.username,
+                avatar: authorData.avatar
+            },
+            text: req.body.textPost
+        });
+        newPost.save(function (err) {
+            if (err) throw err;
+            res.redirect("/community");
+        });
+    } else {
+        res.redirect("/community");
+    }
+});
+router.post('/createReaction', async function (req, res, next) {
+    var like = await Likes.findOne({
+        'user.userID': new ObjectId(req.session.userID),
+        postid: new ObjectId(req.body.postid)
+    });
+    if (!like) {
+        var userData = await Users.findOne({_id: new ObjectId(req.session.userID)});
+        var newLike = new Likes({
+            user: {
+                userID: userData._id,
+                username: userData.username,
+                fullName: userData.fullName,
+                avatar: userData.avatar
+            },
+            type: req.body.type,
+            postid: new ObjectId(req.body.postid)
+        });
+        newLike.save(function (err) {
+            if (err) throw err;
+            res.send({status: 'success'});
+        });
+    } else {
+        var query = {postid: new ObjectId(req.body.postid)};
+        var updateInfo = {
+            $set: {
+                type: req.body.type
+            }
+        };
+        Likes.updateMany(query, updateInfo, function (err, result) {
+            if (err) throw err;
+            res.send({status: 'success'});
+        });
+    }
+});
+router.post('/deleteReaction', async function (req, res, next) {
+    Likes.deleteMany({
+        'user.userID': new ObjectId(req.session.userID),
+        postid: new ObjectId(req.body.postid),
+        type: req.body.type
+    }, function (err){
+        res.send({status: 'success'});
+    });
+});
 
-// router.get('/testing', function(req, res, next) {
-//   // var newLike = new Likes({
-//   //   userid: "000000000",
-//   //   postid: new ObjectId("60c3702625a3512a24cc4584")
-//   // });
-//   // newLike.save(function (err) {
-//   //   if (err) throw err;
-//   //   res.send();
-//   // });
-//   // var newPost = new Posts({
-//   //   text: "this is the 3rd test"
-//   // });
-//   // newPost.save(function (err) {
-//   //   if (err) throw err;
-//   //   res.send();
-//   // });
-// });
-// router.get('/likes', function(req, res, next) {
-//   Posts.aggregate([
-//     {
-//       $lookup: {
-//         from: "likes",
-//         localField: "_id",    // field in the orders collection
-//         foreignField: "postid",  // field in the items collection
-//         as: "likes"
-//       }
-//     },
-//     {
-//       $project: {
-//         "text": "$text",
-//         "count": {"$size": "$likes.userid"},
-//         "isLiked": { "$in": ["0000000050", "$likes.userid"] },
-//         "mylike": {$filter: {
-//             input: '$likes',
-//             as: 'mylike',
-//             cond: {$eq: ['$$mylike.userid', '0000000050']}
-//           }},
-//       }
-//     }
-//   ], function (err, posts) {
-//     res.send(posts);
-//   });
-// });
+router.get('/posts', function (req, res, next) {
+    Posts.aggregate([
+        {
+            $lookup: {
+                from: "likes",
+                localField: "_id",    // field in the orders collection
+                foreignField: "postid",  // field in the items collection
+                as: "likes"
+            }
+        },
+        {
+            $project: {
+                "postText": "$text",
+                "createdDate": "$createdDate",
+                "authorName": "$author.fullName",
+                "authorUsername": "$author.username",
+                "authorAvatar": "$author.avatar",
+                "countReactions": {"$size": "$likes"},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.user.userID"]},
+                "myReaction": {
+                    $filter: {
+                        input: '$likes',
+                        as: 'myReaction',
+                        cond: {$eq: ['$$myReaction.user.userID', new ObjectId(req.session.userID)]}
+                    }
+                },
+            }
+        },
+    ], function (err, posts) {
+        res.send(posts);
+    });
+});
 
 module.exports = router;

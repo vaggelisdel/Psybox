@@ -34,7 +34,8 @@ passport.use('facebookUser',new FacebookStrategy({
             });
             newUser.save(function (err) {
                 if (err) throw err;
-                return done(null, profile);
+                var newProfile = {...profile, userID: newUser._id};
+                return done(null, newProfile);
             });
         }else{
             if(user.active === false){

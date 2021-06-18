@@ -3,15 +3,17 @@ const Schema = mongoose.Schema;
 
 const LikesSchema = new Schema(
     {
-        userid: {
-            type: String
+        user: {
+            type: Object,
         },
         type: {
-            type: String
+            type: String,
+            trim: true,
         },
         postid: {
             type: Schema.Types.ObjectId,
-            ref: "Posts"
+            ref: "Posts",
+            trim: true,
         },
 
     }

@@ -40,7 +40,8 @@ passport.use('googleUser', new GoogleStrategy({
             if(user.active === false){
                 return done(null, {error: "inactive"});
             }else{
-                return done(null, profile);
+                var newProfile = {...profile, userID: user._id};
+                return done(null, newProfile);
             }
         }
     }

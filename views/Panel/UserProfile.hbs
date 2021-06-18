@@ -71,9 +71,9 @@
                     </div>
                     <div class="post-body">
                         <div class="post-no-thumbnail">
-                            <p>
-                                {{this.postText}}
-                            </p>
+                            {{#each this.postText}}
+                                <p class="mb-0">{{this}}</p>
+                            {{/each}}
                             {{#if this.postImage}}
                                 <div class="post-img">
                                     <img src="{{this.postImage}}" alt="Post">

@@ -75,6 +75,9 @@ router.get('/feed', authUser, async function (req, res, next) {
                     }
                 },
             }
+        },
+        {
+            $sort: {createdDate: -1}
         }
     ]);
     res.render('Panel/Feed.hbs', {
@@ -117,6 +120,9 @@ router.get('/timeline', authUser, async function (req, res, next) {
                     }
                 },
             }
+        },
+        {
+            $sort: {createdDate: -1}
         }
     ]);
     res.render('Panel/Timeline.hbs', {
@@ -169,6 +175,9 @@ router.get('/timeline/:username', async function (req, res, next) {
                         }
                     },
                 }
+            },
+            {
+                $sort: {createdDate: -1}
             }
         ]);
         res.render('Panel/UserProfile.hbs', {

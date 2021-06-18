@@ -16,13 +16,17 @@
                     <div class="item-subtitle">@{{userInfo.username}}</div>
                     <ul class="item-social">
                         {{#if userInfo.facebook}}
-                            <li><a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}" class="bg-fb"><i class="icofont-facebook"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"
+                                   class="bg-fb"><i class="icofont-facebook"></i></a></li>{{/if}}
                         {{#if userInfo.twitter}}
-                            <li><a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}" class="bg-twitter"><i class="icofont-twitter"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"
+                                   class="bg-twitter"><i class="icofont-twitter"></i></a></li>{{/if}}
                         {{#if userInfo.instagram}}
-                            <li><a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}" class="bg-dribble"><i class="icofont-instagram"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"
+                                   class="bg-dribble"><i class="icofont-instagram"></i></a></li>{{/if}}
                         {{#if userInfo.youtube}}
-                            <li><a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}" class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
+                            <li><a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"
+                                   class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
                     </ul>
                     <ul class="user-meta">
                         <li>Posts: <span>30</span></li>
@@ -51,7 +55,7 @@
                             </svg>&nbsp; What are your thinking?</a>
                     </li>
                 </ul>
-                <form action="/community/createPost" method="post">
+                <form action="/community/createPost" method="post" enctype="multipart/form-data">
                     <div class="tab-content">
                         <div class="tab-pane fade show active grow-wrap" id="post-media" role="tabpanel">
                         <textarea name="textPost" id="status-input2" class="form-control textarea"
@@ -68,7 +72,8 @@
                     <div class="post-footer">
                         <div class="insert-btn">
                             <div class="imageinput-edit">
-                                <input type='file' hidden id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                <input type='file' hidden id="imageUpload" name="imageUpload"
+                                       accept=".png, .jpg, .jpeg"/>
                                 <div class="imageuploadbox">
                                     <div class="icon psyboximg">
                                         <label for="imageUpload">
@@ -120,6 +125,11 @@
                             <p>
                                 {{this.postText}}
                             </p>
+                            {{#if this.postImage}}
+                                <div class="post-img">
+                                    <img src="{{this.postImage}}" alt="Post">
+                                </div>
+                            {{/if}}
                         </div>
                         <div class="post-meta-wrap">
                             <div class="post-meta openModalPost" data-postid="{{this._id}}">
@@ -135,7 +145,9 @@
                         <ul>
                             <li class="post-react">
                                 {{#if this.isReaction}}
-                                    <a id="postid_{{this._id}}" class="reacted" data-current-reaction="{{this.myReaction.0.type}}" style="background: var(--{{this.myReaction.0.type}}-color)"
+                                    <a id="postid_{{this._id}}" class="reacted"
+                                       data-current-reaction="{{this.myReaction.0.type}}"
+                                       style="background: var(--{{this.myReaction.0.type}}-color)"
                                        href="javascript:void(0)">
                                         <img class="reactionbtn"
                                              src="/media/reactions/{{this.myReaction.0.type}}.svg"
@@ -211,10 +223,18 @@
                             <li><span>Web:</span><a href="#">{{userInfo.website}}</a></li>{{/if}}
                         <li class="social-share"><span>Social:</span>
                             <div class="social-icon">
-                                {{#if userInfo.facebook}}<a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"><i class="icofont-facebook"></i></a>{{/if}}
-                                {{#if userInfo.twitter}}<a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"><i class="icofont-twitter"></i></a>{{/if}}
-                                {{#if userInfo.instagram}}<a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"><i class="icofont-instagram"></i></a>{{/if}}
-                                {{#if userInfo.youtube}}<a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"><i class="icofont-youtube"></i></a>{{/if}}
+                                {{#if userInfo.facebook}}
+                                    <a target="_blank" href="https://www.facebook.com/{{userInfo.facebook}}"><i
+                                            class="icofont-facebook"></i></a>{{/if}}
+                                {{#if userInfo.twitter}}
+                                    <a target="_blank" href="https://www.twitter.com/{{userInfo.twitter}}"><i
+                                            class="icofont-twitter"></i></a>{{/if}}
+                                {{#if userInfo.instagram}}
+                                    <a target="_blank" href="https://www.instagram.com/{{userInfo.instagram}}"><i
+                                            class="icofont-instagram"></i></a>{{/if}}
+                                {{#if userInfo.youtube}}
+                                    <a target="_blank" href="https://www.youtube.com/channel/{{userInfo.youtube}}"><i
+                                            class="icofont-youtube"></i></a>{{/if}}
                             </div>
                         </li>
                     </ul>

@@ -7629,6 +7629,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-body .post-img img {
     border-radius: 3px;
+    width: 100%;
 }
 
 .post-view .post-body .post-meta-wrap {

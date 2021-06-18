@@ -74,6 +74,11 @@
                             <p>
                                 {{this.postText}}
                             </p>
+                            {{#if this.postImage}}
+                                <div class="post-img">
+                                    <img src="{{this.postImage}}" alt="Post">
+                                </div>
+                            {{/if}}
                         </div>
                         <div class="post-meta-wrap">
                             <div class="post-meta openModalPost" data-postid="{{this._id}}">

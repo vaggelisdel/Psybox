@@ -34,7 +34,7 @@
                             </svg>&nbsp; What are your thinking?</a>
                     </li>
                 </ul>
-                <form action="/community/createPost" method="post">
+                <form action="/community/createPost" method="post" enctype="multipart/form-data">
                     <div class="tab-content">
                         <div class="tab-pane fade show active grow-wrap" id="post-media" role="tabpanel">
                         <textarea name="textPost" id="status-input2" class="form-control textarea"
@@ -51,7 +51,8 @@
                     <div class="post-footer">
                         <div class="insert-btn">
                             <div class="imageinput-edit">
-                                <input type='file' hidden id="imageUpload" accept=".png, .jpg, .jpeg"/>
+                                <input type='file' hidden id="imageUpload" name="imageUpload"
+                                       accept=".png, .jpg, .jpeg"/>
                                 <div class="imageuploadbox">
                                     <div class="icon psyboximg">
                                         <label for="imageUpload">
@@ -103,6 +104,11 @@
                             <p>
                                 {{this.postText}}
                             </p>
+                            {{#if this.postImage}}
+                                <div class="post-img">
+                                    <img src="{{this.postImage}}" alt="Post">
+                                </div>
+                            {{/if}}
                         </div>
                         <div class="post-meta-wrap">
                             <div class="post-meta openModalPost" data-postid="{{this._id}}">

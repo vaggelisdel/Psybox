@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const LikesSchema = new Schema(
     {
-        user: {
-            type: Object,
+        userID: {
+            type: String,
+            trim: true,
         },
         type: {
             type: String,

@@ -36,10 +36,11 @@ router.get('/google/user/callback', passport.authenticate('googleUser', {failure
         req.logout();
         res.redirect("/login");
     } else {
+        console.log(req.user);
         req.session.authUser = true;
         req.session.fullName = req.user.displayName
         req.session.firstName = req.user.name.givenName
-        req.session.avatar = req.user._json.picture
+        req.session.avatar = req.user.photos[0].value
         req.session.email = req.user._json.email
         req.session.userID = req.user.userID
         res.redirect("/community");

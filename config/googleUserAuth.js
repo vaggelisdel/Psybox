@@ -26,7 +26,7 @@ passport.use('googleUser', new GoogleStrategy({
                 firstName: profile.name.givenName,
                 email: profile._json.email,
                 username: profile._json.email.split("@")[0],
-                avatar: profile._json.picture,
+                avatar: profile.photos[0].value,
                 method: profile.provider,
                 locale: profile._json.locale,
                 active: true,

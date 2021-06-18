@@ -96,22 +96,21 @@
                     <div class="post-footer">
                         <ul>
                             {{#if session.authUser}}
-                                <li class="post-react">
-                                    {{#if this.isReaction}}
-                                        <a id="postid_{{this._id}}" class="reacted"
-                                           data-current-reaction="{{this.myReaction.0.type}}"
-                                           style="background: var(--{{this.myReaction.0.type}}-color)"
-                                           href="javascript:void(0)">
-                                            <img class="reactionbtn"
-                                                 src="/media/reactions/{{this.myReaction.0.type}}.svg"
-                                                 alt="Wink">&nbsp;
-                                            <span>{{this.myReaction.0.type}}!</span>
-                                        </a>
-                                    {{else}}
-                                        <a id="postid_{{this._id}}" href="javascript:void(0)"><img class="reactionbtn"
-                                                                                                   src="/media/reactions/Wink.svg"
-                                                                                                   alt="Wink">&nbsp;<span>React!</span></a>
-                                    {{/if}}
+                            <li class="post-react">
+                                {{#if this.isReaction}}
+                                    <a id="postid_{{this._id}}" class="reacted"
+                                       data-current-reaction="{{this.myReaction.0.type}}"
+                                       style="background: var(--{{this.myReaction.0.type}}-color)"
+                                       href="javascript:void(0)">
+                                        <img class="reactionbtn"
+                                             src="/media/reactions/{{this.myReaction.0.type}}.svg"
+                                             alt="Wink">&nbsp;
+                                        <span>{{this.myReaction.0.type}}!</span>
+                                    </a>
+                                {{else}}
+                                    <a id="postid_{{this._id}}" href="javascript:void(0)"><img class="reactionbtn"
+                                                                                               src="/media/reactions/Wink.svg"
+                                                                                               alt="Wink">&nbsp;<span>React!</span></a>
                                     <ul class="react-list">
                                         <li><a href="javascript:void(0)" data-reaction="Wink"
                                                data-postid="{{this._id}}"><img src="/media/reactions/Wink.svg"
@@ -132,6 +131,8 @@
                                         </li>
                                     </ul>
                                 </li>
+                                {{/if}}
+
                                 <li><a href="javascript:void(0)" class="openModalPost" data-postid="1"><i
                                         class="icofont-comment"></i>Comment</a></li>
                             {{/if}}

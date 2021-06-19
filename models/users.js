@@ -84,7 +84,7 @@ const userSchema = new Schema(
         },
         registerDate: {
             type: String,
-            default: () => moment().tz("Europe/Athens").format("YYYY-MM-DD HH:mm:ss")
+            default: () => moment().tz("Europe/Athens").locale("el").format("DD MMM YYYY HH:mm")
         }
     }
 );

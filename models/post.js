@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-var moment = require('moment');
+var moment = require('moment-timezone');
 
 const PostsSchema = new Schema(
     {
@@ -20,8 +20,7 @@ const PostsSchema = new Schema(
         },
         createdDate: {
             type: String,
-            // default: () => moment().tz("Europe/Athens").format("DD MMM YYYY h:mm a")
-            default: () => moment().locale("el").format('DD MMM YYYY HH:mm')
+            default: () => moment().tz("Europe/Athens").locale("el").format("DD MMM YYYY HH:mm")
         }
     }
 );

@@ -130,7 +130,8 @@ router.get('/timeline', authUser, async function (req, res, next) {
         title: 'Timeline',
         Timeline: true,
         userInfo: userInfo,
-        posts: feed
+        posts: feed,
+        totalPosts: feed.length
     });
 });
 router.get('/timeline/:username', async function (req, res, next) {
@@ -185,7 +186,8 @@ router.get('/timeline/:username', async function (req, res, next) {
             title: userInfo.fullName,
             Timeline: true,
             userInfo: userInfo,
-            posts: feed
+            posts: feed,
+            totalPosts: feed.length
         });
     }
 });

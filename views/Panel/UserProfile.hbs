@@ -29,7 +29,7 @@
                                    class="bg-youtube"><i class="icofont-brand-youtube"></i></a></li>{{/if}}
                     </ul>
                     <ul class="user-meta">
-                        <li>Posts: <span>30</span></li>
+                        <li>Posts: <span>{{totalPosts}}</span></li>
                     </ul>
                 </div>
             </div>
@@ -84,11 +84,11 @@
                             {{/if}}
                         </div>
                         <div class="post-meta-wrap">
-                            <div class="post-meta openModalPost" data-postid="{{this._id}}">
-                                <div class="meta-text"><span
+                            <div class="post-meta" data-postid="{{this._id}}">
+                                <div class="meta-text openModalReactions"><span
                                         id="reactions_count_{{this._id}}">{{this.countReactions}}</span> Reactions
                                 </div>
-                                <div class="meta-text">2 Comments</div>
+                                <div class="meta-text openModalComments">2 Comments</div>
                                 <div class="meta-text">5 Share</div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="javascript:void(0)" class="openModalPost" data-postid="1"><i
+                                <li><a href="javascript:void(0)" class="openModalComments" data-postid="1"><i
                                         class="icofont-comment"></i>Comment</a></li>
                             {{/if}}
                             <li class="post-share">
@@ -202,278 +202,435 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal Comments -->
 <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <button type="button" class="btn close_modal" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="modal-post">
-                    <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block">
-                            <div class="block-box post-view">
-                                <div class="post-header">
-                                    <div class="media">
-                                        <div class="user-img">
-                                            <img src="/media/figure/chat_10.jpg" alt="Aahat">
-                                        </div>
-                                        <div class="media-body">
-                                            <div class="user-title"><a href="/community/timeline">Aahat Akter</a></div>
-                                            <ul class="entry-meta">
-
-                                                <li class="meta-time">2 mins ago</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <button class="dropdown-toggle" type="button" data-toggle="dropdown"
-                                                aria-expanded="false">
-                                            ...
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Close</a>
-                                            <a class="dropdown-item" href="#">Edit</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
+                    <div class="">
+                        <div class="post-view">
+                            <div class="post-comment">
+                                <div class="text-center">
+                                    <p>Comments (20)</p>
                                 </div>
-                                <div class="post-body">
-                                    <p>I have great news to share with you all! I've been officially made a game
-                                        streaming verified
-                                        partner by Streamy http://radiustheme.com/ What does this mean? I'll be
-                                        uploading new content
-                                        every day, improving the quality and I'm gonna have access to games a month
-                                        before the official
-                                        release. <i class="icofont-wink-smile"></i></p>
-                                    <div class="post-img">
-                                        <img src="/media/figure/post_1.jpg" alt="Post">
-                                    </div>
+                                <ul class="comment-list">
+                                    <li class="main-comments">
+                                        <div class="each-comment">
+                                            <div class="post-header">
+                                                <div class="media">
+                                                    <div class="user-img">
+                                                        <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="user-title"><a href="/community/timeline">Aahat
+                                                            Akter</a>
+                                                        </div>
+                                                        <ul class="entry-meta">
+                                                            <li class="meta-time">5 mins ago</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                        ...
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Close</a>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-body">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium der
+                                                    doloremque laudantiumSed ut perspicia tisery..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="main-comments">
+                                        <div class="each-comment">
+                                            <div class="post-header">
+                                                <div class="media">
+                                                    <div class="user-img">
+                                                        <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="user-title"><a href="/community/timeline">Aahat
+                                                            Akter</a>
+                                                        </div>
+                                                        <ul class="entry-meta">
+                                                            <li class="meta-time">5 mins ago</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                        ...
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Close</a>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-body">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium der
+                                                    doloremque laudantiumSed ut perspicia tisery..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="main-comments">
+                                        <div class="each-comment">
+                                            <div class="post-header">
+                                                <div class="media">
+                                                    <div class="user-img">
+                                                        <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="user-title"><a href="/community/timeline">Aahat
+                                                            Akter</a>
+                                                        </div>
+                                                        <ul class="entry-meta">
+                                                            <li class="meta-time">5 mins ago</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                        ...
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Close</a>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-body">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium der
+                                                    doloremque laudantiumSed ut perspicia tisery..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="main-comments">
+                                        <div class="each-comment">
+                                            <div class="post-header">
+                                                <div class="media">
+                                                    <div class="user-img">
+                                                        <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="user-title"><a href="/community/timeline">Aahat
+                                                            Akter</a>
+                                                        </div>
+                                                        <ul class="entry-meta">
+                                                            <li class="meta-time">5 mins ago</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                        ...
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Close</a>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-body">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium der
+                                                    doloremque laudantiumSed ut perspicia tisery..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="main-comments">
+                                        <div class="each-comment">
+                                            <div class="post-header">
+                                                <div class="media">
+                                                    <div class="user-img">
+                                                        <img src="/media/figure/chat_14.jpg" alt="Aahat">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <div class="user-title"><a href="/community/timeline">Aahat
+                                                            Akter</a>
+                                                        </div>
+                                                        <ul class="entry-meta">
+                                                            <li class="meta-time">5 mins ago</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdown">
+                                                    <button class="dropdown-toggle" type="button"
+                                                            data-toggle="dropdown"
+                                                            aria-expanded="false">
+                                                        ...
+                                                    </button>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="#">Close</a>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="post-body">
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                                                    accusantium der
+                                                    doloremque laudantiumSed ut perspicia tisery..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="load-more-btn">
+                                    <a href="#" class="item-btn">Load More Comments <span>4+</span></a>
                                 </div>
-                                <div class="post-footer">
-                                    <ul>
-                                        <li class="post-react">
-                                            <img class="reactionbtn" src="/media/reactions/Wink.svg"
-                                                 alt="Wink"><span>22</span>
-                                            <img class="reactionbtn" src="/media/reactions/Hearts.svg"
-                                                 alt="Hearts"><span>16</span>
-                                            <img class="reactionbtn" src="/media/reactions/Amazed.svg"
-                                                 alt="Amazed"><span>4</span>
-                                        </li>
-                                    </ul>
+                                <div class="comment-reply">
+                                    <div class="user-img">
+                                        <img src="/media/figure/chat_15.jpg" alt="Aahat">
+                                    </div>
+                                    <div class="input-box">
+                                        <input type="text" name="comment" class="form-control"
+                                               placeholder="Your Reply....">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-sm-12">
-                            <div class="post-view text-center d-block d-lg-none">
-                                <div class="post-footer">
-                                    <ul>
-                                        <li class="post-react">
-                                            <img class="reactionbtn" src="/media/reactions/Wink.svg"
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Reactions -->
+<div class="modal fade" id="reactionModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn close_modal" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-post">
+                    <div class="">
+                        <div class="post-view">
+                            <div class="panel with-nav-tabs panel-default">
+                                <div class="panel-heading modal-reactions mt-3 mb-3">
+                                    <ul class="nav nav-tabs">
+                                        <li class="col text-center"><a href="#tab1default" class="active" data-toggle="tab">
+                                            <img class="reactionbtn-modal" src="/media/reactions/Wink.svg"
                                                  alt="Wink"><span>22</span>
-                                            <img class="reactionbtn" src="/media/reactions/Hearts.svg"
-                                                 alt="Hearts"><span>16</span>
-                                            <img class="reactionbtn" src="/media/reactions/Amazed.svg"
-                                                 alt="Amazed"><span>4</span>
-                                        </li>
+                                        </a></li>
+                                        <li class="col text-center"><a href="#tab2default" data-toggle="tab">
+                                            <img class="reactionbtn-modal" src="/media/reactions/Hearts.svg"
+                                                 alt="Hearts"><span>22</span>
+                                        </a></li>
+                                        <li class="col text-center"><a href="#tab3default" data-toggle="tab">
+                                            <img class="reactionbtn-modal" src="/media/reactions/Tears.svg"
+                                                 alt="Tears"><span>22</span>
+                                        </a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="post-view">
-                                <div class="post-comment">
-                                    <ul class="comment-list">
-                                        <li class="main-comments">
-                                            <div class="each-comment">
-                                                <div class="post-header">
-                                                    <div class="media">
-                                                        <div class="user-img">
-                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="user-title"><a href="/community/timeline">Aahat
-                                                                Akter</a>
-                                                            </div>
-                                                            <ul class="entry-meta">
-                                                                <li class="meta-time">5 mins ago</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="dropdown-toggle" type="button"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Close</a>
-                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
+                                <div class="panel-body modal-reaction-memebers">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active show" id="tab1default">
+                                            <div class="widget widget-memebers">
+                                                <div class="widget-heading">
+                                                    <h3 class="widget-title">Wink</h3>
                                                 </div>
-                                                <div class="post-body">
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                        accusantium der
-                                                        doloremque laudantiumSed ut perspicia tisery..</p>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
+                                                        <div class="members-list">
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </li>
-                                        <li class="main-comments">
-                                            <div class="each-comment">
-                                                <div class="post-header">
-                                                    <div class="media">
-                                                        <div class="user-img">
-                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="user-title"><a href="/community/timeline">Aahat
-                                                                Akter</a>
-                                                            </div>
-                                                            <ul class="entry-meta">
-                                                                <li class="meta-time">5 mins ago</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="dropdown-toggle" type="button"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Close</a>
-                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-body">
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                        accusantium der
-                                                        doloremque laudantiumSed ut perspicia tisery..</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="main-comments">
-                                            <div class="each-comment">
-                                                <div class="post-header">
-                                                    <div class="media">
-                                                        <div class="user-img">
-                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="user-title"><a href="/community/timeline">Aahat
-                                                                Akter</a>
-                                                            </div>
-                                                            <ul class="entry-meta">
-                                                                <li class="meta-time">5 mins ago</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="dropdown-toggle" type="button"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Close</a>
-                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-body">
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                        accusantium der
-                                                        doloremque laudantiumSed ut perspicia tisery..</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="main-comments">
-                                            <div class="each-comment">
-                                                <div class="post-header">
-                                                    <div class="media">
-                                                        <div class="user-img">
-                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="user-title"><a href="/community/timeline">Aahat
-                                                                Akter</a>
-                                                            </div>
-                                                            <ul class="entry-meta">
-                                                                <li class="meta-time">5 mins ago</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="dropdown-toggle" type="button"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Close</a>
-                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-body">
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                        accusantium der
-                                                        doloremque laudantiumSed ut perspicia tisery..</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="main-comments">
-                                            <div class="each-comment">
-                                                <div class="post-header">
-                                                    <div class="media">
-                                                        <div class="user-img">
-                                                            <img src="/media/figure/chat_14.jpg" alt="Aahat">
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div class="user-title"><a href="/community/timeline">Aahat
-                                                                Akter</a>
-                                                            </div>
-                                                            <ul class="entry-meta">
-                                                                <li class="meta-time">5 mins ago</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown">
-                                                        <button class="dropdown-toggle" type="button"
-                                                                data-toggle="dropdown"
-                                                                aria-expanded="false">
-                                                            ...
-                                                        </button>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#">Close</a>
-                                                            <a class="dropdown-item" href="#">Edit</a>
-                                                            <a class="dropdown-item" href="#">Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="post-body">
-                                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                                        accusantium der
-                                                        doloremque laudantiumSed ut perspicia tisery..</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="load-more-btn">
-                                        <a href="#" class="item-btn">Load More Comments <span>4+</span></a>
-                                    </div>
-                                    <div class="comment-reply">
-                                        <div class="user-img">
-                                            <img src="/media/figure/chat_15.jpg" alt="Aahat">
                                         </div>
-                                        <div class="input-box">
-                                            <input type="text" name="comment" class="form-control"
-                                                   placeholder="Your Reply....">
+                                        <div class="tab-pane fade" id="tab2default">
+                                            <div class="widget widget-memebers">
+                                                <div class="widget-heading">
+                                                    <h3 class="widget-title">Hearts</h3>
+                                                </div>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
+                                                        <div class="members-list">
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab3default">
+                                            <div class="widget widget-memebers">
+                                                <div class="widget-heading">
+                                                    <h3 class="widget-title">Tears</h3>
+                                                </div>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
+                                                        <div class="members-list">
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="media">
+                                                                <div class="item-img">
+                                                                    <a href="/community/timeline/@delliosvaggelis">
+                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body">
+                                                                    <h4 class="item-title"><a
+                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
+                                                                    <div class="item-username">@delliosvaggelis</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -487,9 +644,12 @@
 </div>
 
 <script>
-    $(".openModalPost").click(function () {
+    $(".openModalComments").click(function () {
         // alert($(this).attr("data-postid"));
         $("#postModal").modal("show");
+    });
+    $(".openModalReactions").click(function () {
+        $("#reactionModal").modal("show");
     });
 
     function readURL(input) {

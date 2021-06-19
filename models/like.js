@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var moment = require('moment-timezone');
 
 const LikesSchema = new Schema(
     {
@@ -16,7 +17,10 @@ const LikesSchema = new Schema(
             ref: "Posts",
             trim: true,
         },
-
+        createdDate:{
+            type: String,
+            default: () => moment().tz("Europe/Athens").format("YYYY-MM-DD HH:mm:ss")
+        }
     }
 );
 

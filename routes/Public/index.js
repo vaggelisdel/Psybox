@@ -32,7 +32,7 @@ router.get('/google/user', skipRouter, passport.authenticate('googleUser', {
 }));
 router.get('/google/user/callback', passport.authenticate('googleUser', {failureRedirect: '/error'}), function (req, res) {
     if (req.user.error === "inactive") {
-        req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος');
+        req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος. Ελέγξτε τα email σας.');
         req.logout();
         res.redirect("/login");
     } else {
@@ -54,7 +54,7 @@ router.get('/facebook/user', skipRouter, passport.authenticate('facebookUser', {
 }));
 router.get('/facebook/user/callback', passport.authenticate('facebookUser', {failureRedirect: '/error'}), function (req, res) {
     if (req.user.error === "inactive") {
-        req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος');
+        req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος. Ελέγξτε τα email σας.');
         req.logout();
         res.redirect("/login");
     } else {
@@ -191,7 +191,7 @@ router.post('/login', async function (req, res, next) {
                 }
             });
         } else {
-            req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος');
+            req.flash('credentialsError', 'Ο λογαριασμός δεν είναι ενεργοποιημένος. Ελέγξτε τα email σας.');
             res.redirect("/login");
         }
     } else {

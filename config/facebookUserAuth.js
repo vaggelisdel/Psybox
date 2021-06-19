@@ -39,8 +39,10 @@ passport.use('facebookUser',new FacebookStrategy({
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});
-            }else{
+            }else if(user.method !== "facebook"){
                 return done(null, {...user, exist: true});
+            }else{
+                return done(null, user);
             }
         }
     }

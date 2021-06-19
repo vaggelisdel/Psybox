@@ -38,8 +38,10 @@ passport.use('googleUser', new GoogleStrategy({
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});
-            }else{
+            }else if(user.method !== "google"){
                 return done(null, {...user, exist: true});
+            }else{
+                return done(null, user);
             }
         }
     }

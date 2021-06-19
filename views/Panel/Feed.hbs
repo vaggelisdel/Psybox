@@ -520,6 +520,8 @@
         $("#postModal").modal("show");
     });
     $(".openModalReactions").click(function () {
+        $("#reactionModal #likes").empty();
+        $("#reactionModal #accountReacted").empty();
         $("#reactionModal").modal("show");
         $.ajax({
             url: '/community/getReactions/'+ $(this).attr("data-postid"),

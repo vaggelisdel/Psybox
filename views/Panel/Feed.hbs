@@ -525,20 +525,25 @@
             url: '/community/getReactions/'+ $(this).attr("data-postid"),
             method: "GET",
             success: function (data) {
+                var tabIndex = 0;
                 $.each(data, function(i, item) {
-                    // var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
-                    // $("#likes").append(likeBox);
-                    // var tab = "<div class='tab-pane fade' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ this._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade' id='newest-member' role='tabpanel'> <div class='members-list' id='"+ item._id +"memberList'> </div> </div> </div> </div> </div>";
-                    // $("#accountReacted").append(tab);
-                    var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
-                    $("#likes").append(likeBox);
-                    var tab = "<div class='tab-pane fade' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>Hearts</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
-                    $("#accountReacted").append(tab);
+                    if(tabIndex == 0){
+                        var likeBox = "<li class='col text-center'><a class='active' href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
+                        $("#likes").append(likeBox);
+                        var tab = "<div class='tab-pane fade active show' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>Hearts</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
+                        $("#accountReacted").append(tab);
+                    }else{
+                        var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
+                        $("#likes").append(likeBox);
+                        var tab = "<div class='tab-pane fade' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
+                        $("#accountReacted").append(tab);
+                    }
 
                     $.each(item.userData, function(i, user) {
                         var x = "<div class='media'> <div class='item-img'> <a href='/community/timeline/@"+ user.username +"'> <img src='"+ user.avatar +"' alt=''> </a> </div> <div class='media-body'> <h4 class='item-title'><a href='/community/timeline/@"+ user.username +"'>"+ user.fullName +"</a></h4> <div class='item-username'>@"+ user.username +"</div> </div> </div>";
                         $('#memberList'+ item._id).append(x);
                     })
+                    tabIndex++;
                 });
             }
         })

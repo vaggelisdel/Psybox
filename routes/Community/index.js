@@ -66,12 +66,12 @@ router.get('/feed', authUser, async function (req, res, next) {
                 "authorUsername": "$author.username",
                 "authorAvatar": "$author.avatar",
                 "countReactions": {"$size": "$likes"},
-                "isReaction": {"$in": [req.session.userID, "$likes.userID"]},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.userID"]},
                 "myReaction": {
                     $filter: {
                         input: '$likes',
                         as: 'myReaction',
-                        cond: {$eq: ['$$myReaction.userID', req.session.userID]}
+                        cond: {$eq: ['$$myReaction.userID', new ObjectId(req.session.userID)]}
                     }
                 },
             }
@@ -112,12 +112,12 @@ router.get('/timeline', authUser, async function (req, res, next) {
                 "authorUsername": "$author.username",
                 "authorAvatar": "$author.avatar",
                 "countReactions": {"$size": "$likes"},
-                "isReaction": {"$in": [req.session.userID, "$likes.userID"]},
+                "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.userID"]},
                 "myReaction": {
                     $filter: {
                         input: '$likes',
                         as: 'myReaction',
-                        cond: {$eq: ['$$myReaction.userID', req.session.userID]}
+                        cond: {$eq: ['$$myReaction.userID', new ObjectId(req.session.userID)]}
                     }
                 },
             }
@@ -161,19 +161,12 @@ router.get('/timeline/:username', async function (req, res, next) {
                     "authorUsername": "$author.username",
                     "authorAvatar": "$author.avatar",
                     "countReactions": {"$size": "$likes"},
-                    "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.user.userID"]},
+                    "isReaction": {"$in": [new ObjectId(req.session.userID), "$likes.userID"]},
                     "myReaction": {
                         $filter: {
                             input: '$likes',
                             as: 'myReaction',
-                            cond: {$eq: ['$$myReaction.user.userID', new ObjectId(req.session.userID)]}
-                        }
-                    },"isReaction": {"$in": [req.session.userID, "$likes.userID"]},
-                    "myReaction": {
-                        $filter: {
-                            input: '$likes',
-                            as: 'myReaction',
-                            cond: {$eq: ['$$myReaction.userID', req.session.userID]}
+                            cond: {$eq: ['$$myReaction.userID', new ObjectId(req.session.userID)]}
                         }
                     },
                 }
@@ -220,6 +213,38 @@ router.get('/delete-account/:id', authUser, async function (req, res, next) {
             res.redirect("/logout");
         });
     });
+});
+router.get('/getReactions/:id', authUser, async function (req, res, next) {
+    var likes = await Likes.aggregate([
+        {
+            $match: {postid: new ObjectId(req.params.id)}
+        },
+        {
+            $lookup: {
+                from: "users",
+                localField: "userID",    // field in the orders collection
+                foreignField: "_id",  // field in the items collection
+                as: "userData"
+            }
+        },
+        {
+            $group: {
+                _id: "$type",
+                totalReactions: {$sum : 1},
+                userData: {
+                    $push: {
+                        fullName: {$first: "$userData.fullName"},
+                        username: {$first: "$userData.username"},
+                        avatar: {$first: "$userData.avatar"},
+                    }
+                }
+            }
+        },
+        {
+            $sort: {totalReactions: -1}
+        }
+    ]);
+    res.send(likes);
 });
 
 router.post('/update-personal-info', function (req, res, next) {
@@ -416,7 +441,7 @@ router.post('/createReaction', async function (req, res, next) {
     });
     if (!like) {
         var newLike = new Likes({
-            userID: req.session.userID,
+            userID: new ObjectId(req.session.userID),
             type: req.body.type,
             postid: new ObjectId(req.body.postid)
         });
@@ -439,12 +464,14 @@ router.post('/createReaction', async function (req, res, next) {
 });
 router.post('/deleteReaction', async function (req, res, next) {
     Likes.deleteMany({
-        userID: req.session.userID,
+        userID: new ObjectId( req.session.userID),
         postid: new ObjectId(req.body.postid),
         type: req.body.type
     }, function (err){
         res.send({status: 'success'});
     });
 });
+
+
 
 module.exports = router;

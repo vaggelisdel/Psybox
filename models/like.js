@@ -5,8 +5,7 @@ var moment = require('moment-timezone');
 const LikesSchema = new Schema(
     {
         userID: {
-            type: String,
-            trim: true,
+            type: Schema.Types.ObjectId
         },
         type: {
             type: String,

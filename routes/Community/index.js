@@ -3,6 +3,7 @@ var router = express.Router();
 var Users = require("../../models/users");
 var Likes = require("../../models/like");
 var DeletedUsers = require("../../models/deleted_users");
+var DeletedPosts = require("../../models/deleted_posts");
 var Posts = require("../../models/post");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -214,6 +215,18 @@ router.get('/delete-account/:id', authUser, async function (req, res, next) {
         if (err) throw err;
         Users.deleteMany({_id: new ObjectId(req.params.id)}, function (err, resp) {
             res.redirect("/logout");
+        });
+    });
+});
+router.get('/delete-post/:id', authUser, async function (req, res, next) {
+    var postData = await Posts.findOne({_id: new ObjectId(req.params.id)});
+    var newPost = new DeletedPosts({
+        postData: postData
+    });
+    newPost.save(function (err) {
+        if (err) throw err;
+        Posts.deleteMany({_id: new ObjectId(req.params.id)}, function (err, resp) {
+            res.redirect("/community/feed");
         });
     });
 });

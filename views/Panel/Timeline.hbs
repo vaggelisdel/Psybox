@@ -115,7 +115,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 {{#equal this.authorUserID ../session.userID}}
-                                    <button type="button" class="dropdown-item" value="{{this._id}}">Delete</button>
+                                    <button type="button" class="dropdown-item deletePostBtn" value="{{this._id}}">Delete</button>
                                 {{/equal}}
                                 <button type="button" class="dropdown-item" value="{{this._id}}">Report</button>
                             </div>
@@ -548,3 +548,11 @@
     });
 </script>
 <script src="/javascripts/reactionSystem.js"></script>
+<script>
+    $(".deletePostBtn").click(function () {
+                if (confirm("Είστε σίγουρος ότι θέλετε να διαγράψετε αυτή τη δημοσίευση;")) {
+                    window.location.href = "/community/delete-post/" + this.value;
+                }
+            }
+    );
+</script>

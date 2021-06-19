@@ -19,7 +19,7 @@ passport.use('facebookUser',new FacebookStrategy({
         proxy: true
     },
     async function (accessToken, refreshToken, profile, done) {
-        var user = await Users.findOne({email: profile._json.email, socialID: profile.id});
+        var user = await Users.findOne({email: profile._json.email});
         if (!user) {
             var newUser = new Users({
                 socialID: profile.id,
@@ -34,15 +34,13 @@ passport.use('facebookUser',new FacebookStrategy({
             });
             newUser.save(function (err) {
                 if (err) throw err;
-                var newProfile = {...profile, userID: newUser._id};
-                return done(null, newProfile);
+                return done(null, {...newUser, exist: false});
             });
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});
             }else{
-                var newProfile = {...profile, userID: user._id};
-                return done(null, newProfile);
+                return done(null, {...user, exist: true});
             }
         }
     }

@@ -36,14 +36,17 @@ router.get('/google/user/callback', passport.authenticate('googleUser', {failure
         req.logout();
         res.redirect("/login");
     } else {
-        console.log(req.user);
+        var userData = req.user._doc;
         req.session.authUser = true;
-        req.session.fullName = req.user.displayName
-        req.session.firstName = req.user.name.givenName
-        req.session.avatar = req.user.photos[0].value
-        req.session.email = req.user._json.email
-        req.session.userID = req.user.userID
-        res.redirect("/community");
+        req.session.fullName = userData.fullName
+        req.session.firstName = userData.firstName
+        req.session.avatar = userData.avatar
+        req.session.email = userData.email
+        req.session.userID = userData._id
+        if (req.user.exist == true) {
+            req.flash('existUser', userData.email);
+        }
+        res.redirect("/community/feed");
     }
 });
 router.get('/facebook/user', skipRouter, passport.authenticate('facebookUser', {
@@ -55,13 +58,17 @@ router.get('/facebook/user/callback', passport.authenticate('facebookUser', {fai
         req.logout();
         res.redirect("/login");
     } else {
+        var userData = req.user._doc;
         req.session.authUser = true;
-        req.session.fullName = req.user.displayName
-        req.session.firstName = req.user.name.givenName
-        req.session.avatar = req.user._json.picture.data.url
-        req.session.email = req.user._json.email
-        req.session.userID = req.user.userID
-        res.redirect("/community");
+        req.session.fullName = userData.fullName
+        req.session.firstName = userData.firstName
+        req.session.avatar = userData.avatar
+        req.session.email = userData.email
+        req.session.userID = userData._id
+        if (req.user.exist == true) {
+            req.flash('existUser', userData.email);
+        }
+        res.redirect("/community/feed");
     }
 });
 router.get('/verify', async function (req, res, next) {
@@ -238,7 +245,7 @@ router.post('/changePassword', async function (req, res, next) {
                 res.redirect("/login");
             });
         });
-    }else{
+    } else {
         req.flash('credentialsError', 'Ο λογαριασμός δεν βρέθηκε!');
         res.redirect("/forgot");
     }

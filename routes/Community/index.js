@@ -85,7 +85,8 @@ router.get('/feed', authUser, async function (req, res, next) {
         title: 'Feed',
         Feed: true,
         recommendedUsers: recomend_users,
-        posts: feed
+        posts: feed,
+        existUser: req.flash('existUser'),
     });
 });
 router.get('/timeline', authUser, async function (req, res, next) {

@@ -18,7 +18,7 @@ passport.use('googleUser', new GoogleStrategy({
         proxy: true
     },
     async function (accessToken, refreshToken, profile, done) {
-        var user = await Users.findOne({email: profile._json.email});
+        var user = await Users.findOne({email: profile._json.email, socialID: profile.id});
         if (!user) {
             var newUser = new Users({
                 socialID: profile.id,
@@ -33,13 +33,15 @@ passport.use('googleUser', new GoogleStrategy({
             });
             newUser.save(function (err) {
                 if (err) throw err;
-                return done(null, {...newUser, exist: false});
+                var newProfile = {...profile, userID: newUser._id};
+                return done(null, newProfile);
             });
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});
             }else{
-                return done(null, {...user, exist: true});
+                var newProfile = {...profile, userID: user._id};
+                return done(null, newProfile);
             }
         }
     }

@@ -84,8 +84,8 @@
                             {{/if}}
                         </div>
                         <div class="post-meta-wrap">
-                            <div class="post-meta" data-postid="{{this._id}}">
-                                <div class="meta-text openModalReactions"><span
+                            <div class="post-meta">
+                                <div class="meta-text openModalReactions" data-postid="{{this._id}}"><span
                                         id="reactions_count_{{this._id}}">{{this.countReactions}}</span> Reactions
                                 </div>
                                 <div class="meta-text openModalComments">2 Comments</div>
@@ -420,7 +420,8 @@
     </div>
 </div>
 <!-- Modal Reactions -->
-<div class="modal fade" id="reactionModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+<div class="modal fade" id="reactionModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -432,207 +433,10 @@
                         <div class="post-view">
                             <div class="panel with-nav-tabs panel-default">
                                 <div class="panel-heading modal-reactions mt-3 mb-3">
-                                    <ul class="nav nav-tabs">
-                                        <li class="col text-center"><a href="#tab1default" class="active" data-toggle="tab">
-                                            <img class="reactionbtn-modal" src="/media/reactions/Wink.svg"
-                                                 alt="Wink"><span>22</span>
-                                        </a></li>
-                                        <li class="col text-center"><a href="#tab2default" data-toggle="tab">
-                                            <img class="reactionbtn-modal" src="/media/reactions/Hearts.svg"
-                                                 alt="Hearts"><span>22</span>
-                                        </a></li>
-                                        <li class="col text-center"><a href="#tab3default" data-toggle="tab">
-                                            <img class="reactionbtn-modal" src="/media/reactions/Tears.svg"
-                                                 alt="Tears"><span>22</span>
-                                        </a></li>
-                                    </ul>
+                                    <ul class="nav nav-tabs" id="likes"></ul>
                                 </div>
                                 <div class="panel-body modal-reaction-memebers">
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade in active show" id="tab1default">
-                                            <div class="widget widget-memebers">
-                                                <div class="widget-heading">
-                                                    <h3 class="widget-title">Wink</h3>
-                                                </div>
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
-                                                        <div class="members-list">
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab2default">
-                                            <div class="widget widget-memebers">
-                                                <div class="widget-heading">
-                                                    <h3 class="widget-title">Hearts</h3>
-                                                </div>
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
-                                                        <div class="members-list">
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="tab3default">
-                                            <div class="widget widget-memebers">
-                                                <div class="widget-heading">
-                                                    <h3 class="widget-title">Tears</h3>
-                                                </div>
-                                                <div class="tab-content">
-                                                    <div class="tab-pane fade show active" id="newest-member" role="tabpanel">
-                                                        <div class="members-list">
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="media">
-                                                                <div class="item-img">
-                                                                    <a href="/community/timeline/@delliosvaggelis">
-                                                                        <img src="https://lh3.googleusercontent.com/a-/AOh14GgBFRnpNXZQHgubYteARPAtFVCX1ukT3weBLPrUUuQ=s96-c" alt="">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h4 class="item-title"><a
-                                                                            href="/community/timeline/@delliosvaggelis">Vaggelis Dellios</a></h4>
-                                                                    <div class="item-username">@delliosvaggelis</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="tab-content" id="accountReacted"></div>
                                 </div>
                             </div>
                         </div>
@@ -649,7 +453,35 @@
         $("#postModal").modal("show");
     });
     $(".openModalReactions").click(function () {
+        $("#reactionModal #likes").empty();
+        $("#reactionModal #accountReacted").empty();
         $("#reactionModal").modal("show");
+        $.ajax({
+            url: '/community/getReactions/'+ $(this).attr("data-postid"),
+            method: "GET",
+            success: function (data) {
+                var tabIndex = 0;
+                $.each(data, function(i, item) {
+                    if(tabIndex == 0){
+                        var likeBox = "<li class='col text-center'><a class='active' href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
+                        $("#likes").append(likeBox);
+                        var tab = "<div class='tab-pane fade active show' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
+                        $("#accountReacted").append(tab);
+                    }else{
+                        var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
+                        $("#likes").append(likeBox);
+                        var tab = "<div class='tab-pane fade' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
+                        $("#accountReacted").append(tab);
+                    }
+
+                    $.each(item.userData, function(i, user) {
+                        var x = "<div class='media'> <div class='item-img'> <a href='/community/timeline/@"+ user.username +"'> <img src='"+ user.avatar +"' alt=''> </a> </div> <div class='media-body'> <h4 class='item-title'><a href='/community/timeline/@"+ user.username +"'>"+ user.fullName +"</a></h4> <div class='item-username'>@"+ user.username +"</div> </div> </div>";
+                        $('#memberList'+ item._id).append(x);
+                    })
+                    tabIndex++;
+                });
+            }
+        })
     });
 
     function readURL(input) {

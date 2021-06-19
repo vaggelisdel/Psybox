@@ -8059,7 +8059,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     border-radius: 30px;
     padding: 7px 15px 8px;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
-    visibility: hidden;
+    display: none;
     opacity: 0;
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
@@ -8110,8 +8110,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     transform: rotate(40deg);
 }
 
-.post-view .post-footer .post-react:hover .react-list {
-    visibility: visible;
+.post-view .post-footer .post-react:focus-within .react-list {
+    display: block;
     opacity: 1;
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
@@ -12233,4 +12233,10 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
 }
 .openModalComments, .openModalReactions{
     cursor:pointer;
+}
+.spinnergif{
+    width:100px;
+}
+.post-view{
+    min-height: 420px;
 }

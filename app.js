@@ -2,6 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var hbs = require("hbs")
+hbs.registerHelper("equal", require("handlebars-helper-equal"));
 var logger = require('morgan');
 var flash = require('connect-flash');
 const session = require('express-session');

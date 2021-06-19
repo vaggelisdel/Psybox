@@ -114,7 +114,9 @@
                                 ...
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <button type="button" class="dropdown-item" value="{{this._id}}">Delete</button>
+                                {{#equal this.authorUserID ../session.userID}}
+                                    <button type="button" class="dropdown-item" value="{{this._id}}">Delete</button>
+                                {{/equal}}
                                 <button type="button" class="dropdown-item" value="{{this._id}}">Report</button>
                             </div>
                         </div>

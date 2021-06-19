@@ -94,23 +94,23 @@
                     <div class="post-footer">
                         <ul>
                             {{#if ../session.authUser}}
-                            <li class="post-react">
-                                {{#if this.isReaction}}
-                                    <a id="postid_{{this._id}}" class="reacted"
-                                       data-current-reaction="{{this.myReaction.0.type}}"
-                                       style="background: var(--{{this.myReaction.0.type}}-color)"
-                                       href="javascript:void(0)">
-                                        <img class="reactionbtn"
-                                             src="/media/reactions/{{this.myReaction.0.type}}.svg"
-                                             alt="Wink">&nbsp;
-                                        <span>{{this.myReaction.0.type}}!</span>
-                                    </a>
-                                {{else}}
-                                    <a id="postid_{{this._id}}" href="javascript:void(0)"><img class="reactionbtn"
-                                                                                               src="/media/reactions/Wink.svg"
-                                                                                               alt="Wink">&nbsp;<span>React!</span></a>
-                                {{/if}}
-                                <ul class="react-list">
+                                <li class="post-react">
+                                    {{#if this.isReaction}}
+                                        <a id="postid_{{this._id}}" class="reacted"
+                                           data-current-reaction="{{this.myReaction.0.type}}"
+                                           style="background: var(--{{this.myReaction.0.type}}-color)"
+                                           href="javascript:void(0)">
+                                            <img class="reactionbtn"
+                                                 src="/media/reactions/{{this.myReaction.0.type}}.svg"
+                                                 alt="Wink">&nbsp;
+                                            <span>{{this.myReaction.0.type}}!</span>
+                                        </a>
+                                    {{else}}
+                                        <a id="postid_{{this._id}}" href="javascript:void(0)"><img class="reactionbtn"
+                                                                                                   src="/media/reactions/Wink.svg"
+                                                                                                   alt="Wink">&nbsp;<span>React!</span></a>
+                                    {{/if}}
+                                    <ul class="react-list">
                                         <li><a href="javascript:void(0)" data-reaction="Wink"
                                                data-postid="{{this._id}}"><img src="/media/reactions/Wink.svg"
                                                                                alt="Wink"></a></li>
@@ -455,29 +455,34 @@
         $("#reactionModal #accountReacted").empty();
         $("#reactionModal").modal("show");
         $.ajax({
-            url: '/community/getReactions/'+ $(this).attr("data-postid"),
+            url: '/community/getReactions/' + $(this).attr("data-postid"),
             method: "GET",
             success: function (data) {
-                var tabIndex = 0;
-                $.each(data, function(i, item) {
-                    if(tabIndex == 0){
-                        var likeBox = "<li class='col text-center'><a class='active' href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
-                        $("#likes").append(likeBox);
-                        var tab = "<div class='tab-pane fade active show' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
-                        $("#accountReacted").append(tab);
-                    }else{
-                        var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
-                        $("#likes").append(likeBox);
-                        var tab = "<div class='tab-pane fade' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
-                        $("#accountReacted").append(tab);
-                    }
+                if (data.length) {
+                    var tabIndex = 0;
+                    $.each(data, function (i, item) {
+                        if (tabIndex == 0) {
+                            var likeBox = "<li class='col text-center'><a class='active' href='#tab" + item._id + "' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/" + item._id + ".svg'alt='" + item._id + "'><span>" + item.totalReactions + "</span></a></li>";
+                            $("#likes").append(likeBox);
+                            var tab = "<div class='tab-pane fade active show' id='tab" + item._id + "'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>" + item._id + "</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList" + item._id + "'> </div> </div> </div> </div> </div>";
+                            $("#accountReacted").append(tab);
+                        } else {
+                            var likeBox = "<li class='col text-center'><a href='#tab" + item._id + "' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/" + item._id + ".svg'alt='" + item._id + "'><span>" + item.totalReactions + "</span></a></li>";
+                            $("#likes").append(likeBox);
+                            var tab = "<div class='tab-pane fade' id='tab" + item._id + "'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>" + item._id + "</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList" + item._id + "'> </div> </div> </div> </div> </div>";
+                            $("#accountReacted").append(tab);
+                        }
 
-                    $.each(item.userData, function(i, user) {
-                        var x = "<div class='media'> <div class='item-img'> <a href='/community/timeline/@"+ user.username +"'> <img src='"+ user.avatar +"' alt=''> </a> </div> <div class='media-body'> <h4 class='item-title'><a href='/community/timeline/@"+ user.username +"'>"+ user.fullName +"</a></h4> <div class='item-username'>@"+ user.username +"</div> </div> </div>";
-                        $('#memberList'+ item._id).append(x);
-                    })
-                    tabIndex++;
-                });
+                        $.each(item.userData, function (i, user) {
+                            var x = "<div class='media'> <div class='item-img'> <a href='/community/timeline/@" + user.username + "'> <img src='" + user.avatar + "' alt=''> </a> </div> <div class='media-body'> <h4 class='item-title'><a href='/community/timeline/@" + user.username + "'>" + user.fullName + "</a></h4> <div class='item-username'>@" + user.username + "</div> </div> </div>";
+                            $('#memberList' + item._id).append(x);
+                        })
+                        tabIndex++;
+                    });
+                } else {
+                    var emptyReactions = "<div class='text-center mr-auto ml-auto'><p>Δεν υπάρχουν αντιδράσεις σε αυτή τη δημοσίευση!</p></div>";
+                    $("#likes").append(emptyReactions);
+                }
             }
         })
     });

@@ -532,7 +532,7 @@
                     if(tabIndex == 0){
                         var likeBox = "<li class='col text-center'><a class='active' href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";
                         $("#likes").append(likeBox);
-                        var tab = "<div class='tab-pane fade active show' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>Hearts</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
+                        var tab = "<div class='tab-pane fade active show' id='tab"+ item._id +"'> <div class='widget widget-memebers'> <div class='widget-heading'> <h3 class='widget-title'>"+ item._id +"</h3> </div> <div class='tab-content'> <div class='tab-pane fade show active' id='newest-member' role='tabpanel'> <div class='members-list' id='memberList"+ item._id +"'> </div> </div> </div> </div> </div>";
                         $("#accountReacted").append(tab);
                     }else{
                         var likeBox = "<li class='col text-center'><a href='#tab"+ item._id +"' data-toggle='tab'><img class='reactionbtn-modal' src='/media/reactions/"+ item._id +".svg'alt='"+ item._id +"'><span>"+ item.totalReactions +"</span></a></li>";

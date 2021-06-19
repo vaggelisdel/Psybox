@@ -450,7 +450,7 @@ router.post('/createReaction', async function (req, res, next) {
             res.send({status: 'success'});
         });
     } else {
-        var query = {postid: new ObjectId(req.body.postid)};
+        var query = {postid: new ObjectId(req.body.postid), userID: new ObjectId(req.session.userID)};
         var updateInfo = {
             $set: {
                 type: req.body.type

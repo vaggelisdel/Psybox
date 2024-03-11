@@ -9,8 +9,8 @@ passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
 
-const GOOGLE_CLIENT_ID = '802117457930-6vk2j2kkqfmakgs1h319hr4iq24ka38t.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = 'y_Je23G-FGzYfKICQ0csCh-L';
+const GOOGLE_CLIENT_ID = '899204019309-vh9shonk8bvjvndr9uihj81a33oc7op5.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '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';
 passport.use('googleUser', new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
@@ -31,10 +31,8 @@ passport.use('googleUser', new GoogleStrategy({
                 locale: profile._json.locale,
                 active: true,
             });
-            newUser.save(function (err) {
-                if (err) throw err;
-                return done(null, {...newUser, exist: false});
-            });
+            await newUser.save();
+            return done(null, {...newUser, exist: false});
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});

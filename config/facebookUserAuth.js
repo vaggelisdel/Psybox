@@ -27,15 +27,14 @@ passport.use('facebookUser',new FacebookStrategy({
                 firstName: profile.name.givenName,
                 email: profile._json.email,
                 username: profile._json.email.split("@")[0],
-                avatar: profile._json.picture.data.url,
+                // avatar: profile._json.picture.data.url,
+                avatar: 'https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_1280.png',
                 method: profile.provider,
                 locale: profile._json.locale,
                 active: true,
             });
-            newUser.save(function (err) {
-                if (err) throw err;
-                return done(null, {...newUser, exist: false});
-            });
+            await newUser.save();
+            return done(null, {...newUser, exist: false});
         }else{
             if(user.active === false){
                 return done(null, {error: "inactive"});

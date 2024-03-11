@@ -7,21 +7,24 @@ var DeletedPosts = require("../../models/deleted_posts");
 var Posts = require("../../models/post");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 require('dotenv').config();
+const { S3Client } = require("@aws-sdk/client-s3");
 var multer = require('multer');
 const multerS3 = require('multer-s3');
-const AWS = require('aws-sdk');
 var crypto = require('crypto');
 var path = require('path');
 
 /*AWS UPLOAD IMG*/
-const s3 = new AWS.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: process.env.AWS_REGION
+const s3 = new S3Client({
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID, // store it in .env file to keep it safe
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    },
+    region: process.env.AWS_REGION // this is the region that you select in AWS account
 });
-const filters = (req, file, cb) => {
+
+    const filters = (req, file, cb) => {
     var ext = path.extname(file.originalname);
     if (ext !== '.png' && ext !== '.jpg' && ext !== '.jpeg') {
         cb('Μη επιτρεπτός τύπος αρχείου!');
@@ -29,17 +32,19 @@ const filters = (req, file, cb) => {
         cb(null, true);
     }
 }
+
 var uploadS3 = multer({
     storage: multerS3({
         s3: s3,
         acl: 'public-read',
-        bucket: process.env.BUCKET_NAME,
+        bucket: process.env.AWS_BUCKET_NAME,
+        contentType: multerS3.AUTO_CONTENT_TYPE,
         key: (req, file, cb) => {
             cb(null, Date.now().toString() + '_' + crypto.createHash('md5').update(JSON.stringify(new Date().getTime())).digest("hex"))
         }
     }),
     fileFilter: filters,
-    limits: {fileSize: 5242880}
+    limits: { fileSize: 5242880 }
 }).single('imageUpload');  //5MB
 
 
@@ -48,7 +53,7 @@ router.get('/', authUser, function (req, res, next) {
     res.redirect("/community/feed");
 });
 router.get('/feed', authUser, async function (req, res, next) {
-    var recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}}).sort({'registerDate': -1}).limit(4);
+    var recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}, active: true}).sort({'registerDate': -1}).limit(4);
     var feed = await Posts.aggregate([
         {
             $lookup: {
@@ -263,7 +268,7 @@ router.get('/getReactions/:id', authUser, async function (req, res, next) {
     res.send(likes);
 });
 
-router.post('/update-personal-info', function (req, res, next) {
+router.post('/update-personal-info', async function (req, res, next) {
     var query = {_id: new ObjectId(req.body.userId)};
     if (req.session.editable) {
         var updateInfo = {
@@ -279,14 +284,12 @@ router.post('/update-personal-info', function (req, res, next) {
                 youtube: req.body.youtube
             }
         };
-        Users.updateMany(query, updateInfo, function (err, result) {
-            if (err) throw err;
-            req.session.fullName = req.body.fullName
-            req.session.firstName = req.body.fullName.split(" ")[0]
-            req.session.email = req.body.email
-            req.flash('successMsg', 'Επιτυχής ενημέρωση!');
-            res.redirect("/community/settings");
-        });
+        await Users.updateMany(query, updateInfo);
+        req.session.fullName = req.body.fullName
+        req.session.firstName = req.body.fullName.split(" ")[0]
+        req.session.email = req.body.email
+        req.flash('successMsg', 'Επιτυχής ενημέρωση!');
+        res.redirect("/community/settings");
     } else {
         var updateInfo = {
             $set: {
@@ -298,11 +301,9 @@ router.post('/update-personal-info', function (req, res, next) {
                 youtube: req.body.youtube
             }
         };
-        Users.updateMany(query, updateInfo, function (err, result) {
-            if (err) throw err;
-            req.flash('successMsg', 'Επιτυχής ενημέρωση!');
-            res.redirect("/community/settings");
-        });
+        await Users.updateMany(query, updateInfo);
+        req.flash('successMsg', 'Επιτυχής ενημέρωση!');
+        res.redirect("/community/settings");
     }
 });
 router.post('/update-username', async function (req, res, next) {
@@ -314,11 +315,9 @@ router.post('/update-username', async function (req, res, next) {
                 username: req.body.username.split('@')[1]
             }
         };
-        Users.updateMany(query, updateInfo, function (err, result) {
-            if (err) throw err;
-            req.flash('successMsg', 'Επιτυχής ενημέρωση!');
-            res.redirect("/community/settings");
-        });
+        await Users.updateMany(query, updateInfo);
+        req.flash('successMsg', 'Επιτυχής ενημέρωση!');
+        res.redirect("/community/settings");
     } else {
         res.redirect("/community/settings");
     }
@@ -330,17 +329,15 @@ router.post('/change-password', async function (req, res, next) {
         bcrypt.compare(req.body.oldPassword, oldPassword.password, function (err, response) {
             if (response === true) {
                 bcrypt.genSalt(10, function (err, salt) {
-                    bcrypt.hash(req.body.newPassword, salt, function (err, hash) {
+                    bcrypt.hash(req.body.newPassword, salt, async function (err, hash) {
                         var updateInfo = {
                             $set: {
                                 password: hash
                             }
                         };
-                        Users.updateMany(query, updateInfo, function (err, result) {
-                            if (err) throw err;
-                            req.flash('successMsg', 'Ο κωδικός πρόσβασης άλλαξε με επιτυχία!');
-                            res.redirect("/community/settings");
-                        });
+                        await Users.updateMany(query, updateInfo);
+                        req.flash('successMsg', 'Ο κωδικός πρόσβασης άλλαξε με επιτυχία!');
+                        res.redirect("/community/settings");
                     });
                 });
             } else {
@@ -393,12 +390,10 @@ router.post('/change-avatar', async function (req, res, next) {
                 await Posts.updateMany({'author._id': new ObjectId(req.body.userId)}, {$set: {
                         'author.avatar': itemImg
                     }});
-                Users.updateMany(query, updateInfo, function (err, result) {
-                    if (err) throw err;
-                    req.session.avatar = itemImg;
-                    req.flash('successMsg', 'Επιτυχής ενημέρωση!');
-                    res.redirect("/community/settings");
-                });
+                await Users.updateMany(query, updateInfo);
+                req.session.avatar = itemImg;
+                req.flash('successMsg', 'Επιτυχής ενημέρωση!');
+                res.redirect("/community/settings");
             }
         }
     });
@@ -425,10 +420,8 @@ router.post('/createPost', async function (req, res, next) {
                         image: req.file.location,
                         text: req.body.textPost
                     });
-                    newPost.save(function (err) {
-                        if (err) throw err;
-                        res.redirect("/community");
-                    });
+                    await newPost.save();
+                    res.redirect("/community");
                 }else{
                     var newPost = new Posts({
                         author: {
@@ -439,10 +432,8 @@ router.post('/createPost', async function (req, res, next) {
                         },
                         text: req.body.textPost
                     });
-                    newPost.save(function (err) {
-                        if (err) throw err;
-                        res.redirect("/community");
-                    });
+                    await newPost.save();
+                    res.redirect("/community");
                 }
             }
         });
@@ -461,10 +452,8 @@ router.post('/createReaction', async function (req, res, next) {
             type: req.body.type,
             postid: new ObjectId(req.body.postid)
         });
-        newLike.save(function (err) {
-            if (err) throw err;
-            res.send({status: 'success'});
-        });
+        await newLike.save();
+        res.send({status: 'success'});
     } else {
         var query = {postid: new ObjectId(req.body.postid), userID: new ObjectId(req.session.userID)};
         var updateInfo = {
@@ -472,20 +461,17 @@ router.post('/createReaction', async function (req, res, next) {
                 type: req.body.type
             }
         };
-        Likes.updateMany(query, updateInfo, function (err, result) {
-            if (err) throw err;
-            res.send({status: 'success'});
-        });
+        await Likes.updateMany(query, updateInfo);
+        res.send({status: 'success'});
     }
 });
 router.post('/deleteReaction', async function (req, res, next) {
-    Likes.deleteMany({
+    await Likes.deleteMany({
         userID: new ObjectId( req.session.userID),
         postid: new ObjectId(req.body.postid),
         type: req.body.type
-    }, function (err){
-        res.send({status: 'success'});
     });
+    res.send({status: 'success'});
 });
 
 

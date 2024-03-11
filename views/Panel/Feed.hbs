@@ -116,8 +116,8 @@
                                 <div class="meta-text openModalReactions" data-postid="{{this._id}}"><span
                                         id="reactions_count_{{this._id}}">{{this.countReactions}}</span> Reactions
                                 </div>
-                                <div class="meta-text openModalComments">2 Comments</div>
-                                <div class="meta-text">5 Share</div>
+                                <div class="meta-text openModalComments">0 Comments</div>
+                                <div class="meta-text">0 Share</div>
                             </div>
                         </div>
                     </div>
@@ -213,10 +213,10 @@
                 </div>
             </div>
             <div class="widget widget-banner">
-                <h3 class="item-title">Most Popular</h3>
-                <div class="item-subtitle">Circle Application</div>
-                <a href="#" class="item-btn">
-                    <span class="btn-text">Register Now</span>
+                <h3 class="item-title">Need help?</h3>
+                <div class="item-subtitle">We are here to help you!</div>
+                <a href="/contact" class="item-btn">
+                    <span class="btn-text">Contact us</span>
                     <span class="btn-icon">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -431,12 +431,9 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <div class="load-more-btn">
-                                    <a href="#" class="item-btn">Load More Comments <span>4+</span></a>
-                                </div>
                                 <div class="comment-reply">
                                     <div class="user-img">
-                                        <img src="/media/figure/chat_15.jpg" alt="Aahat">
+                                        <img src="{{session.avatar}}" alt="{{session.fullName}}">
                                     </div>
                                     <div class="input-box">
                                         <input type="text" name="comment" class="form-control"

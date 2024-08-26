@@ -6298,7 +6298,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .login-page-wrap .tab-content .login-tab .google-signin:before {
-    content: "or";
     font-size: 15px;
     color: #b6b6b6;
     position: absolute;
@@ -12241,4 +12240,7 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
 }
 .reactionModal{
     min-height: 420px;
+}
+.submitBtnComment{
+    margin: 10px 0 0 auto;
 }

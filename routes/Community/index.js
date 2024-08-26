@@ -5,6 +5,7 @@ var Likes = require("../../models/like");
 var DeletedUsers = require("../../models/deleted_users");
 var DeletedPosts = require("../../models/deleted_posts");
 var Posts = require("../../models/post");
+var Comments = require("../../models/comment");
 var {authUser} = require('../../config/middlewares');
 var ObjectId = require('mongoose').Types.ObjectId;
 const bcrypt = require('bcryptjs');
@@ -53,14 +54,22 @@ router.get('/', authUser, function (req, res, next) {
     res.redirect("/community/feed");
 });
 router.get('/feed', authUser, async function (req, res, next) {
-    var recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}, active: true}).sort({'registerDate': -1}).limit(4);
-    var feed = await Posts.aggregate([
+    let recomend_users = await Users.find({_id: {$ne: new ObjectId(req.session.userID)}, active: true}).sort({'registerDate': -1}).limit(4);
+    let feed = await Posts.aggregate([
         {
             $lookup: {
                 from: "likes",
                 localField: "_id",    // field in the orders collection
                 foreignField: "postid",  // field in the items collection
                 as: "likes"
+            }
+        },
+        {
+            $lookup: {
+                from: "comments",
+                localField: "_id",    // field in the orders collection
+                foreignField: "postid",  // field in the items collection
+                as: "comments"
             }
         },
         {
@@ -81,6 +90,8 @@ router.get('/feed', authUser, async function (req, res, next) {
                         cond: {$eq: ['$$myReaction.userID', new ObjectId(req.session.userID)]}
                     }
                 },
+                "comments": "$comments",
+                "countComments": { "$size": "$comments" },  // Count of comments
             }
         },
         {
@@ -93,7 +104,7 @@ router.get('/feed', authUser, async function (req, res, next) {
         Feed: true,
         recommendedUsers: recomend_users,
         posts: feed,
-        existUser: req.flash('existUser'),
+        existUser: req.flash('existUser')
     });
 });
 router.get('/timeline', authUser, async function (req, res, next) {
@@ -235,6 +246,12 @@ router.get('/delete-post/:id', authUser, async function (req, res, next) {
         });
     });
 });
+router.get('/delete-comment/:id', authUser, async function (req, res, next) {
+    await Comments.deleteOne({
+        _id: new ObjectId(req.params.id),
+    });
+    res.redirect("/community");
+});
 router.get('/getReactions/:id', authUser, async function (req, res, next) {
     var likes = await Likes.aggregate([
         {
@@ -266,6 +283,11 @@ router.get('/getReactions/:id', authUser, async function (req, res, next) {
         }
     ]);
     res.send(likes);
+});
+router.get('/getComments/:id', authUser, async function (req, res, next) {
+    let comments = await Comments.find({postid: new ObjectId(req.params.id)});
+
+    res.send(comments);
 });
 
 router.post('/update-personal-info', async function (req, res, next) {
@@ -472,6 +494,25 @@ router.post('/deleteReaction', async function (req, res, next) {
         type: req.body.type
     });
     res.send({status: 'success'});
+});
+router.post('/addcomment', async function (req, res, next) {
+    let authorData = await Users.findOne({_id: new ObjectId(req.session.userID)});
+    if (authorData) {
+        let newComment = new Comments({
+            author: {
+                _id: authorData._id,
+                fullName: authorData.fullName,
+                username: authorData.username,
+                avatar: authorData.avatar
+            },
+            postid: new ObjectId(req.body.postid),
+            comment: req.body.comment,
+        });
+        await newComment.save();
+        res.redirect("/community");
+    } else {
+        res.redirect("/community");
+    }
 });
 
 

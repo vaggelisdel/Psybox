@@ -4,10 +4,10 @@
             <a class="nav-link active" data-toggle="tab" href="#login-tab" role="tab" aria-selected="true"><i
                     class="icofont-users-alt-4"></i> Sign In </a>
         </li>
-        <li class="nav-item">
+        {{!-- <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#registration-tab" role="tab" aria-selected="false"><i
                     class="icofont-download"></i> Registration</a>
-        </li>
+        </li> --}}
     </ul>
     <div class="tab-content">
         <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
@@ -34,7 +34,7 @@
             <div class="google-signin">
                 <a href="/google/user"><img src="/media/figure/google-icon.png" alt="Google">Google Sign in</a>
             </div>
-            <form action="/login" method="post">
+            {{!-- <form action="/login" method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="email" placeholder="Your E-mail">
                 </div>
@@ -47,12 +47,12 @@
                 <div class="form-group">
                     <input type="submit" name="login-btn" class="submit-btn" value="Login">
                 </div>
-            </form>
+            </form> --}}
             <!-- <div class="account-create">
         Don't have an account yet? <a href="#registration-tab">Sign Up Now</a>
     </div> -->
         </div>
-        <div class="tab-pane registration-tab fade" id="registration-tab" role="tabpanel">
+        {{!-- <div class="tab-pane registration-tab fade" id="registration-tab" role="tabpanel">
             <h3 class="item-title">Sign Up Your Account</h3>
             <form action="/register" method="post">
                 <div class="form-group">
@@ -86,6 +86,6 @@
                     <input type="submit" name="registration" class="submit-btn" value="Complete Registration">
                 </div>
             </form>
-        </div>
+        </div> --}}
     </div>
 </div>

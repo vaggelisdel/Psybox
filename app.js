@@ -11,7 +11,7 @@ const MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose');
 const passport = require("passport");
 
-mongoose.connect(`mongodb+srv://vaggelisdel:jVCgD3HTSKJJeb45@cluster0-x12oj.mongodb.net/Psybox?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://vaggelisdel:lI0LYKCsvlPQWXG2@cluster0-x12oj.mongodb.net/Psybox?retryWrites=true&w=majority`)
     .then(() => console.log('Connected!'));
 
 require('./config/googleUserAuth');

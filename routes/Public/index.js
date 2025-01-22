@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const passport = require("passport");
 var Users = require("../../models/users");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 var {skipRouter} = require('../../config/middlewares');
 require('dotenv').config();
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -37,6 +37,7 @@ router.get('/google/user/callback', passport.authenticate('googleUser', {failure
         res.redirect("/login");
     } else {
         var userData = req.user._doc;
+        console.log(userData)
         req.session.authUser = true;
         req.session.fullName = userData.fullName
         req.session.firstName = userData.firstName
@@ -131,7 +132,7 @@ router.post('/register', async function (req, res, next) {
     var user = await Users.findOne({email: req.body.email});
     if (!user) {
         bcrypt.genSalt(10, function (err, salt) {
-            bcrypt.hash(req.body.password, salt, function (err, hash) {
+            bcrypt.hash(req.body.password, salt, async function (err, hash) {
                 var newUser = new Users({
                     fullName: req.body.fname + " " + req.body.lname,
                     firstName: req.body.fname,
@@ -142,25 +143,23 @@ router.post('/register', async function (req, res, next) {
                     socialID: v4(),
                     method: "custom",
                 });
-                newUser.save(function (err) {
-                    if (err) throw err;
-                    sgMail.setApiKey(process.env.SENDGRID_API);
-                    const msg = {
-                        to: req.body.email,
-                        from: 'delvagdel@gmail.com', // Verified sender
-                        subject: 'Psybox | Επιβεβαίωση λογαριασμού',
-                        html: EmailTemplate.activation(newUser._id, req.body.email, newUser.socialID)
-                    }
-                    sgMail
-                        .send(msg)
-                        .then(() => {
-                            req.flash('successMsg', 'Σας έχει αποσταλεί email επιβεβαίωσης!');
-                            res.redirect("/login");
-                        })
-                        .catch((error) => {
-                            console.error(error)
-                        })
-                });
+                await newUser.save();
+                sgMail.setApiKey(process.env.SENDGRID_API);
+                const msg = {
+                    to: req.body.email,
+                    from: 'delvagdel@gmail.com', // Verified sender
+                    subject: 'Psybox | Επιβεβαίωση λογαριασμού',
+                    html: EmailTemplate.activation(newUser._id, req.body.email, newUser.socialID)
+                }
+                sgMail
+                    .send(msg)
+                    .then(() => {
+                        req.flash('successMsg', 'Σας έχει αποσταλεί email επιβεβαίωσης!');
+                        res.redirect("/login");
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
             });
         });
     } else {
@@ -231,7 +230,7 @@ router.post('/changePassword', async function (req, res, next) {
     //WARNING FOR SECURITY REASONS
     var user = await Users.findOne({email: req.body.email, socialID: req.body.socialID});
     if (user) {
-        bcrypt.hash(req.body.newpassword, 10, function (err, hashPassword) {
+        bcrypt.hash(req.body.newpassword, 10, async function (err, hashPassword) {
             var query = {email: req.body.email};
             var updatePassword = {
                 $set: {
@@ -239,11 +238,9 @@ router.post('/changePassword', async function (req, res, next) {
                     socialID: v4()
                 }
             };
-            Users.updateMany(query, updatePassword, function (err, result) {
-                if (err) throw err;
-                req.flash('successMsg', 'Ο κωδικός πρόσβασης σας άλλαξε!');
-                res.redirect("/login");
-            });
+            await Users.updateMany(query, updatePassword);
+            req.flash('successMsg', 'Ο κωδικός πρόσβασης σας άλλαξε!');
+            res.redirect("/login");
         });
     } else {
         req.flash('credentialsError', 'Ο λογαριασμός δεν βρέθηκε!');

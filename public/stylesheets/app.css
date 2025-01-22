@@ -6298,7 +6298,6 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 }
 
 .login-page-wrap .tab-content .login-tab .google-signin:before {
-    content: "or";
     font-size: 15px;
     color: #b6b6b6;
     position: absolute;
@@ -8283,7 +8282,7 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
 
 .post-view .post-comment .comment-list {
     border-bottom: 1px solid #e6e9ec;
-    padding: 0 30px;
+    padding: 0 30px 100px 30px;
 }
 
 .modal-post .post-view .post-comment {
@@ -8419,6 +8418,8 @@ nav.template-main-menu > ul > li:hover ul.mega-menu {
     padding: 5px;
     position: relative;
     margin-right: 15px;
+    width: 50px;
+    height: 50px;
 }
 
 .post-view .post-comment .comment-reply .user-img:after {
@@ -12239,4 +12240,7 @@ darkmode .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active,
 }
 .reactionModal{
     min-height: 420px;
+}
+.submitBtnComment{
+    margin: 10px 0 0 auto;
 }
